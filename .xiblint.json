@@ -1,0 +1,21 @@
+{
+    "rules": ["accessibility_labels_for_image_buttons", "accessibility_labels_for_images", "accessibility_labels_for_text_with_placeholder", "autolayout_frames", "accessibility_format", "automation_identifiers", "automation_identifiers_for_outlet_labels", "no_simulated_metrics", "no_trait_variations", "no_view_controller_links_to_other_bundles", "simulated_metrics_retina4_0"],
+    "paths": {
+        "Pods": {
+            "rules": []
+        },
+        "InaccessibleFeature": {
+            "excluded_rules": [
+                "accessibility_*"
+            ]
+        },
+        "Modules": {
+            "rules": ["accessibility_labels_for_image_buttons", "accessibility_labels_for_images", "accessibility_labels_for_text_with_placeholder", "autolayout_frames", "accessibility_format", "automation_identifiers", "automation_identifiers_for_outlet_labels", "no_simulated_metrics", "no_trait_variations", "no_view_controller_links_to_other_bundles", "simulated_metrics_retina4_0"],
+            "rules_config": {
+                "some_rule": {
+                    "some_rule_specific_option": true
+                }
+            }
+        }
+    }
+}
