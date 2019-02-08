@@ -7,9 +7,9 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 class LogInVM: BaseVM {
-    var signedIn: ((Bool, Dictionary<String, Any>?) -> Void)?
+    var signedIn: ((Bool, JSON?) -> Void)?
 
     var alert: Alert? {
         didSet {
@@ -25,22 +25,18 @@ class LogInVM: BaseVM {
                 self.showLoadingHUD?(false)
                 if case let .success(response) = result {
                     do {
-                        let filteredResponse = try response.filterSuccessfulStatusCodes()
-                        // let decoder = JSONDecoder()
-                        // decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        // let user  =  try! response.map(User.self,atKeyPath: "data",using: decoder)
+                        // let filteredResponse = try response.filterSuccessfulStatusCodes()
 
-                        let json = try filteredResponse.mapJSON()
-                        if let dictionary = json as? [String: Any] {
-                            // dictionary[""]
+                        let json = try JSON(data: response.data)
+                        if json.isSuccess {
+                            AuthHelper.setAcessToken(token: json["token"].stringValue)
+                            self.signedIn?(true, json)
+                        } else {
+                            self.signedIn?(false, nil)
+                            self.alert = Alert(title: json.message, message: "")
                         }
-//                        if let json = try? JSON(data: filteredResponse.data) {
-//                            self.signedIn?(true, json)
-//                        } else {
-//                            self.signedIn?(false, nil)
-//                        }
+
                     } catch let error {
-                        // Here we get either statusCode error or jsonMapping error.
                         self.signedIn?(false, nil)
                         self.alert = Alert(
                             title: (error.localizedDescription),
@@ -49,10 +45,10 @@ class LogInVM: BaseVM {
                     }
                 } else {
                     self.signedIn?(false, nil)
-                    // self.alert = Alert(
-                    // title: (error.localizedDescription),
-                    //    message: ""
-                    //   )
+                    self.alert = Alert(
+                        title: (result.error?.errorDescription),
+                        message: ""
+                    )
                 }
             })
         }

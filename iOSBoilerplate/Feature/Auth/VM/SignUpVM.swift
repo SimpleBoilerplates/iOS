@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 class SignUpVM: BaseVM {
-    var signedUp: ((Bool, Dictionary<String, Any>?) -> Void)?
+    var signedUp: ((Bool, JSON?) -> Void)?
 
     var alert: Alert? {
         didSet {
@@ -26,19 +26,14 @@ class SignUpVM: BaseVM {
                 self.showLoadingHUD?(false)
                 if case let .success(response) = result {
                     do {
-                        let filteredResponse = try response.filterSuccessfulStatusCodes()
+                        // let filteredResponse = try response.filterSuccessfulStatusCodes()
 
-                        if let json = try? filteredResponse.mapJSON(), let dictionary = json as? [String: Any] {
-                            if dictionary.isSuccess {
-                                if let data = dictionary.data, let user =
-                                    try? JSONDecoder().decode(User.self, from: data) {}
-                            } else {
-                                self.signedUp?(false, nil)
-                                self.alert = Alert(
-                                    title: dictionary.message,
-                                    message: ""
-                                )
-                            }
+                        let json = try JSON(data: response.data)
+                        if json.isSuccess {
+                            self.signedUp?(true, json)
+                        } else {
+                            self.signedUp?(false, nil)
+                            self.alert = Alert(title: json.message, message: "")
                         }
 
                     } catch let error {
@@ -50,6 +45,10 @@ class SignUpVM: BaseVM {
                     }
                 } else {
                     self.signedUp?(false, nil)
+                    self.alert = Alert(
+                        title: (result.error?.errorDescription),
+                        message: ""
+                    )
                 }
             })
         }

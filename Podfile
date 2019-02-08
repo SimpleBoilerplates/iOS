@@ -13,7 +13,6 @@ target 'iOSBoilerplate' do
   pod 'SwiftyJSON'
   pod 'ReachabilitySwift'
   pod 'SwiftMessages'
-  pod 'PlivoVoiceKit'
   pod 'SwiftValidator' , :git => 'https://github.com/Sadmansamee/SwiftValidator.git', :branch => 'master'
 
   target 'iOSBoilerplateTests' do

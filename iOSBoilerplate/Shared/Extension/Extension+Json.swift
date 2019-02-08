@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SwiftyJSON
+
 func JSONResponseDataFormatter(_ data: Data) -> Data {
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
@@ -14,5 +16,27 @@ func JSONResponseDataFormatter(_ data: Data) -> Data {
         return prettyData
     } catch {
         return data // fallback to original data if it can't be serialized.
+    }
+}
+
+extension JSON {
+    var isSuccess: Bool {
+        return self["success"].boolValue
+    }
+
+    var isRefreshedTokenExpired: Bool {
+        return self["code"].intValue == 4000
+    }
+
+    var message: String {
+        return self["message"].stringValue
+    }
+
+    var data: Array<Dictionary<String, JSON>> {
+        return [self["data"].dictionaryValue]
+    }
+
+    var errors: Array<Any> {
+        return self["errors"].arrayValue
     }
 }

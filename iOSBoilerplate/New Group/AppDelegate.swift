@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setRootVc() {
-        if AuthHelper.setUser() {
-            let vc = UIStoryboard.storyboard(storyboard: .Main).instantiateViewController(MainVC.self)
+        if AuthHelper.Auth().isLoggedIn {
+            let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
             window?.rootViewController = vc
         } else {
             let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)

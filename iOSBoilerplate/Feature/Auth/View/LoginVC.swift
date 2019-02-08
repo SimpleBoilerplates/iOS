@@ -63,16 +63,11 @@ class LoginVC: BaseTableViewController {
             }
         }
 
-        viewModel.signedIn = { [weak self] _, _ in
+        viewModel.signedIn = { [weak self] success, _ in
             DispatchQueue.main.async {
-                // KeychainWrapper.standard.set(self?.txtFieldEmail.text!, forKey: K.KeyChain.email)
-                // KeychainWrapper.standard.set(self?.txtFieldPassword.text!, forKey: K.KeyChain.password)
-
-//                if(isNew){
-//                    self?.goToProfileTypeVC()
-//                }else{
-//                    self?.goToRoot()
-//                }
+                if success {
+                    self?.goToRoot()
+                }
             }
         }
     }
