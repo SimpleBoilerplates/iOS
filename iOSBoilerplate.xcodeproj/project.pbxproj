@@ -24,10 +24,6 @@
 		1A45978B2209E19F00515891 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597812209E19F00515891 /* HomeVC.swift */; };
 		1A4597A22209E1AE00515891 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45978E2209E1AE00515891 /* Extension+Collection.swift */; };
 		1A4597A32209E1AE00515891 /* Extension+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45978F2209E1AE00515891 /* Extension+Json.swift */; };
-		1A4597A42209E1AE00515891 /* Extension+StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597902209E1AE00515891 /* Extension+StackView.swift */; };
-		1A4597A52209E1AE00515891 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597912209E1AE00515891 /* Extension+String.swift */; };
-		1A4597A62209E1AE00515891 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597922209E1AE00515891 /* Extension+UIColor.swift */; };
-		1A4597A72209E1AE00515891 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597932209E1AE00515891 /* Extension+View.swift */; };
 		1A4597A82209E1AE00515891 /* AppHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597952209E1AE00515891 /* AppHUD.swift */; };
 		1A4597A92209E1AE00515891 /* AuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597962209E1AE00515891 /* AuthHelper.swift */; };
 		1A4597AA2209E1AE00515891 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597972209E1AE00515891 /* Bindable.swift */; };
@@ -92,10 +88,6 @@
 		1A4597812209E19F00515891 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		1A45978E2209E1AE00515891 /* Extension+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
 		1A45978F2209E1AE00515891 /* Extension+Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Json.swift"; sourceTree = "<group>"; };
-		1A4597902209E1AE00515891 /* Extension+StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+StackView.swift"; sourceTree = "<group>"; };
-		1A4597912209E1AE00515891 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
-		1A4597922209E1AE00515891 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
-		1A4597932209E1AE00515891 /* Extension+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		1A4597952209E1AE00515891 /* AppHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHUD.swift; sourceTree = "<group>"; };
 		1A4597962209E1AE00515891 /* AuthHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthHelper.swift; sourceTree = "<group>"; };
 		1A4597972209E1AE00515891 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -267,10 +259,6 @@
 			children = (
 				1A45978E2209E1AE00515891 /* Extension+Collection.swift */,
 				1A45978F2209E1AE00515891 /* Extension+Json.swift */,
-				1A4597902209E1AE00515891 /* Extension+StackView.swift */,
-				1A4597912209E1AE00515891 /* Extension+String.swift */,
-				1A4597922209E1AE00515891 /* Extension+UIColor.swift */,
-				1A4597932209E1AE00515891 /* Extension+View.swift */,
 				1A4597992209E1AE00515891 /* Extension+Storyboard.swift */,
 				1A7971DD220D54F600866332 /* Extension+ViewController.swift */,
 			);
@@ -590,7 +578,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${PODS_ROOT}/PlivoVoiceKit/PlivoVoiceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
@@ -605,7 +592,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PlivoVoiceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
@@ -668,7 +654,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A4597A52209E1AE00515891 /* Extension+String.swift in Sources */,
 				1A7971E0220DAE9F00866332 /* BooksAPI.swift in Sources */,
 				1A4597B12209E1AE00515891 /* LLSpinner.swift in Sources */,
 				1A4597892209E19F00515891 /* SignUpVM.swift in Sources */,
@@ -689,13 +674,10 @@
 				1A4597862209E19F00515891 /* LoginVC.swift in Sources */,
 				1A4597832209E19F00515891 /* User.swift in Sources */,
 				1A7971DE220D54F600866332 /* Extension+ViewController.swift in Sources */,
-				1A4597A72209E1AE00515891 /* Extension+View.swift in Sources */,
 				1A4597AC2209E1AE00515891 /* Extension+Storyboard.swift in Sources */,
 				1A4597A82209E1AE00515891 /* AppHUD.swift in Sources */,
 				1A7971E6220DC50000866332 /* Book.swift in Sources */,
-				1A4597A42209E1AE00515891 /* Extension+StackView.swift in Sources */,
 				1A4597B02209E1AE00515891 /* K.swift in Sources */,
-				1A4597A62209E1AE00515891 /* Extension+UIColor.swift in Sources */,
 				1A4597692209E17600515891 /* BaseTableViewController.swift in Sources */,
 				1A45976A2209E17600515891 /* BaseVM.swift in Sources */,
 				1A4597852209E19F00515891 /* IntroVC.swift in Sources */,
