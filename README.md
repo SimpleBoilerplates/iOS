@@ -32,7 +32,6 @@ This is a very simple Boilerplate application, this has following features.
 * [Uncle Bob's clean architecture approach - what is recommended package structure?](https://stackoverflow.com/questions/46884449/uncle-bobs-clean-architecture-approach-what-is-recommended-package-structure)
 
 ### Tools
-These are used to enforce code lint and formation
 * [Swiftlint](https://github.com/realm/SwiftLint) A tool to enforce Swift style and conventions. 
 * [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) A code library and command-line formatting tool for reformatting Swift code.
 * [Xiblint](https://github.com/lyft/xiblint) A tool for linting storyboard and xib files
