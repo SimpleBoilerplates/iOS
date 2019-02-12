@@ -20,8 +20,8 @@ func JSONResponseDataFormatter(_ data: Data) -> Data {
 }
 
 extension JSON {
-    var isSuccess: Bool {
-        return self["success"].boolValue
+    var isError: Bool {
+        return self["error"].boolValue
     }
 
     var isRefreshedTokenExpired: Bool {

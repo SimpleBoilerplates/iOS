@@ -29,7 +29,7 @@ class SignUpVM: BaseVM {
                         // let filteredResponse = try response.filterSuccessfulStatusCodes()
 
                         let json = try JSON(data: response.data)
-                        if json.isSuccess {
+                        if !json.isError {
                             self.signedUp?(true, json)
                         } else {
                             self.signedUp?(false, nil)

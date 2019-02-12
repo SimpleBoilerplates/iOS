@@ -30,7 +30,7 @@ class HomeVM: BaseVM {
 
                     let json = try JSON(filteredResponse.data)
 
-                    if json.isSuccess {
+                    if !json.isError {
                         for item in json["data"] {
                             let book = Book(fromJson: item.1)
                             self.bookCells.append(book)

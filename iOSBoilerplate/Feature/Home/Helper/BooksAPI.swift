@@ -24,7 +24,7 @@ extension Books: TargetType, AccessTokenAuthorizable {
     public var path: String {
         switch self {
         case .books:
-            return "/books"
+            return "books"
         }
     }
     public var method: Moya.Method {

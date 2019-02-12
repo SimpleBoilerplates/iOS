@@ -28,7 +28,8 @@ class LogInVM: BaseVM {
                         // let filteredResponse = try response.filterSuccessfulStatusCodes()
 
                         let json = try JSON(data: response.data)
-                        if json.isSuccess {
+                        dump(json)
+                        if !json.isError {
                             AuthHelper.setAcessToken(token: json["token"].stringValue)
                             self.signedIn?(true, json)
                         } else {

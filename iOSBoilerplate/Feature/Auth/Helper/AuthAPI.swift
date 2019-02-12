@@ -21,9 +21,9 @@ extension Auth: TargetType, AccessTokenAuthorizable {
     public var path: String {
         switch self {
         case .login:
-            return "/login"
+            return "login"
         case .signUp:
-            return "/signup"
+            return "signup"
         }
     }
     public var method: Moya.Method {
@@ -43,9 +43,9 @@ extension Auth: TargetType, AccessTokenAuthorizable {
     public var task: Task {
         switch self {
         case let .login(email, password):
-            return .requestParameters(parameters: ["mail": email, "password": password], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
         case let .signUp(email, password, name):
-            return .requestParameters(parameters: ["name": name, "mail": email, "password": password], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["name": name, "email": email, "password": password], encoding: JSONEncoding.default)
         }
     }
 
