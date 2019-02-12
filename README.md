@@ -31,12 +31,17 @@ This is a very simple Boilerplate application, this has following features.
 * [Is package by feature approach good?](https://stackoverflow.com/questions/11733267/is-package-by-feature-approach-good)
 * [Uncle Bob's clean architecture approach - what is recommended package structure?](https://stackoverflow.com/questions/46884449/uncle-bobs-clean-architecture-approach-what-is-recommended-package-structure)
 
-### Code formation and stuffs
+### Tools
 These are used to enforce code lint and formation
-* [Swiftlint](https://github.com/realm/SwiftLint)
-* [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
-* [Xiblint](https://github.com/lyft/xiblint)
-* [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+* [Swiftlint](https://github.com/realm/SwiftLint) A tool to enforce Swift style and conventions. 
+* [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) A code library and command-line formatting tool for reformatting Swift code.
+* [Xiblint](https://github.com/lyft/xiblint) A tool for linting storyboard and xib files
+* [XcodeGen](https://github.com/yonaskolb/XcodeGen) A Swift command line tool for generating your Xcode project
+* [JSONExport](https://github.com/Ahmed-Ali/JSONExport) JSONExport is an application for MacOS to generate class from JSON.
+* [Synx](https://github.com/venmo/synx) A command-line tool that reorganizes your Xcode project folder to match your Xcode groups
+* [Postman](https://www.getpostman.com) Faster, easier API development
+* [danger](https://github.com/danger/danger) Formalize your Pull Request etiquette.
+* [Fastlane](https://github.com/fastlane/fastlane) Automate building and releasing your iOS and Android app
 
 ### Installation
 
