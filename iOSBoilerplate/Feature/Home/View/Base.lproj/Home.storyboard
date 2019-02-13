@@ -32,7 +32,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tba-R0-6Uk"/>
+                    <navigationItem key="navigationItem" id="tba-R0-6Uk">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="85D-sb-mpK">
+                            <connections>
+                                <action selector="actionLogout:" destination="BYZ-38-t0r" id="fAB-Cb-yUP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="feL-ZB-wQX" id="3zq-2d-Gfk"/>
                     </connections>

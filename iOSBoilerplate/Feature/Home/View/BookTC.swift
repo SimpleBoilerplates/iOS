@@ -9,7 +9,7 @@
 import Kingfisher
 import UIKit
 
-class BookTC: UITableViewCell, CellInterface {
+class BookTC: UITableViewCell {
     @IBOutlet var lblSubTitle: UILabel!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var imgView: UIImageView!

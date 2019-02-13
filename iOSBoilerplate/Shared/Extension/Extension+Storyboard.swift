@@ -62,44 +62,25 @@ extension UIViewController: StoryboardIdentifiable {}
 // extension UITableViewHeaderFooterView:  XIBIdentifiable  {
 //
 // }
-// extension UITableViewCell:  XIBIdentifiable  {
-//
-// }
-//
-// extension UICollectionViewCell:  XIBIdentifiable  {
-//
-// }
+ extension UITableViewCell:  XIBIdentifiable  {
 
-// protocol XIBIdentifiable {
-//
-//    static var id: String { get }
-//    static var cellNib: UINib { get }
-//
-// }
-//
-// extension XIBIdentifiable {
-//
-//    static var id: String {
-//        return String(describing: Self.self)
-//    }
-//
-//    static var cellNib: UINib {
-//        return UINib(nibName: id, bundle: nil)
-//    }
-//
-// }
+ }
 
-protocol CellInterface {
+ extension UICollectionViewCell:  XIBIdentifiable  {
+
+ }
+
+protocol XIBIdentifiable {
     static var id: String { get }
-    static var cellNib: UINib { get }
+    static var nib: UINib { get }
 }
 
-extension CellInterface {
+extension XIBIdentifiable {
     static var id: String {
         return String(describing: Self.self)
     }
 
-    static var cellNib: UINib {
+    static var nib: UINib {
         return UINib(nibName: id, bundle: nil)
     }
 }

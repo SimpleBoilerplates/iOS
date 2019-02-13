@@ -45,12 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setRootVc() {
         if AuthHelper.Auth().isLoggedIn {
             let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
-            window?.rootViewController = vc
+            let navigationController = UINavigationController(rootViewController: vc)
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+            //window?.rootViewController = vc
         } else {
             let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
-            // let navigationController = UINavigationController(rootViewController: vc)
-            // window.rootViewController = navigationController
-            // self.window!.makeKeyAndVisible()
+//            let navigationController = UINavigationController(rootViewController: vc)
+//            window?.rootViewController = navigationController
+//            window?.makeKeyAndVisible()
             window?.rootViewController = vc
         }
     }

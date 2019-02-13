@@ -20,23 +20,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WdD-M4-yEx">
-                        <rect key="frame" x="0.0" y="0.0" width="80" height="98.5"/>
+                        <rect key="frame" x="8" y="8" width="80" height="82.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="WAE-Hw-KBj"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Of-Sx-Z05">
-                        <rect key="frame" x="95" y="26.5" width="294" height="46"/>
+                        <rect key="frame" x="103" y="27" width="286" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1A3-9O-B5P">
-                                <rect key="frame" x="0.0" y="0.0" width="294" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="286" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMc-IQ-jky">
-                                <rect key="frame" x="0.0" y="25.5" width="294" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="25.5" width="286" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -44,12 +44,12 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WdD-M4-yEx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3Ju-RV-qUd"/>
+                    <constraint firstItem="WdD-M4-yEx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="3Ju-RV-qUd"/>
                     <constraint firstItem="0Of-Sx-Z05" firstAttribute="leading" secondItem="WdD-M4-yEx" secondAttribute="trailing" constant="15" id="6BO-SW-jNV"/>
                     <constraint firstAttribute="trailing" secondItem="0Of-Sx-Z05" secondAttribute="trailing" constant="8" id="BCU-fM-H6V"/>
-                    <constraint firstAttribute="bottom" secondItem="WdD-M4-yEx" secondAttribute="bottom" id="MAJ-3I-2FC"/>
+                    <constraint firstAttribute="bottom" secondItem="WdD-M4-yEx" secondAttribute="bottom" constant="8" id="MAJ-3I-2FC"/>
                     <constraint firstItem="0Of-Sx-Z05" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yrn-Nv-7Yb"/>
-                    <constraint firstItem="WdD-M4-yEx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="oZT-9t-sdZ"/>
+                    <constraint firstItem="WdD-M4-yEx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="oZT-9t-sdZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
