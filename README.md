@@ -4,6 +4,8 @@ This is a very simple Boilerplate application, this has following features.
 
   - User can Sign In and Up
   - After signing in he can see a list of items
+  
+  * I didn't add many functionality and didn't polish UI intentionally, tried to keep it barebone as much as possible 
  
 # With
 
