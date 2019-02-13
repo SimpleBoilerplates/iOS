@@ -20,16 +20,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44t-Yb-bWl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="uPk-Y7-GvD">
-                                        <rect key="frame" x="116" y="245" width="143" height="157"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.13572356104850769" green="0.18113973736763" blue="0.28938454389572144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="uPk-Y7-GvD" firstAttribute="centerY" secondItem="44t-Yb-bWl" secondAttribute="centerY" id="Kgh-wI-5ai"/>
-                                    <constraint firstItem="uPk-Y7-GvD" firstAttribute="centerX" secondItem="44t-Yb-bWl" secondAttribute="centerX" id="zON-1k-84k"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,7 +37,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo" width="143" height="157"/>
-    </resources>
 </document>

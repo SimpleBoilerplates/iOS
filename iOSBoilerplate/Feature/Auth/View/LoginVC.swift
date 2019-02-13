@@ -37,13 +37,7 @@ class LoginVC: BaseTableViewController {
     }
 
     private func setUI() {
-        view.backgroundColor = KColor.primary
-        tableView.backgroundColor = KColor.primary
 
-//        if let email = KeychainWrapper.standard.string(forKey: K.KeyChain.email), let password = KeychainWrapper.standard.string(forKey: K.KeyChain.password) {
-//            txtFieldEmail.text = email
-//            txtFieldPassword.text = password
-//        }
     }
 
     func initVM() {

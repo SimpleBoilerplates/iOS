@@ -26,8 +26,8 @@ class SignUpVC: BaseTableViewController {
     }
 
     private func setUI() {
-        view.backgroundColor = KColor.primary
-        tableView.backgroundColor = KColor.primary
+//        view.backgroundColor = KColor.primary
+//        tableView.backgroundColor = KColor.primary
     }
 
     @IBAction func actionSignUp(_: Any) {
