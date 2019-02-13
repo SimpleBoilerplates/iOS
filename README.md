@@ -41,6 +41,7 @@ This is a very simple Boilerplate application, this has following features.
 * [JSONExport](https://github.com/Ahmed-Ali/JSONExport) JSONExport is an application for MacOS to generate class from JSON.
 * [Synx](https://github.com/venmo/synx) A command-line tool that reorganizes your Xcode project folder to match your Xcode groups
 * [Postman](https://www.getpostman.com) Faster, easier API development
+* [Insomnia](https://insomnia.rest/) Finally, a REST client you'll love, also works with GraphQL
 * [danger](https://github.com/danger/danger) Formalize your Pull Request etiquette.
 * [Fastlane](https://github.com/fastlane/fastlane) Automate building and releasing your iOS and Android app
 
