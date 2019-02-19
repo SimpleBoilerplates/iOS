@@ -34,6 +34,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tba-R0-6Uk">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="85D-sb-mpK">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="actionLogout:" destination="BYZ-38-t0r" id="fAB-Cb-yUP"/>
                             </connections>
