@@ -60,3 +60,25 @@ Install the dependencies .
 $ cd BooksDemoIOS
 $ pod install
 ```
+
+
+### TODO
+- Updating it on daily basis as much as possible, work in progess[WIP].
+
+### Found this project useful :heart:
+* Support by clicking the :star: button on the upper right of this page. :v:
+
+### Contact - Let's become friend
+- [Twitter](https://twitter.com/SameeSadman)
+- [Github](https://github.com/Sadmansamee)
+- [Medium](https://medium.com/@sadmansamee)
+- [Facebook](https://www.facebook.com/sameesadman)
+
+## License
+[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+To the extent possible under law, [Sadman Samee](https://github.com/Sadmansamee) has waived all copyright and related or neighboring rights to this work.
+
+## Contributing
+
+Your contributions are always welcome! Just follow the following format: `[reference name](link) - Description.` If you like it , give a star to this project
