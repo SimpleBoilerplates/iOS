@@ -7,7 +7,7 @@ This is a very simple Boilerplate application, this has following features.
   
   * I didn't add many functionality and didn't polish UI intentionally, tried to keep it barebone as much as possible 
   
-  # Other platforms
+  ### Same implementation Other platforms
    - [Android](https://github.com/simpleboilerplates/BooksDemoAndroid) 
    - [NodeJS backend](https://github.com/simpleboilerplates/BooksDemoNode) 
 
