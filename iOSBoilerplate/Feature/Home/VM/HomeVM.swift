@@ -22,7 +22,7 @@ class HomeVM: BaseVM {
     func getBooks() {
         showLoadingHUD?(true)
 
-        booksProvider.request(.books(), completion: { result in
+        booksProvider.request(.books, completion: { result in
             self.showLoadingHUD?(false)
             if case let .success(response) = result {
                 do {
