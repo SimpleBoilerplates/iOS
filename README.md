@@ -70,10 +70,12 @@ $ pod install
 * Support by clicking the :star: button on the upper right of this page. :v:
 
 ### Contact - Let's become friend
-- [Twitter](https://twitter.com/SameeSadman)
+- [LinkedIn](https://www.linkedin.com/in/sadmansamee/)
 - [Github](https://github.com/Sadmansamee)
+- [Dev.To](https://dev.to/sadmansamee)
 - [Medium](https://medium.com/@sadmansamee)
 - [Facebook](https://www.facebook.com/sameesadman)
+- [Twitter](https://twitter.com/SameeSadman)
 
 ## License
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
