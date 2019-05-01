@@ -43,6 +43,7 @@ This is a very simple Boilerplate application, this has following features.
 * [Swiftlint](https://github.com/realm/SwiftLint) A tool to enforce Swift style and conventions. 
 * [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) A code library and command-line formatting tool for reformatting Swift code.
 * [Xiblint](https://github.com/lyft/xiblint) A tool for linting storyboard and xib files
+* [Sonar Qube - Continuous Code Quality](https://www.sonarqube.org/)
 * [Periphery](https://github.com/peripheryapp/periphery) Eliminate Unused Swift Code.
 * [XcodeGen](https://github.com/yonaskolb/XcodeGen) A Swift command line tool for generating your Xcode project
 * [JSONExport](https://github.com/Ahmed-Ali/JSONExport) JSONExport is an application for MacOS to generate class from JSON.
