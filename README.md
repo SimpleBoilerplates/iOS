@@ -9,6 +9,7 @@ This is a very simple Boilerplate application, this has following features.
   
   ### Same implementation in other platforms
    - [Android](https://github.com/simpleboilerplates/BooksDemoAndroid) 
+   - [Flutter](https://github.com/SimpleBoilerplates/Flutter) 
    - [React Native](https://github.com/SimpleBoilerplates/React-Native) 
    - [NodeJS backend](https://github.com/simpleboilerplates/BooksDemoNode) 
 
