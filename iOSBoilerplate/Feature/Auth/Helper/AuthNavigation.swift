@@ -6,15 +6,16 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import UIKit
-extension UIViewController {
-    func goToRoot() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.setRootVc()
-    }
-
-    func goToLoginVC() {
-        let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
-        presentVC(vc)
-    }
-}
+//import UIKit
+//extension UIViewController {
+//    
+//    func goToLoginVC() {
+//        let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
+//        presentVC(vc)
+//    }
+//    
+//    func goToSignUpVC() {
+//        let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(SignUpVC.self)
+//        presentVC(vc)
+//    }
+//}

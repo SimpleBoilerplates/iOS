@@ -1,0 +1,85 @@
+PODS:
+  - Alamofire (4.8.2)
+  - IQKeyboardManager (6.4.0)
+  - Kingfisher (5.7.0)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - ReachabilitySwift (4.3.1)
+  - Result (4.1.0)
+  - RxBlocking (5.0.0):
+    - RxSwift (~> 5)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - RxTest (5.0.0):
+    - RxSwift (~> 5)
+  - SwiftMessages (7.0.0):
+    - SwiftMessages/App (= 7.0.0)
+  - SwiftMessages/App (7.0.0)
+  - SwiftValidator (5.0.0)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - Kingfisher (~> 5.0)
+  - Moya (~> 12.0)
+  - ReachabilitySwift
+  - RxBlocking (~> 5)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - RxTest (~> 5)
+  - SwiftMessages
+  - SwiftValidator (from `https://github.com/Sadmansamee/SwiftValidator.git`, branch `master`)
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IQKeyboardManager
+    - Kingfisher
+    - Moya
+    - ReachabilitySwift
+    - Result
+    - RxBlocking
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - RxTest
+    - SwiftMessages
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :branch: master
+    :git: https://github.com/Sadmansamee/SwiftValidator.git
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :commit: 2bd1a7c3908dbc96389cf86d1331b70ef503e6d4
+    :git: https://github.com/Sadmansamee/SwiftValidator.git
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxBlocking: c67185d26498ea3cbe3e121917c3c16739e43123
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
+  SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
+  SwiftValidator: 2f66271b303093d9577a798759648d639078f961
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: cfe136b6336ec23769b8ca0462c965a31e08bda0
+
+COCOAPODS: 1.6.1

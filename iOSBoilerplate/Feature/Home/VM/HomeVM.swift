@@ -8,22 +8,57 @@
 
 import Foundation
 import SwiftyJSON
+import RxSwift
+import RxRelay
+import Moya
 
-class HomeVM: BaseVM {
-    var reloadTableView: (() -> Void)?
-    var bookCells: [BookTCVM] = [BookTCVM]()
+enum BookTableViewCellType {
+    case normal(cellViewModel: BookVM)
+}
 
-    var alert: Alert? {
-        didSet {
-            showError?(alert!)
+protocol HomeVMType {
+    var onShowingLoading: Observable<Bool> { get }
+    var onShowAlert: Observable<AlertMessage> { get }
+    var bookCells: Observable<[BookTableViewCellType]> { get }
+}
+
+ class HomeVM  {
+    
+    let booksProvider :MoyaProvider <Books>
+    
+    init() {
+        
+    let tokenClosure: () -> String = {
+            AuthHelper.Auth().token
         }
+      booksProvider  = MoyaProvider<Books>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
+
+    }
+    
+    var onShowingLoading: Observable<Bool> {
+        return self.isLoadingVariable.asObservable()
+            .distinctUntilChanged()
+    }
+    var onShowAlert: Observable<AlertMessage> {
+        return self.alertMessageVariable.asObservable()
     }
 
+    var bookCells : Observable<[BookTableViewCellType]> {
+        return cells.asObservable()
+    }
+    
+    private let isLoadingVariable = BehaviorRelay(value: false)
+    private let alertMessageVariable = PublishSubject<AlertMessage>()
+    private let cells = BehaviorRelay<[BookTableViewCellType]>(value: [])
+
     func getBooks() {
-        showLoadingHUD?(true)
+       // showLoadingHUD?(true)
+        isLoadingVariable.accept(true)
 
         booksProvider.request(.books, completion: { result in
-            self.showLoadingHUD?(false)
+           // self.showLoadingHUD?(false)
+            self.isLoadingVariable.accept(false)
+
             if case let .success(response) = result {
                 do {
                     let filteredResponse = try response.filterSuccessfulStatusCodes()
@@ -31,23 +66,34 @@ class HomeVM: BaseVM {
                     let json = try JSON(filteredResponse.data)
 
                     if !json.isError {
-                        for item in json["data"] {
-                            let book = Book(fromJson: item.1)
-                            self.bookCells.append(book)
-                        }
-                        self.showLoadingHUD?(false)
-                        self.reloadTableView?()
+                        
+                        let items = json["data"].arrayValue.compactMap {BookTableViewCellType.normal(cellViewModel:  Book(fromJson: $0))}
+
+                        // var items = [BookTCVM]()
+//                        for item in json["data"] {
+//                            let book = Book(fromJson: item.1)
+//                            items.append(book)
+//                            //self.bookCells.append(book)
+//                        }
+                        self.cells.accept(items)
+                        //self.books.onNext(items)
+                        //self.showLoadingHUD?(false)
+                        //self.reloadTableView?()
                     }
 
                 } catch let error {
-                    self.alert = Alert(
-                        title: (error.localizedDescription),
-                        message: "")
+                    self.alertMessageVariable.onNext(AlertMessage(title: (error.localizedDescription), message: "" ))
+
+//                    self.alert = AlertMessage(
+//                        title: (error.localizedDescription),
+//                        message: "")
                 }
             } else {
-                self.alert = Alert(
-                    title: (result.error?.errorDescription),
-                    message: "")
+                self.alertMessageVariable.onNext(AlertMessage(title: result.error?.errorDescription, message: "" ))
+
+//                self.alert = AlertMessage(
+//                    title: (result.error?.errorDescription),
+//                    message: "")
             }
         })
     }

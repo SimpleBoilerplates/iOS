@@ -9,11 +9,6 @@
 import Foundation
 import Moya
 
-let tokenClosure: () -> String = {
-    AuthHelper.Auth().token
-}
-
-let booksProvider = MoyaProvider<Books>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
 
 public enum Books {
     case books

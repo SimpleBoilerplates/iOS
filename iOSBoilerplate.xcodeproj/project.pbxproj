@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A4597682209E17600515891 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597642209E17500515891 /* BaseViewController.swift */; };
 		1A4597692209E17600515891 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597652209E17500515891 /* BaseTableViewController.swift */; };
-		1A45976A2209E17600515891 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597662209E17500515891 /* BaseVM.swift */; };
 		1A45976B2209E17600515891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597672209E17600515891 /* AppDelegate.swift */; };
 		1A45976F2209E19700515891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A45976D2209E19600515891 /* LaunchScreen.storyboard */; };
 		1A4597822209E19F00515891 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597732209E19F00515891 /* AuthAPI.swift */; };
@@ -43,10 +42,18 @@
 		1A7971DE220D54F600866332 /* Extension+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971DD220D54F600866332 /* Extension+ViewController.swift */; };
 		1A7971E0220DAE9F00866332 /* BooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971DF220DAE9F00866332 /* BooksAPI.swift */; };
 		1A7971E2220DB0DE00866332 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971E1220DB0DE00866332 /* HomeVM.swift */; };
-		1A7971E4220DB31D00866332 /* BookTCVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971E3220DB31D00866332 /* BookTCVM.swift */; };
+		1A7971E4220DB31D00866332 /* BookVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971E3220DB31D00866332 /* BookVM.swift */; };
 		1A7971E6220DC50000866332 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971E5220DC50000866332 /* Book.swift */; };
 		1A7971EC220DD44C00866332 /* BookTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971EA220DD44C00866332 /* BookTC.swift */; };
 		1A7971ED220DD44C00866332 /* BookTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7971EB220DD44C00866332 /* BookTC.xib */; };
+		1AF1F3742303D6E700D1F7A5 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */; };
+		1AF1F3762305020900D1F7A5 /* SwiftSugarClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */; };
+		1AF1F378230503A900D1F7A5 /* BookDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F377230503A900D1F7A5 /* BookDetailVC.swift */; };
+		1AF1F37A230503B800D1F7A5 /* BookDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F379230503B800D1F7A5 /* BookDetailVM.swift */; };
+		1AF1F37D2305055700D1F7A5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F37C2305055700D1F7A5 /* Coordinator.swift */; };
+		1AF1F381230510AB00D1F7A5 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F380230510AB00D1F7A5 /* AuthCoordinator.swift */; };
+		1AF1F3832305172C00D1F7A5 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3822305172C00D1F7A5 /* HomeCoordinator.swift */; };
+		1AF1F385230592CF00D1F7A5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F384230592CF00D1F7A5 /* AppCoordinator.swift */; };
 		3596366F5E42C76BAA6278BB /* Pods_iOSBoilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38703057A54110B510AA5DA9 /* Pods_iOSBoilerplate.framework */; };
 		4C97DE248B7AC9C442321ACF /* Pods_iOSBoilerplateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEAAFEE6315164BB9183B80 /* Pods_iOSBoilerplateTests.framework */; };
 		9B10B81E4CF9B44ED1BC9C7D /* Pods_iOSBoilerplateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0345BAE491FA6C1736A472F /* Pods_iOSBoilerplateUITests.framework */; };
@@ -73,7 +80,6 @@
 		0DDCC6FB22377EF9675C8B08 /* Pods-iOSBoilerplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBoilerplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate.debug.xcconfig"; sourceTree = "<group>"; };
 		1A4597642209E17500515891 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1A4597652209E17500515891 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
-		1A4597662209E17500515891 /* BaseVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		1A4597672209E17600515891 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A45976E2209E19600515891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A4597732209E19F00515891 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
@@ -113,10 +119,18 @@
 		1A7971DD220D54F600866332 /* Extension+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController.swift"; sourceTree = "<group>"; };
 		1A7971DF220DAE9F00866332 /* BooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksAPI.swift; sourceTree = "<group>"; };
 		1A7971E1220DB0DE00866332 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
-		1A7971E3220DB31D00866332 /* BookTCVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTCVM.swift; sourceTree = "<group>"; };
+		1A7971E3220DB31D00866332 /* BookVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookVM.swift; sourceTree = "<group>"; };
 		1A7971E5220DC50000866332 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		1A7971EA220DD44C00866332 /* BookTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTC.swift; sourceTree = "<group>"; };
 		1A7971EB220DD44C00866332 /* BookTC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookTC.xib; sourceTree = "<group>"; };
+		1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extensions.swift"; sourceTree = "<group>"; };
+		1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSugarClosure.swift; sourceTree = "<group>"; };
+		1AF1F377230503A900D1F7A5 /* BookDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVC.swift; sourceTree = "<group>"; };
+		1AF1F379230503B800D1F7A5 /* BookDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVM.swift; sourceTree = "<group>"; };
+		1AF1F37C2305055700D1F7A5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1AF1F380230510AB00D1F7A5 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		1AF1F3822305172C00D1F7A5 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		1AF1F384230592CF00D1F7A5 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		38703057A54110B510AA5DA9 /* Pods_iOSBoilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBoilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		737479CD54C3F7D8E07CC9F2 /* Pods-iOSBoilerplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBoilerplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate.release.xcconfig"; sourceTree = "<group>"; };
 		7BA0802346FE4EE9604BA036 /* Pods-iOSBoilerplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBoilerplateTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBoilerplateTests/Pods-iOSBoilerplateTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +175,7 @@
 				1A4597672209E17600515891 /* AppDelegate.swift */,
 				1A4597652209E17500515891 /* BaseTableViewController.swift */,
 				1A4597642209E17500515891 /* BaseViewController.swift */,
-				1A4597662209E17500515891 /* BaseVM.swift */,
+				1AF1F384230592CF00D1F7A5 /* AppCoordinator.swift */,
 			);
 			name = App;
 			path = "New Group";
@@ -200,6 +214,7 @@
 			children = (
 				1A4597732209E19F00515891 /* AuthAPI.swift */,
 				1A7971DB220D51C300866332 /* AuthNavigation.swift */,
+				1AF1F380230510AB00D1F7A5 /* AuthCoordinator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -246,6 +261,7 @@
 		1A45978C2209E1AE00515891 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1AF1F37B2305054C00D1F7A5 /* Coordinator */,
 				1A45978D2209E1AE00515891 /* Extension */,
 				1A4597942209E1AE00515891 /* Helper */,
 				1A45979A2209E1AE00515891 /* K */,
@@ -261,6 +277,7 @@
 				1A45978F2209E1AE00515891 /* Extension+Json.swift */,
 				1A4597992209E1AE00515891 /* Extension+Storyboard.swift */,
 				1A7971DD220D54F600866332 /* Extension+ViewController.swift */,
+				1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -272,6 +289,7 @@
 				1A4597962209E1AE00515891 /* AuthHelper.swift */,
 				1A4597972209E1AE00515891 /* Bindable.swift */,
 				1A4597982209E1AE00515891 /* ReachabilityHelper.swift */,
+				1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -354,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				1A7971DF220DAE9F00866332 /* BooksAPI.swift */,
+				1AF1F3822305172C00D1F7A5 /* HomeCoordinator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -373,6 +392,7 @@
 				1A45977F2209E19F00515891 /* Home.storyboard */,
 				1A7971EA220DD44C00866332 /* BookTC.swift */,
 				1A7971EB220DD44C00866332 /* BookTC.xib */,
+				1AF1F377230503A900D1F7A5 /* BookDetailVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,9 +401,18 @@
 			isa = PBXGroup;
 			children = (
 				1A7971E1220DB0DE00866332 /* HomeVM.swift */,
-				1A7971E3220DB31D00866332 /* BookTCVM.swift */,
+				1A7971E3220DB31D00866332 /* BookVM.swift */,
+				1AF1F379230503B800D1F7A5 /* BookDetailVM.swift */,
 			);
 			path = VM;
+			sourceTree = "<group>";
+		};
+		1AF1F37B2305054C00D1F7A5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				1AF1F37C2305055700D1F7A5 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		843DA4EB84ED81265CDB0D52 /* Pods */ = {
@@ -439,6 +468,7 @@
 				1A6F7B60220935AB003A38B4 /* Sources */,
 				1A6F7B61220935AB003A38B4 /* Frameworks */,
 				1A6F7B62220935AB003A38B4 /* Resources */,
+				0319E500D0CDB9B61761616A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -545,6 +575,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0319E500D0CDB9B61761616A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplateTests/Pods-iOSBoilerplateTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplateTests/Pods-iOSBoilerplateTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3777C30385B2981A674C17FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,13 +631,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -596,13 +655,16 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82748CBA3D59CDA4BEFD70DE /* [CP] Check Pods Manifest.lock */ = {
@@ -664,13 +726,19 @@
 				1A4597AB2209E1AE00515891 /* ReachabilityHelper.swift in Sources */,
 				1A4597A22209E1AE00515891 /* Extension+Collection.swift in Sources */,
 				1A45978B2209E19F00515891 /* HomeVC.swift in Sources */,
+				1AF1F3832305172C00D1F7A5 /* HomeCoordinator.swift in Sources */,
 				1A45976B2209E17600515891 /* AppDelegate.swift in Sources */,
-				1A7971E4220DB31D00866332 /* BookTCVM.swift in Sources */,
+				1A7971E4220DB31D00866332 /* BookVM.swift in Sources */,
+				1AF1F37A230503B800D1F7A5 /* BookDetailVM.swift in Sources */,
+				1AF1F385230592CF00D1F7A5 /* AppCoordinator.swift in Sources */,
 				1A4597872209E19F00515891 /* SignUpVC.swift in Sources */,
+				1AF1F378230503A900D1F7A5 /* BookDetailVC.swift in Sources */,
 				1A4597A32209E1AE00515891 /* Extension+Json.swift in Sources */,
 				1A7971EC220DD44C00866332 /* BookTC.swift in Sources */,
+				1AF1F37D2305055700D1F7A5 /* Coordinator.swift in Sources */,
 				1A7971E2220DB0DE00866332 /* HomeVM.swift in Sources */,
 				1A4597822209E19F00515891 /* AuthAPI.swift in Sources */,
+				1AF1F3742303D6E700D1F7A5 /* Rx+Extensions.swift in Sources */,
 				1A4597AA2209E1AE00515891 /* Bindable.swift in Sources */,
 				1A4597AE2209E1AE00515891 /* K+Enum.swift in Sources */,
 				1A4597862209E19F00515891 /* LoginVC.swift in Sources */,
@@ -681,8 +749,9 @@
 				1A7971E6220DC50000866332 /* Book.swift in Sources */,
 				1A4597B02209E1AE00515891 /* K.swift in Sources */,
 				1A4597692209E17600515891 /* BaseTableViewController.swift in Sources */,
-				1A45976A2209E17600515891 /* BaseVM.swift in Sources */,
+				1AF1F3762305020900D1F7A5 /* SwiftSugarClosure.swift in Sources */,
 				1A4597852209E19F00515891 /* IntroVC.swift in Sources */,
+				1AF1F381230510AB00D1F7A5 /* AuthCoordinator.swift in Sources */,
 				1A4597A92209E1AE00515891 /* AuthHelper.swift in Sources */,
 				1A4597AD2209E1AE00515891 /* K+Color.swift in Sources */,
 				1A7971DC220D51C300866332 /* AuthNavigation.swift in Sources */,

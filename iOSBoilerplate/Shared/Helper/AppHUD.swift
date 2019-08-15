@@ -5,7 +5,7 @@
 import SwiftMessages
 import UIKit
 
-struct Alert {
+struct AlertMessage {
     let title: String?
     let message: String?
 }

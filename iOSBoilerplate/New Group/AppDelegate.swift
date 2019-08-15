@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import RxSwift
 
 var user: User!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
+    var coordinator: Coordinator!
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        setRootVc()
+        setCoordinator()
+        
+        //CHECK RESOURCE COUNT IN EVERY SECOND
+//        _ = Observable<Int>
+//            .interval(1, scheduler: MainScheduler.instance)
+//            .subscribe(
+//                onNext: { _ in
+//                    //print("Resource count: \(RxSwift.Resources.total).")
+//            }
+//        )
+        
         return true
     }
 
@@ -42,19 +55,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func setRootVc() {
-        if AuthHelper.Auth().isLoggedIn {
-            let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
-            let navigationController = UINavigationController(rootViewController: vc)
-            window?.rootViewController = navigationController
-            window?.makeKeyAndVisible()
-            //window?.rootViewController = vc
-        } else {
-            let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
+    func setCoordinator() {
+        
+        window = UIWindow()
+        let navigationController = UINavigationController()
+        window?.rootViewController = navigationController
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator.start()
+        self.coordinator = coordinator
+        window?.makeKeyAndVisible()
+        
+//        if AuthHelper.Auth().isLoggedIn {
+//            let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
 //            let navigationController = UINavigationController(rootViewController: vc)
 //            window?.rootViewController = navigationController
 //            window?.makeKeyAndVisible()
-            window?.rootViewController = vc
-        }
+//            //window?.rootViewController = vc
+//        } else {
+//            let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
+////            let navigationController = UINavigationController(rootViewController: vc)
+////            window?.rootViewController = navigationController
+////            window?.makeKeyAndVisible()
+//            window?.rootViewController = vc
+//        }
     }
 }

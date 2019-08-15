@@ -8,47 +8,92 @@
 
 import Foundation
 import SwiftyJSON
+import RxRelay
+import RxSwift
+import Moya
 
-class SignUpVM: BaseVM {
-    var signedUp: ((Bool, JSON?) -> Void)?
+class SignUpVM {
+//    var signedUp: ((Bool, JSON?) -> Void)?
+//
+//    var alert: AlertMessage? {
+//        didSet {
+//            showError?(alert!)
+//        }
+//    }
+    let authProvider = MoyaProvider<Auth>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
-    var alert: Alert? {
-        didSet {
-            showError?(alert!)
-        }
+    private let isLoadingVariable = BehaviorRelay(value: false)
+    private let alertMessageVariable = PublishSubject<AlertMessage>()
+    
+    var onShowingLoading: Observable<Bool> {
+        return self.isLoadingVariable.asObservable()
+            .distinctUntilChanged()
     }
+    var onShowAlert: Observable<AlertMessage> {
+        return self.alertMessageVariable.asObservable()
+    }
+    
+    
+    private let successVariable = PublishSubject<JSON>()
+    
+    var onSuccess: Observable<JSON> {
+        return self.successVariable.asObservable()
+    }
+    
+    //var success = BehaviorRelay<JSON?>(value: nil)
+    //  var alertMessage = BehaviorRelay<AlertMessage?>(value: nil)
+    
+    var email = BehaviorRelay<String?>(value: nil)
+    var password = BehaviorRelay<String?>(value: nil)
+    var fullName = BehaviorRelay<String?>(value: nil)
 
-    func signUp(fullName: String?, email: String?, password: String?) {
-        if let fullName = fullName, let email = email, let password = password {
-            showLoadingHUD?(true)
+    var isValid : Observable<Bool>{
+        return Observable.combineLatest( self.email, self.password)
+        { (email, password) in
+            
+            guard let email = email, let password = password else{
+                return false
+            }
+            
+            return email.count > 0
+                && password.count > 0
+            }.share()
+    }
+    
+    
+    func signUp() {
+        if let fullName = fullName.value, let email = email.value, let password = password.value {
+            isLoadingVariable.accept(true)
 
             authProvider.request(.signUp(fullName, email, password), completion: { result in
-                self.showLoadingHUD?(false)
+                self.isLoadingVariable.accept(false)
                 if case let .success(response) = result {
                     do {
                         // let filteredResponse = try response.filterSuccessfulStatusCodes()
-
                         let json = try JSON(data: response.data)
                         if !json.isError {
-                            self.signedUp?(true, json)
+                            self.successVariable.onNext(json)
+                            //self.signedUp?(true, json)
                         } else {
-                            self.signedUp?(false, nil)
-                            self.alert = Alert(title: json.message, message: "")
+                            self.alertMessageVariable.onNext(AlertMessage(title: json.message, message: ""))
+                           // self.signedUp?(false, nil)
+                           // self.alert = AlertMessage(title: json.message, message: "")
                         }
-
                     } catch let error {
-                        self.signedUp?(false, nil)
-                        self.alert = Alert(
-                            title: (error.localizedDescription),
-                            message: ""
-                        )
+                        self.alertMessageVariable.onNext(AlertMessage(title: (error.localizedDescription), message: "" ))
+                        //self.signedUp?(false, nil)
+//                        self.alert = AlertMessage(
+//                            title: (error.localizedDescription),
+//                            message: ""
+//                        )
                     }
                 } else {
-                    self.signedUp?(false, nil)
-                    self.alert = Alert(
-                        title: (result.error?.errorDescription),
-                        message: ""
-                    )
+                    self.alertMessageVariable.onNext(AlertMessage(title: result.error?.errorDescription, message: "" ))
+                    //self.signedUp?(false, nil)
+//                    self.alert = AlertMessage(
+//                        title: (result.error?.errorDescription),
+//                        message: ""
+//                    )
                 }
             })
         }

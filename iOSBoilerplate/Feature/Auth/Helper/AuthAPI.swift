@@ -9,8 +9,6 @@
 import Foundation
 import Moya
 
-let authProvider = MoyaProvider<Auth>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
-
 public enum Auth {
     case login(String, String)
     case signUp(String, String, String)
