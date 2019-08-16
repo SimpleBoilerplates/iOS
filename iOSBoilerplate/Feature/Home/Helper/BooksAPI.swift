@@ -9,7 +9,6 @@
 import Foundation
 import Moya
 
-
 public enum Books {
     case books
 }
@@ -22,6 +21,7 @@ extension Books: TargetType, AccessTokenAuthorizable {
             return "books"
         }
     }
+
     public var method: Moya.Method {
         switch self {
         case .books:

@@ -173,8 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				1A4597672209E17600515891 /* AppDelegate.swift */,
-				1A4597652209E17500515891 /* BaseTableViewController.swift */,
-				1A4597642209E17500515891 /* BaseViewController.swift */,
 				1AF1F384230592CF00D1F7A5 /* AppCoordinator.swift */,
 			);
 			name = App;
@@ -261,7 +259,7 @@
 		1A45978C2209E1AE00515891 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				1AF1F37B2305054C00D1F7A5 /* Coordinator */,
+				1AF1F37B2305054C00D1F7A5 /* Base */,
 				1A45978D2209E1AE00515891 /* Extension */,
 				1A4597942209E1AE00515891 /* Helper */,
 				1A45979A2209E1AE00515891 /* K */,
@@ -407,12 +405,14 @@
 			path = VM;
 			sourceTree = "<group>";
 		};
-		1AF1F37B2305054C00D1F7A5 /* Coordinator */ = {
+		1AF1F37B2305054C00D1F7A5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1A4597652209E17500515891 /* BaseTableViewController.swift */,
+				1A4597642209E17500515891 /* BaseViewController.swift */,
 				1AF1F37C2305055700D1F7A5 /* Coordinator.swift */,
 			);
-			path = Coordinator;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		843DA4EB84ED81265CDB0D52 /* Pods */ = {

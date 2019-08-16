@@ -65,13 +65,10 @@ extension BaseViewController: NetworkStatusListener {
         switch status {
         case .none:
             print("ViewController: Network became unreachable")
-            break
         case .wifi:
             print("ViewController: Network reachable through WiFi")
-            break
         case .cellular:
             print("ViewController: Network reachable through Cellular Data")
-            break
         }
         // loginButton.isEnabled = !(status == .notReachable)
     }

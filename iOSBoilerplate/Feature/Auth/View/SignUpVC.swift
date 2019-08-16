@@ -6,10 +6,10 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import SwiftValidator
-import UIKit
 import RxCocoa
 import RxSwift
+import SwiftValidator
+import UIKit
 
 class SignUpVC: BaseTableViewController {
     @IBOutlet var txtFieldFullName: UITextField!
@@ -24,7 +24,8 @@ class SignUpVC: BaseTableViewController {
     lazy var viewModel: SignUpVM = {
         SignUpVM()
     }()
-    private  var disposeBag = DisposeBag()
+
+    private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class SignUpVC: BaseTableViewController {
     private func signUP() {
         viewModel.signUp()
     }
+
     private func setLoadingHud(visible: Bool) {
         if visible {
             AppHUD.showHUD()
@@ -55,28 +57,28 @@ class SignUpVC: BaseTableViewController {
             AppHUD.hideHUD()
         }
     }
+
     func bindVieModel() {
-        
         (txtFieldPassWord.rx.text <-> viewModel.password).disposed(by: disposeBag)
         (txtFieldEmailAddress.rx.text <-> viewModel.email).disposed(by: disposeBag)
         (txtFieldFullName.rx.text <-> viewModel.fullName).disposed(by: disposeBag)
 
-        viewModel.isValid.map{ $0 }
+        viewModel.isValid.map { $0 }
             .bind(to: btnLogin.rx.isEnabled)
             .disposed(by: disposeBag)
-        
+
         viewModel
             .onShowAlert
-            .map { [weak self] in AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")}
+            .map { [weak self] in AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "") }
             .subscribe()
             .disposed(by: disposeBag)
-        
+
         viewModel
             .onShowingLoading
             .map { [weak self] in self?.setLoadingHud(visible: $0) }
             .subscribe()
             .disposed(by: disposeBag)
-        
+
 //        viewModel.alertMessage.subscribe { (alertMessage) in
 //            AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
 //            }
@@ -94,10 +96,10 @@ class SignUpVC: BaseTableViewController {
 //                }
 //            }
 //            }.disposed(by: disposeBag)
-        
+
         viewModel
             .onSuccess
-            .map { _ in  self.authCoordinatorDelegate?.signIn()}
+            .map { _ in self.authCoordinatorDelegate?.signIn() }
             .subscribe()
             .disposed(by: disposeBag)
 //        viewModel.onSuccess.subscribe{ (success) in
@@ -106,8 +108,6 @@ class SignUpVC: BaseTableViewController {
 //            }
 //            self.goToLoginVC()
 //            }.disposed(by: disposeBag)
-        
-
     }
 }
 

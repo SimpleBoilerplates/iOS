@@ -6,25 +6,24 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import SwiftValidator
 import UIKit
-import RxSwift
-import RxCocoa
 
 class LoginVC: BaseTableViewController {
     @IBOutlet var btnLogin: UIButton!
     @IBOutlet var txtFieldPassword: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
-    
+
     weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     private let validator = Validator()
-    private  lazy var viewModel: LogInVM = {
+    private lazy var viewModel: LogInVM = {
         LogInVM()
     }()
-    
-  private  var disposeBag = DisposeBag()
 
+    private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +31,7 @@ class LoginVC: BaseTableViewController {
         setUI()
         bindViewModel()
     }
+
 //    override func viewDidDisappear(_ animated: Bool) {
 //        super.viewDidDisappear(animated)
 //        coordinator?.didFinishBuying()
@@ -44,14 +44,12 @@ class LoginVC: BaseTableViewController {
         authCoordinatorDelegate?.signUp()
     }
 
-   private func login() {
+    private func login() {
         viewModel.login()
     }
 
-    private func setUI() {
+    private func setUI() {}
 
-    }
-    
     private func setLoadingHud(visible: Bool) {
         if visible {
             AppHUD.showHUD()
@@ -60,17 +58,14 @@ class LoginVC: BaseTableViewController {
         }
     }
 
-
-  private  func bindViewModel() {
-        
+    private func bindViewModel() {
         (txtFieldPassword.rx.text <-> viewModel.password).disposed(by: disposeBag)
         (txtFieldEmail.rx.text <-> viewModel.email).disposed(by: disposeBag)
-        
-        viewModel.isValid.map{ $0 }
+
+        viewModel.isValid.map { $0 }
             .bind(to: btnLogin.rx.isEnabled)
             .disposed(by: disposeBag)
-        
-        
+
 //        viewModel.onShowAlert.subscribe { (alertMessage) in
 //                AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
 //            }
@@ -88,34 +83,32 @@ class LoginVC: BaseTableViewController {
 //                }
 //            }
 //            }.disposed(by: disposeBag)
-////
+        ////
 //
-    viewModel
-        .onShowAlert
-        .map { [weak self] in AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")}
-        .subscribe()
-        .disposed(by: disposeBag)
+        viewModel
+            .onShowAlert
+            .map { [weak self] in AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "") }
+            .subscribe()
+            .disposed(by: disposeBag)
 
-    viewModel
-        .onShowingLoading
-        .map { [weak self] in self?.setLoadingHud(visible: $0) }
-        .subscribe()
-        .disposed(by: disposeBag)
+        viewModel
+            .onShowingLoading
+            .map { [weak self] in self?.setLoadingHud(visible: $0) }
+            .subscribe()
+            .disposed(by: disposeBag)
 
-    
-    viewModel
-        .onSuccess
-        .map { _ in  self.authCoordinatorDelegate?.stop()}
-        .subscribe()
-        .disposed(by: disposeBag)
-    
+        viewModel
+            .onSuccess
+            .map { _ in self.authCoordinatorDelegate?.stop() }
+            .subscribe()
+            .disposed(by: disposeBag)
+
 //        viewModel.onSuccess.subscribe{ (success) in
 //            guard let success = success.element else {
 //                return
 //            }
 //            self.goToRoot()
 //        }.disposed(by: disposeBag)
-
     }
 }
 
@@ -123,7 +116,7 @@ class LoginVC: BaseTableViewController {
 
 extension LoginVC: ValidationDelegate {
     // Private method
-   private func setUpValidator() {
+    private func setUpValidator() {
         validator.registerField(txtFieldEmail, rules: [RequiredRule(), EmailRule(), MinLengthRule(length: 5)])
         validator.registerField(txtFieldPassword, rules: [RequiredRule(), MinLengthRule(length: 5)])
     }

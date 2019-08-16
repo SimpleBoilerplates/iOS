@@ -32,11 +32,11 @@ extension JSON {
         return self["message"].stringValue
     }
 
-    var data: Array<Dictionary<String, JSON>> {
+    var data: [[String: JSON]] {
         return [self["data"].dictionaryValue]
     }
 
-    var errors: Array<Any> {
+    var errors: [Any] {
         return self["errors"].arrayValue
     }
 }

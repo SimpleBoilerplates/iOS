@@ -9,11 +9,10 @@
 import UIKit
 
 class BookDetailVC: UIViewController {
-
     weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
-     var viewModel: BookDetailVM?
-    
+    var viewModel: BookDetailVM?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

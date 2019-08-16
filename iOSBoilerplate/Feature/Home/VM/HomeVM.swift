@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import SwiftyJSON
-import RxSwift
-import RxRelay
 import Moya
+import RxRelay
+import RxSwift
+import SwiftyJSON
 
 enum BookTableViewCellType {
     case normal(cellViewModel: BookVM)
@@ -22,41 +22,39 @@ protocol HomeVMType {
     var bookCells: Observable<[BookTableViewCellType]> { get }
 }
 
- class HomeVM  {
-    
-    let booksProvider :MoyaProvider <Books>
-    
+class HomeVM {
+    let booksProvider: MoyaProvider<Books>
+
     init() {
-        
-    let tokenClosure: () -> String = {
+        let tokenClosure: () -> String = {
             AuthHelper.Auth().token
         }
-      booksProvider  = MoyaProvider<Books>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
-
+        booksProvider = MoyaProvider<Books>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
     }
-    
+
     var onShowingLoading: Observable<Bool> {
-        return self.isLoadingVariable.asObservable()
+        return isLoadingVariable.asObservable()
             .distinctUntilChanged()
     }
+
     var onShowAlert: Observable<AlertMessage> {
-        return self.alertMessageVariable.asObservable()
+        return alertMessageVariable.asObservable()
     }
 
-    var bookCells : Observable<[BookTableViewCellType]> {
+    var bookCells: Observable<[BookTableViewCellType]> {
         return cells.asObservable()
     }
-    
+
     private let isLoadingVariable = BehaviorRelay(value: false)
     private let alertMessageVariable = PublishSubject<AlertMessage>()
     private let cells = BehaviorRelay<[BookTableViewCellType]>(value: [])
 
     func getBooks() {
-       // showLoadingHUD?(true)
+        // showLoadingHUD?(true)
         isLoadingVariable.accept(true)
 
         booksProvider.request(.books, completion: { result in
-           // self.showLoadingHUD?(false)
+            // self.showLoadingHUD?(false)
             self.isLoadingVariable.accept(false)
 
             if case let .success(response) = result {
@@ -66,8 +64,7 @@ protocol HomeVMType {
                     let json = try JSON(filteredResponse.data)
 
                     if !json.isError {
-                        
-                        let items = json["data"].arrayValue.compactMap {BookTableViewCellType.normal(cellViewModel:  Book(fromJson: $0))}
+                        let items = json["data"].arrayValue.compactMap { BookTableViewCellType.normal(cellViewModel: Book(fromJson: $0)) }
 
                         // var items = [BookTCVM]()
 //                        for item in json["data"] {
@@ -76,20 +73,20 @@ protocol HomeVMType {
 //                            //self.bookCells.append(book)
 //                        }
                         self.cells.accept(items)
-                        //self.books.onNext(items)
-                        //self.showLoadingHUD?(false)
-                        //self.reloadTableView?()
+                        // self.books.onNext(items)
+                        // self.showLoadingHUD?(false)
+                        // self.reloadTableView?()
                     }
 
-                } catch let error {
-                    self.alertMessageVariable.onNext(AlertMessage(title: (error.localizedDescription), message: "" ))
+                } catch {
+                    self.alertMessageVariable.onNext(AlertMessage(title: error.localizedDescription, message: ""))
 
 //                    self.alert = AlertMessage(
 //                        title: (error.localizedDescription),
 //                        message: "")
                 }
             } else {
-                self.alertMessageVariable.onNext(AlertMessage(title: result.error?.errorDescription, message: "" ))
+                self.alertMessageVariable.onNext(AlertMessage(title: result.error?.errorDescription, message: ""))
 
 //                self.alert = AlertMessage(
 //                    title: (result.error?.errorDescription),

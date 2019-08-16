@@ -9,7 +9,5 @@
 import Foundation
 
 struct BookDetailVM {
-    var bookVM : BookVM!
-    
-    
+    var bookVM: BookVM!
 }

@@ -24,6 +24,7 @@ extension Auth: TargetType, AccessTokenAuthorizable {
             return "signup"
         }
     }
+
     public var method: Moya.Method {
         switch self {
         case .login, .signUp:

@@ -48,7 +48,7 @@ import SystemConfiguration
 
 // MARK: - using Reachiblity
 
-public protocol NetworkStatusListener: class {
+public protocol NetworkStatusListener: AnyObject {
     func networkStatusDidChange(status: Reachability.Connection)
 }
 

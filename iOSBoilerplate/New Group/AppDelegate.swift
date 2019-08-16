@@ -6,22 +6,21 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 var user: User!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     var window: UIWindow?
     var coordinator: Coordinator!
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setCoordinator()
-        
-        //CHECK RESOURCE COUNT IN EVERY SECOND
+
+        // CHECK RESOURCE COUNT IN EVERY SECOND
 //        _ = Observable<Int>
 //            .interval(1, scheduler: MainScheduler.instance)
 //            .subscribe(
@@ -29,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                    //print("Resource count: \(RxSwift.Resources.total).")
 //            }
 //        )
-        
+
         return true
     }
 
@@ -56,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setCoordinator() {
-        
         window = UIWindow()
         let navigationController = UINavigationController()
         window?.rootViewController = navigationController
@@ -64,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.start()
         self.coordinator = coordinator
         window?.makeKeyAndVisible()
-        
+
 //        if AuthHelper.Auth().isLoggedIn {
 //            let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
 //            let navigationController = UINavigationController(rootViewController: vc)
@@ -73,9 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            //window?.rootViewController = vc
 //        } else {
 //            let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
-////            let navigationController = UINavigationController(rootViewController: vc)
-////            window?.rootViewController = navigationController
-////            window?.makeKeyAndVisible()
+        ////            let navigationController = UINavigationController(rootViewController: vc)
+        ////            window?.rootViewController = navigationController
+        ////            window?.makeKeyAndVisible()
 //            window?.rootViewController = vc
 //        }
     }
