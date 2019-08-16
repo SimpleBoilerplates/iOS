@@ -34,7 +34,7 @@ class HomeVM {
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()
-            .distinctUntilChanged()
+                .distinctUntilChanged()
     }
 
     var onShowAlert: Observable<AlertMessage> {
@@ -64,7 +64,9 @@ class HomeVM {
                     let json = try JSON(filteredResponse.data)
 
                     if !json.isError {
-                        let items = json["data"].arrayValue.compactMap { BookTableViewCellType.normal(cellViewModel: Book(fromJson: $0)) }
+                        let items = json["data"].arrayValue.compactMap {
+                            BookTableViewCellType.normal(cellViewModel: Book(fromJson: $0))
+                        }
 
                         // var items = [BookTCVM]()
 //                        for item in json["data"] {

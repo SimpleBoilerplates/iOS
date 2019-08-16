@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 import SwiftyJSON
+
 class AuthHelper {
     class func Auth() -> (isLoggedIn: Bool, token: String) {
         if let tok = UserDefaults.standard.value(forKey: "token"), let tokenString = tok as? String {

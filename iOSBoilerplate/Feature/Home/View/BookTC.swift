@@ -13,6 +13,7 @@ class BookTC: UITableViewCell {
     @IBOutlet var lblSubTitle: UILabel!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var imgView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

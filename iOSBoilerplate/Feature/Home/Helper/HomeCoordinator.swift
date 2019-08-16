@@ -45,4 +45,5 @@ final class HomeCoordinator: Coordinator {
     }
 }
 
-extension HomeCoordinator: HomeCoordinatorDelegate {}
+extension HomeCoordinator: HomeCoordinatorDelegate {
+}

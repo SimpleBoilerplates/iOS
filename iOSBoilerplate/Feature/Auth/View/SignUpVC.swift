@@ -63,21 +63,27 @@ class SignUpVC: BaseTableViewController {
         (txtFieldEmailAddress.rx.text <-> viewModel.email).disposed(by: disposeBag)
         (txtFieldFullName.rx.text <-> viewModel.fullName).disposed(by: disposeBag)
 
-        viewModel.isValid.map { $0 }
-            .bind(to: btnLogin.rx.isEnabled)
-            .disposed(by: disposeBag)
+        viewModel.isValid.map {
+                    $0
+                }
+                .bind(to: btnLogin.rx.isEnabled)
+                .disposed(by: disposeBag)
 
         viewModel
-            .onShowAlert
-            .map { [weak self] in AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "") }
-            .subscribe()
-            .disposed(by: disposeBag)
+                .onShowAlert
+                .map { [weak self] in
+                    AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+                }
+                .subscribe()
+                .disposed(by: disposeBag)
 
         viewModel
-            .onShowingLoading
-            .map { [weak self] in self?.setLoadingHud(visible: $0) }
-            .subscribe()
-            .disposed(by: disposeBag)
+                .onShowingLoading
+                .map { [weak self] in
+                    self?.setLoadingHud(visible: $0)
+                }
+                .subscribe()
+                .disposed(by: disposeBag)
 
 //        viewModel.alertMessage.subscribe { (alertMessage) in
 //            AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
@@ -98,10 +104,12 @@ class SignUpVC: BaseTableViewController {
 //            }.disposed(by: disposeBag)
 
         viewModel
-            .onSuccess
-            .map { _ in self.authCoordinatorDelegate?.signIn() }
-            .subscribe()
-            .disposed(by: disposeBag)
+                .onSuccess
+                .map { _ in
+                    self.authCoordinatorDelegate?.signIn()
+                }
+                .subscribe()
+                .disposed(by: disposeBag)
 //        viewModel.onSuccess.subscribe{ (success) in
 //            guard let success = success.element else {
 //                return

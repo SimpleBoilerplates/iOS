@@ -16,7 +16,9 @@ func with<T: AnyObject>(_ obj: T, task: (T) -> Void) -> T {
 
 @discardableResult
 func with<T: AnyObject>(maybe obj: T?, task: (T) -> Void) -> T? {
-    if let obj = obj { task(obj) }
+    if let obj = obj {
+        task(obj)
+    }
     return obj
 }
 

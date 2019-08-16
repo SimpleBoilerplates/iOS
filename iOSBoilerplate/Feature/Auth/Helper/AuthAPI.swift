@@ -15,7 +15,9 @@ public enum Auth {
 }
 
 extension Auth: TargetType, AccessTokenAuthorizable {
-    public var baseURL: URL { return URL(string: K.Url.base)! }
+    public var baseURL: URL {
+        return URL(string: K.Url.base)!
+    }
     public var path: String {
         switch self {
         case .login:
@@ -57,10 +59,10 @@ extension Auth: TargetType, AccessTokenAuthorizable {
 
     public var authorizationType: AuthorizationType {
         switch self {
-        //        case .targetThatNeedsBearerAuth:
-        //            return .bearer
-        //        case .targetThatNeedsBasicAuth:
-        //            return .basic
+                //        case .targetThatNeedsBearerAuth:
+                //            return .bearer
+                //        case .targetThatNeedsBasicAuth:
+                //            return .basic
         case .login, .signUp:
             return .none
         }

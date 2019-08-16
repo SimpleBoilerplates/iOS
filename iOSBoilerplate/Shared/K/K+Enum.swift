@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct KEnum {
     enum Params: String {
         case user

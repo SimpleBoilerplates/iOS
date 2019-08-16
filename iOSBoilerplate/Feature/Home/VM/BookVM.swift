@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 protocol BookVM {
     var bookVM: Book { get }
     var titleVM: String { get }

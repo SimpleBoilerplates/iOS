@@ -11,6 +11,7 @@ import Moya
 import RxRelay
 import RxSwift
 import SwiftyJSON
+
 struct LogInVM {
     let authProvider = MoyaProvider<Auth>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
@@ -19,7 +20,7 @@ struct LogInVM {
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()
-            .distinctUntilChanged()
+                .distinctUntilChanged()
     }
 
     var onShowAlert: Observable<AlertMessage> {
@@ -46,7 +47,7 @@ struct LogInVM {
             }
 
             return email.count > 0
-                && password.count > 0
+                    && password.count > 0
         }.share()
     }
 

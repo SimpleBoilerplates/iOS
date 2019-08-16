@@ -27,7 +27,7 @@ class SignUpVM {
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()
-            .distinctUntilChanged()
+                .distinctUntilChanged()
     }
 
     var onShowAlert: Observable<AlertMessage> {
@@ -55,7 +55,7 @@ class SignUpVM {
             }
 
             return email.count > 0
-                && password.count > 0
+                    && password.count > 0
         }.share()
     }
 
