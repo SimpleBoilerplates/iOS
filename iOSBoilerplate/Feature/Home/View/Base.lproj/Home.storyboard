@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="feL-ZB-wQX">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -32,14 +32,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tba-R0-6Uk"/>
+                    <navigationItem key="navigationItem" id="tba-R0-6Uk">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="1gx-D6-Fxy">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="actionLogout:" destination="BYZ-38-t0r" id="9fF-HW-2qj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="feL-ZB-wQX" id="3zq-2d-Gfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="790"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="789.35532233883066"/>
         </scene>
         <!--Book DetailVC-->
         <scene sceneID="jl7-fA-f9l">
@@ -54,7 +61,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRR-Eq-Lkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1885" y="779"/>
+            <point key="canvasLocation" x="2823.1999999999998" y="778.56071964017997"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hDL-42-BoJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lXZ-Ol-kd6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PKe-Lf-RV6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cWf-sJ-cOm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PKu-32-jNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1197.5999999999999" y="789.35532233883066"/>
         </scene>
     </scenes>
 </document>

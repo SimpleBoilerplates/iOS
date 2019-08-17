@@ -17,18 +17,35 @@ This is a very simple Boilerplate application, this has following features.
 # With
 
   - MVVM architecture
+  - RxSwift
+  - Coordinator Pattern
   - [Moya](https://github.com/Moya/Moya) for API call
   - Avoiding string identifier to instantiate a view controller from storyboard
   - Project by feature not by layer
 
+
+### RxSwift
+  * [Getting Started With RxSwift and RxCocoa](https://www.raywenderlich.com/1228891-getting-started-with-rxswift-and-rxcocoa)
+  * [Learn & Master ⚔️ the Basics of RxSwift in 10 Minutes](https://medium.com/ios-os-x-development/learn-and-master-%EF%B8%8F-the-basics-of-rxswift-in-10-minutes-818ea6e0a05b)
+  
+
 ### MVVM Tutorials
   * [MVVM pattern with Swift application](http://swiftyjimmy.com/mvvm-with-swift-application-part1/)
-  * [Friends Github Repo](https://github.com/JussiSuojanen/friends)
   * [How not to get desperate with MVVM implementation](https://medium.com/flawless-app-stories/how-to-use-a-model-view-viewmodel-architecture-for-ios-46963c67be1b)
   * [Introduction to MVVM](https://www.appcoda.com/mvvm-vs-mvc/)
   * [Design Patterns by Tutorials: MVVM](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm)
   * [ An Introduction to the MVVM Design Pattern](https://www.toptal.com/ios/swift-tutorial-introduction-to-mvvm)
   * [Fantastic iOS Architecture](https://github.com/onmyway133/fantastic-ios-architecture)
+  * [How to use RxSwift with MVVM](http://swiftyjimmy.com/category/how-to-use-rxswift/)
+  * [MVVM with RxSwift](https://academy.realm.io/posts/slug-max-alexander-mvvm-rxswift/)
+  * [MVVM + RxSwift on iOS](https://hackernoon.com/mvvm-rxswift-on-ios-part-1-69608b7ed5cd)
+
+
+### Coordinator Pattern
+  * [How to implement flow coordinator pattern](https://medium.com/@pavlepesic/flow-coordination-pattern-5eb60cd220d5)
+  * [Flow coordinator pattern on steroids](https://medium.com/flawless-app-stories/flow-coordinator-pattern-on-steroids-a52021e31bfe)
+  * [How to implement delegation pattern using MVVM and flow coordinators](https://medium.com/@pavlepesic/how-to-implement-delegation-pattern-using-mvvm-and-flow-coordinators-d1f6c3fcbe6)
+  * [Coordinators Essential tutorial](https://medium.com/blacklane-engineering/coordinators-essential-tutorial-part-i-376c836e9ba7)
 
 ### Moya Tutorials
 
