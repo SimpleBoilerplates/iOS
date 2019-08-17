@@ -72,9 +72,9 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
 
     private func setLoadingHud(visible: Bool) {
         if visible {
-            AppHUD.showHUD()
+            AppHUD.shared.showHUD()
         } else {
-            AppHUD.hideHUD()
+            AppHUD.shared.hideHUD()
         }
     }
 
@@ -92,7 +92,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
         viewModel
                 .onShowAlert
                 .map { [weak self] in
-                    AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+                    AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
                 }
                 .subscribe()
                 .disposed(by: disposeBag)

@@ -2,8 +2,6 @@
 //  Reachability.swift
 //  Ionic
 //
-//  Created by Harish-Uz-Jaman Mridha Raju on 8/17/16.
-//  Copyright © 2016 Raju. All rights reserved.
 //
 
 import Reachability

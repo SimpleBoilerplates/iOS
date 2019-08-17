@@ -27,7 +27,7 @@ class HomeVM {
 
     init() {
         let tokenClosure: () -> String = {
-            AuthHelper.Auth().token
+            AppSingleton.shared.getAcessToken()
         }
         booksProvider = MoyaProvider<Books>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
     }

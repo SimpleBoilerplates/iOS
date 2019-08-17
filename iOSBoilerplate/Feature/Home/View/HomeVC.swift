@@ -53,7 +53,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
     // MARK: - Action
 
     @IBAction func actionLogout(_: Any) {
-        AuthHelper.logout()
+        AppSingleton.shared.logout()
         onSignOut?()
         //homeCoordinatorDelegate?.stop()
     }
@@ -64,9 +64,9 @@ class HomeVC: BaseViewController, HomeVCProtocol {
 extension HomeVC {
     private func setLoadingHud(visible: Bool) {
         if visible {
-            AppHUD.showHUD()
+            AppHUD.shared.showHUD()
         } else {
-            AppHUD.hideHUD()
+            AppHUD.shared.hideHUD()
         }
     }
 
@@ -76,7 +76,7 @@ extension HomeVC {
         viewModel
                 .onShowAlert
                 .map { [weak self] in
-                    AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+                    AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
                 }
                 .subscribe()
                 .disposed(by: disposeBag)

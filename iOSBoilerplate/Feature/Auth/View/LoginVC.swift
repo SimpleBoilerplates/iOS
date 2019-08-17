@@ -75,9 +75,9 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
 
     private func setLoadingHud(visible: Bool) {
         if visible {
-            AppHUD.showHUD()
+            AppHUD.shared.showHUD()
         } else {
-            AppHUD.hideHUD()
+            AppHUD.shared.hideHUD()
         }
     }
 
@@ -113,7 +113,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
         loginVM
                 .onShowAlert
                 .map { [weak self] in
-                    AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+                    AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
                 }
                 .subscribe()
                 .disposed(by: disposeBag)
