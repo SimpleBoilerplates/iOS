@@ -17,7 +17,7 @@ protocol LoginVCProtocol: class {
     var onSignUp: (() -> Void)? { get set }
 }
 
-class LoginVC: BaseTableViewController,LoginVCProtocol {
+class LoginVC: BaseTableViewController, LoginVCProtocol {
     @IBOutlet var btnLogin: UIButton!
     @IBOutlet var txtFieldPassword: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
@@ -25,8 +25,8 @@ class LoginVC: BaseTableViewController,LoginVCProtocol {
     //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     private let validator = Validator()
-    private  var loginVM: LogInVM = LogInVM()
-    
+    private var loginVM: LogInVM = LogInVM()
+
     //MARK:- LoginVCProtocol
     var onBack: (() -> Void)?
     var onLogin: (() -> Void)?
@@ -41,24 +41,29 @@ class LoginVC: BaseTableViewController,LoginVCProtocol {
         bindViewModel()
     }
 
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        coordinator?.didFinishBuying()
-//    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
     // MARK: - Overrides
-    
+
     override func didSelectCustomBackAction() {
         self.onBack?()
     }
-    
+
     @IBAction func actionLogin(_: Any) {
         validator.validate(self)
     }
 
     @IBAction func actionSignUP(_: Any) {
         self.onSignUp?()
-       // authCoordinatorDelegate?.signUp()
+        // authCoordinatorDelegate?.signUp()
     }
 
     private func login() {

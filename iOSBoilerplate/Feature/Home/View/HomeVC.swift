@@ -15,20 +15,19 @@ protocol HomeVCProtocol: class {
     var onBookSelected: ((BookDetailVM) -> Void)? { get set }
 
 }
+
 class HomeVC: BaseViewController, HomeVCProtocol {
-    
-    
-    
-    
+
+
     @IBOutlet var tableView: UITableView!
-   // weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
+    // weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
     lazy var viewModel: HomeVM = {
         HomeVM()
     }()
     private var disposeBag = DisposeBag()
 
-    
+
     //MARK:- HomeVCProtocol
     var onSignOut: (() -> Void)?
     var onBookSelected: ((BookDetailVM) -> Void)?
@@ -37,6 +36,8 @@ class HomeVC: BaseViewController, HomeVCProtocol {
         super.viewDidLoad()
         setUpTableView()
         bindViewModel()
+      let nav =  self.navigationController as! CoordinatorNavigationController
+        nav.customizeBackButton()
     }
 
 //    override func viewDidDisappear(_ animated: Bool) {
@@ -44,9 +45,9 @@ class HomeVC: BaseViewController, HomeVCProtocol {
 //        coordinator?.didFinishBuying()
 //    }
     // MARK: - Overrides
-    
+
     override func didSelectCustomBackAction() {
-       // self.onBack?()
+        // self.onBack?()
     }
 
     // MARK: - Action

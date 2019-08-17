@@ -17,12 +17,13 @@ protocol SignUpVCProtocol: class {
     var onSignIn: (() -> Void)? { get set }
 
 }
-class SignUpVC: BaseTableViewController,SignUpVCProtocol {
+
+class SignUpVC: BaseTableViewController, SignUpVCProtocol {
     @IBOutlet var txtFieldFullName: UITextField!
     @IBOutlet var txtFieldEmailAddress: UITextField!
     @IBOutlet var txtFieldPassWord: UITextField!
     @IBOutlet var btnSignUp: UIButton!
-    @IBOutlet var btnLogin: UIButton!
+
     let validator = Validator()
 
     //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
@@ -49,9 +50,9 @@ class SignUpVC: BaseTableViewController,SignUpVCProtocol {
 //        view.backgroundColor = KColor.primary
 //        tableView.backgroundColor = KColor.primary
     }
-    
+
     // MARK: - Overrides
-    
+
     override func didSelectCustomBackAction() {
         self.onBack?()
     }
@@ -61,8 +62,8 @@ class SignUpVC: BaseTableViewController,SignUpVCProtocol {
     }
 
     @IBAction func actionLogin(_: Any) {
-        self.onBack?()
-       // authCoordinatorDelegate?.signIn()
+        self.onSignIn?()
+        // authCoordinatorDelegate?.signIn()
     }
 
     private func signUP() {
@@ -85,7 +86,7 @@ class SignUpVC: BaseTableViewController,SignUpVCProtocol {
         viewModel.isValid.map {
                     $0
                 }
-                .bind(to: btnLogin.rx.isEnabled)
+                .bind(to: btnSignUp.rx.isEnabled)
                 .disposed(by: disposeBag)
 
         viewModel

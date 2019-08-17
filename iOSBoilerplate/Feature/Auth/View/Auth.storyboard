@@ -366,7 +366,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="btnLogin" destination="Ppn-EG-RKi" id="k3F-ey-Cow"/>
                         <outlet property="btnSignUp" destination="IF8-T1-F3f" id="Jn0-Jv-lqW"/>
                         <outlet property="txtFieldEmailAddress" destination="A6W-Fs-n9G" id="cRj-iq-9r3"/>
                         <outlet property="txtFieldFullName" destination="hQO-fD-dks" id="hs8-7I-d6E"/>

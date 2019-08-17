@@ -6,7 +6,6 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
- 
 
 protocol BookVM {
     var bookVM: Book { get }
