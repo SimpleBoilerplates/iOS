@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A21A0D22307F76A00C9237C /* AppSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21A0D12307F76A00C9237C /* AppSingleton.swift */; };
+		1A21A0D22307F76A00C9237C /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21A0D12307F76A00C9237C /* UserSingleton.swift */; };
 		1A45976B2209E17600515891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597672209E17600515891 /* AppDelegate.swift */; };
 		1A45976F2209E19700515891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A45976D2209E19600515891 /* LaunchScreen.storyboard */; };
 		1A4597822209E19F00515891 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597732209E19F00515891 /* AuthAPI.swift */; };
@@ -93,7 +93,7 @@
 
 /* Begin PBXFileReference section */
 		0DDCC6FB22377EF9675C8B08 /* Pods-iOSBoilerplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBoilerplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate.debug.xcconfig"; sourceTree = "<group>"; };
-		1A21A0D12307F76A00C9237C /* AppSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSingleton.swift; sourceTree = "<group>"; };
+		1A21A0D12307F76A00C9237C /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
 		1A4597672209E17600515891 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A45976E2209E19600515891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A4597732209E19F00515891 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				1AF1F39A2307188200D1F7A5 /* ApplicationCoordinator.swift */,
 				1A4597672209E17600515891 /* AppDelegate.swift */,
 				1AF1F3C02307B9E500D1F7A5 /* Main.storyboard */,
-				1A21A0D12307F76A00C9237C /* AppSingleton.swift */,
+				1A21A0D12307F76A00C9237C /* UserSingleton.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -894,7 +894,7 @@
 				1AF1F3742303D6E700D1F7A5 /* Rx+Extensions.swift in Sources */,
 				1A4597AA2209E1AE00515891 /* Bindable.swift in Sources */,
 				1AF1F3B52307188300D1F7A5 /* Coordinator.swift in Sources */,
-				1A21A0D22307F76A00C9237C /* AppSingleton.swift in Sources */,
+				1A21A0D22307F76A00C9237C /* UserSingleton.swift in Sources */,
 				1AF1F3BF2307A40900D1F7A5 /* CustomBackButton.swift in Sources */,
 				1AF1F38C230713D800D1F7A5 /* AuthFactory.swift in Sources */,
 				1AF1F3B42307188300D1F7A5 /* Presentable.swift in Sources */,

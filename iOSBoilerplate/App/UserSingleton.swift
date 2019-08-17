@@ -9,17 +9,19 @@
 import Foundation
 import SwiftyJSON
 
-class AppSingleton {
+class UserSingleton {
     
-    static let shared: AppSingleton = {
-        let instance = AppSingleton()
+    static let shared: UserSingleton = {
+        let instance = UserSingleton()
         // Setup code
         return instance
     }()
     
-    private init() {}
+    private init() {
+       user = fetchUser()
+    }
     
-    private var user: User!
+    private var user: User?
 
     func isAuthonticated() -> Bool{
         if let tok = UserDefaults.standard.value(forKey: "token"), let tokenString = tok as? String {
@@ -41,7 +43,8 @@ class AppSingleton {
         UserDefaults.standard.set(token, forKey: "token")
     }
     
-    func fetchUser() -> User{
+    func fetchUser() -> User?{
+        var user: User?
                 if let usr = UserDefaults.standard.value(forKey: "user") {
                     let usrDictionary = usr as! Dictionary<String, Any>
                     let json = JSON(parseJSON: usrDictionary.json)
@@ -52,6 +55,7 @@ class AppSingleton {
     
     func saveUser(user: User) {
         UserDefaults.standard.set(user.toDictionary(), forKey: "user")
+        self.user = user
     }
     
      func logout() {
@@ -59,6 +63,7 @@ class AppSingleton {
         defaults.removeObject(forKey: "user")
         defaults.removeObject(forKey: "token")
         defaults.synchronize()
+        user = nil
     }
     
 }

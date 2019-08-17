@@ -57,7 +57,7 @@ struct LogInVM {
                     do {
                         let json = try JSON(data: response.data)
                         if !json.isError {
-                            AppSingleton.shared.setAcessToken(token: json["token"].stringValue)
+                            UserSingleton.shared.setAcessToken(token: json["token"].stringValue)
                             self.successVariable.onNext(json)
                         } else {
                             self.alertMessageVariable.onNext(AlertMessage(title: json.message, message: ""))

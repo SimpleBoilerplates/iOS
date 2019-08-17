@@ -53,7 +53,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
     // MARK: - Action
 
     @IBAction func actionLogout(_: Any) {
-        AppSingleton.shared.logout()
+        UserSingleton.shared.logout()
         onSignOut?()
         //homeCoordinatorDelegate?.stop()
     }

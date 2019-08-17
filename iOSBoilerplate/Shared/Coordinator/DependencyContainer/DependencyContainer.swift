@@ -69,7 +69,7 @@ class DependencyContainer {
 extension DependencyContainer: CoordinatorFactoryProtocol {
 
     func instantiateApplicationCoordinator() -> ApplicationCoordinator {
-        return ApplicationCoordinator(router: Router(rootController: rootController), factory: self as Factory, launchInstructor: LaunchInstructor.configure(isAutorized: AppSingleton.shared.isAuthonticated()))
+        return ApplicationCoordinator(router: Router(rootController: rootController), factory: self as Factory, launchInstructor: LaunchInstructor.configure(isAutorized: UserSingleton.shared.isAuthonticated()))
     }
 
     func instantiateAuthCoordinator(router: RouterProtocol) -> AuthCoordinator {

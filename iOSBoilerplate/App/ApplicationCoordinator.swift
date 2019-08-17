@@ -30,7 +30,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = self.factory.instantiateAuthCoordinator(router: self.router)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
-            self.launchInstructor = LaunchInstructor.configure(isAutorized: AppSingleton.shared.isAuthonticated())
+            self.launchInstructor = LaunchInstructor.configure(isAutorized: UserSingleton.shared.isAuthonticated())
             self.start()
         }
         self.addDependency(coordinator)
@@ -41,7 +41,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = self.factory.instantiateHomeCoordinator(router: self.router)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
-            self.launchInstructor = LaunchInstructor.configure(isAutorized: AppSingleton.shared.isAuthonticated())
+            self.launchInstructor = LaunchInstructor.configure(isAutorized: UserSingleton.shared.isAuthonticated())
             self.start()
         }
         self.addDependency(coordinator)
