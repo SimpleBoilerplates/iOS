@@ -6,20 +6,14 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import Foundation
+ 
 import Moya
 import RxRelay
 import RxSwift
 import SwiftyJSON
 
 class SignUpVM {
-//    var signedUp: ((Bool, JSON?) -> Void)?
-//
-//    var alert: AlertMessage? {
-//        didSet {
-//            showError?(alert!)
-//        }
-//    }
+
     let authProvider = MoyaProvider<Auth>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
     private let isLoadingVariable = BehaviorRelay(value: false)
@@ -40,9 +34,6 @@ class SignUpVM {
         return successVariable.asObservable()
     }
 
-    // var success = BehaviorRelay<JSON?>(value: nil)
-    //  var alertMessage = BehaviorRelay<AlertMessage?>(value: nil)
-
     var email = BehaviorRelay<String?>(value: nil)
     var password = BehaviorRelay<String?>(value: nil)
     var fullName = BehaviorRelay<String?>(value: nil)
@@ -53,7 +44,6 @@ class SignUpVM {
             guard let email = email, let password = password else {
                 return false
             }
-
             return email.count > 0
                     && password.count > 0
         }.share()
@@ -67,31 +57,17 @@ class SignUpVM {
                 self.isLoadingVariable.accept(false)
                 if case let .success(response) = result {
                     do {
-                        // let filteredResponse = try response.filterSuccessfulStatusCodes()
                         let json = try JSON(data: response.data)
                         if !json.isError {
                             self.successVariable.onNext(json)
-                            // self.signedUp?(true, json)
                         } else {
                             self.alertMessageVariable.onNext(AlertMessage(title: json.message, message: ""))
-                            // self.signedUp?(false, nil)
-                            // self.alert = AlertMessage(title: json.message, message: "")
                         }
                     } catch {
                         self.alertMessageVariable.onNext(AlertMessage(title: error.localizedDescription, message: ""))
-                        // self.signedUp?(false, nil)
-//                        self.alert = AlertMessage(
-//                            title: (error.localizedDescription),
-//                            message: ""
-//                        )
                     }
                 } else {
                     self.alertMessageVariable.onNext(AlertMessage(title: result.error?.errorDescription, message: ""))
-                    // self.signedUp?(false, nil)
-//                    self.alert = AlertMessage(
-//                        title: (result.error?.errorDescription),
-//                        message: ""
-//                    )
                 }
             })
         }

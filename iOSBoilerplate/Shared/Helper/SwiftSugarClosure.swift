@@ -6,7 +6,6 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import Foundation
 
 @discardableResult
 func with<T: AnyObject>(_ obj: T, task: (T) -> Void) -> T {

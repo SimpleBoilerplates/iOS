@@ -9,7 +9,7 @@
 import Reachability
 import UIKit
 
-class BaseTableViewController: UITableViewController {
+class BaseTableViewController: UITableViewController,CoordinatorNavigationControllerDelegate {
     var isConnectedToInternet: Bool = false
 
     override func viewDidLoad() {
@@ -47,6 +47,31 @@ class BaseTableViewController: UITableViewController {
 //            //AppHUD.showErrorMessage("", title: KString.Message.notConnectedToInternet)
 //        }
 //    }
+    
+    // MARK: - Controller lifecycle
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setupNavigationController()
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupNavigationController() {
+        if let navigationController = self.navigationController as? CoordinatorNavigationController {
+            navigationController.swipeBackDelegate = self
+        }
+    }
+    
+    // MARK: - SwipeBackNavigationControllerDelegate
+    
+    internal func transitionBackFinished() {
+        
+    }
+    
+    internal func didSelectCustomBackAction() {
+        
+    }
 }
 
 extension BaseTableViewController {

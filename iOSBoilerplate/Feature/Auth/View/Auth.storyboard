@@ -6,34 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--IntroVC-->
-        <scene sceneID="mcS-PD-g5k">
-            <objects>
-                <viewController storyboardIdentifier="IntroVC" id="sIM-ij-7GU" customClass="IntroVC" customModule="iOSBoilerplate" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d4R-ue-P9S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cQs-2R-ckX">
-                                <rect key="frame" x="139" y="372" width="110" height="200"/>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="cQs-2R-ckX" firstAttribute="centerX" secondItem="d4R-ue-P9S" secondAttribute="centerX" id="2ke-oN-sXg"/>
-                            <constraint firstItem="6Vv-6k-KNb" firstAttribute="bottom" secondItem="cQs-2R-ckX" secondAttribute="bottom" constant="40" id="KPA-Xw-XTq"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Vv-6k-KNb"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jwD-M0-PGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="138" y="180"/>
-        </scene>
         <!--LoginVC-->
         <scene sceneID="2YM-f8-llA">
             <objects>

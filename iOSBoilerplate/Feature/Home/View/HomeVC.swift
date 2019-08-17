@@ -9,15 +9,29 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class HomeVC: UIViewController {
+protocol HomeVCProtocol: class {
+    //var onBack: (() -> Void)? { get set }
+    var onSignOut: (() -> Void)? { get set }
+    var onBookSelected: ((BookDetailVM) -> Void)? { get set }
+
+}
+class HomeVC: BaseViewController, HomeVCProtocol {
+    
+    
+    
+    
     @IBOutlet var tableView: UITableView!
-    weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
+   // weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
     lazy var viewModel: HomeVM = {
         HomeVM()
     }()
-
     private var disposeBag = DisposeBag()
+
+    
+    //MARK:- HomeVCProtocol
+    var onSignOut: (() -> Void)?
+    var onBookSelected: ((BookDetailVM) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +43,18 @@ class HomeVC: UIViewController {
 //        super.viewDidDisappear(animated)
 //        coordinator?.didFinishBuying()
 //    }
+    // MARK: - Overrides
+    
+    override func didSelectCustomBackAction() {
+       // self.onBack?()
+    }
 
     // MARK: - Action
 
     @IBAction func actionLogout(_: Any) {
         AuthHelper.logout()
-        homeCoordinatorDelegate?.stop()
+        onSignOut?()
+        //homeCoordinatorDelegate?.stop()
     }
 }
 
@@ -96,7 +116,7 @@ extension HomeVC {
                 .subscribe(
                         onNext: { [weak self] cellType in
                             if case let .normal(vm) = cellType {
-                                self?.homeCoordinatorDelegate?.bookSelected(bookVM: vm)
+                                self?.onBookSelected?(BookDetailVM(bookVM: vm))
                             }
                             if let selectedRowIndexPath = self?.tableView.indexPathForSelectedRow {
                                 self?.tableView?.deselectRow(at: selectedRowIndexPath, animated: true)

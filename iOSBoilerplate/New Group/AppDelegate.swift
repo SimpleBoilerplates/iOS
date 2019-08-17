@@ -14,11 +14,18 @@ var user: User!
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var coordinator: Coordinator!
+    //var coordinator: Coordinator!
 
+    var rootController: CoordinatorNavigationController {
+        return self.window!.rootViewController as! CoordinatorNavigationController
+    }
+    private lazy var dependencyConatiner = DependencyContainer(rootController: self.rootController)
+    
+    
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        setCoordinator()
+       // setCoordinator()
+        self.dependencyConatiner.start()
 
         // CHECK RESOURCE COUNT IN EVERY SECOND
 //        _ = Observable<Int>
@@ -54,27 +61,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func setCoordinator() {
-        window = UIWindow()
-        let navigationController = UINavigationController()
-        window?.rootViewController = navigationController
-        let coordinator = AppCoordinator(navigationController: navigationController)
-        coordinator.start()
-        self.coordinator = coordinator
-        window?.makeKeyAndVisible()
-
-//        if AuthHelper.Auth().isLoggedIn {
-//            let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            window?.rootViewController = navigationController
-//            window?.makeKeyAndVisible()
-//            //window?.rootViewController = vc
-//        } else {
-//            let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
-        ////            let navigationController = UINavigationController(rootViewController: vc)
-        ////            window?.rootViewController = navigationController
-        ////            window?.makeKeyAndVisible()
-//            window?.rootViewController = vc
-//        }
-    }
+//    func setCoordinator() {
+//        window = UIWindow()
+//        let navigationController = UINavigationController()
+//        window?.rootViewController = navigationController
+//        let coordinator = AppCoordinator(navigationController: navigationController)
+//        coordinator.start()
+//        self.coordinator = coordinator
+//        window?.makeKeyAndVisible()
+//
+////        if AuthHelper.Auth().isLoggedIn {
+////            let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
+////            let navigationController = UINavigationController(rootViewController: vc)
+////            window?.rootViewController = navigationController
+////            window?.makeKeyAndVisible()
+////            //window?.rootViewController = vc
+////        } else {
+////            let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
+//        ////            let navigationController = UINavigationController(rootViewController: vc)
+//        ////            window?.rootViewController = navigationController
+//        ////            window?.makeKeyAndVisible()
+////            window?.rootViewController = vc
+////        }
+//    }
 }

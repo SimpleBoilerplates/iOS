@@ -6,7 +6,7 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import Foundation
+ 
 import Moya
 import RxRelay
 import RxSwift
@@ -50,18 +50,15 @@ class HomeVM {
     private let cells = BehaviorRelay<[BookTableViewCellType]>(value: [])
 
     func getBooks() {
-        // showLoadingHUD?(true)
         isLoadingVariable.accept(true)
-
         booksProvider.request(.books, completion: { result in
-            // self.showLoadingHUD?(false)
             self.isLoadingVariable.accept(false)
 
             if case let .success(response) = result {
                 do {
                     let filteredResponse = try response.filterSuccessfulStatusCodes()
 
-                    let json = try JSON(filteredResponse.data)
+                    let json = JSON(filteredResponse.data)
 
                     if !json.isError {
                         let items = json["data"].arrayValue.compactMap {
@@ -75,24 +72,12 @@ class HomeVM {
 //                            //self.bookCells.append(book)
 //                        }
                         self.cells.accept(items)
-                        // self.books.onNext(items)
-                        // self.showLoadingHUD?(false)
-                        // self.reloadTableView?()
                     }
-
                 } catch {
                     self.alertMessageVariable.onNext(AlertMessage(title: error.localizedDescription, message: ""))
-
-//                    self.alert = AlertMessage(
-//                        title: (error.localizedDescription),
-//                        message: "")
                 }
             } else {
                 self.alertMessageVariable.onNext(AlertMessage(title: result.error?.errorDescription, message: ""))
-
-//                self.alert = AlertMessage(
-//                    title: (result.error?.errorDescription),
-//                    message: "")
             }
         })
     }

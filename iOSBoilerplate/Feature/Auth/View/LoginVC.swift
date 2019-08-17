@@ -11,17 +11,26 @@ import RxSwift
 import SwiftValidator
 import UIKit
 
-class LoginVC: BaseTableViewController {
+protocol LoginVCProtocol: class {
+    var onBack: (() -> Void)? { get set }
+    var onLogin: (() -> Void)? { get set }
+    var onSignUp: (() -> Void)? { get set }
+}
+
+class LoginVC: BaseTableViewController,LoginVCProtocol {
     @IBOutlet var btnLogin: UIButton!
     @IBOutlet var txtFieldPassword: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
 
-    weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
+    //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     private let validator = Validator()
-    private lazy var viewModel: LogInVM = {
-        LogInVM()
-    }()
+    private  var loginVM: LogInVM = LogInVM()
+    
+    //MARK:- LoginVCProtocol
+    var onBack: (() -> Void)?
+    var onLogin: (() -> Void)?
+    var onSignUp: (() -> Void)?
 
     private var disposeBag = DisposeBag()
 
@@ -36,16 +45,24 @@ class LoginVC: BaseTableViewController {
 //        super.viewDidDisappear(animated)
 //        coordinator?.didFinishBuying()
 //    }
+    
+    // MARK: - Overrides
+    
+    override func didSelectCustomBackAction() {
+        self.onBack?()
+    }
+    
     @IBAction func actionLogin(_: Any) {
         validator.validate(self)
     }
 
     @IBAction func actionSignUP(_: Any) {
-        authCoordinatorDelegate?.signUp()
+        self.onSignUp?()
+       // authCoordinatorDelegate?.signUp()
     }
 
     private func login() {
-        viewModel.login()
+        loginVM.login()
     }
 
     private func setUI() {
@@ -60,10 +77,10 @@ class LoginVC: BaseTableViewController {
     }
 
     private func bindViewModel() {
-        (txtFieldPassword.rx.text <-> viewModel.password).disposed(by: disposeBag)
-        (txtFieldEmail.rx.text <-> viewModel.email).disposed(by: disposeBag)
+        (txtFieldPassword.rx.text <-> loginVM.password).disposed(by: disposeBag)
+        (txtFieldEmail.rx.text <-> loginVM.email).disposed(by: disposeBag)
 
-        viewModel.isValid.map {
+        loginVM.isValid.map {
                     $0
                 }
                 .bind(to: btnLogin.rx.isEnabled)
@@ -88,7 +105,7 @@ class LoginVC: BaseTableViewController {
 //            }.disposed(by: disposeBag)
         ////
 //
-        viewModel
+        loginVM
                 .onShowAlert
                 .map { [weak self] in
                     AppHUD.showErrorMessage($0.message ?? "", title: $0.title ?? "")
@@ -96,7 +113,7 @@ class LoginVC: BaseTableViewController {
                 .subscribe()
                 .disposed(by: disposeBag)
 
-        viewModel
+        loginVM
                 .onShowingLoading
                 .map { [weak self] in
                     self?.setLoadingHud(visible: $0)
@@ -104,10 +121,10 @@ class LoginVC: BaseTableViewController {
                 .subscribe()
                 .disposed(by: disposeBag)
 
-        viewModel
+        loginVM
                 .onSuccess
                 .map { _ in
-                    self.authCoordinatorDelegate?.stop()
+                    self.onLogin?()
                 }
                 .subscribe()
                 .disposed(by: disposeBag)

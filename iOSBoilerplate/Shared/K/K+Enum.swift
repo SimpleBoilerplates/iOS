@@ -6,7 +6,6 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import Foundation
 
 struct KEnum {
     enum Params: String {

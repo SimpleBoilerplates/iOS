@@ -8,14 +8,24 @@
 
 import UIKit
 
-class BookDetailVC: UIViewController {
-    weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
+protocol BookDetailVCProtocol: class {
+    var onBack: (() -> Void)? { get set }
+}
+
+class BookDetailVC: BaseViewController , BookDetailVCProtocol{
+    //weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
     var viewModel: BookDetailVM?
+    
+    var onBack: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    // MARK: - Overrides
+    override func didSelectCustomBackAction() {
+        self.onBack?()
     }
 }

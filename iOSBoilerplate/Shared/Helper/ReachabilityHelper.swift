@@ -6,7 +6,6 @@
 //  Copyright © 2016 Raju. All rights reserved.
 //
 
-import Foundation
 import Reachability
 import SystemConfiguration
 

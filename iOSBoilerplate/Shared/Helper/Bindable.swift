@@ -6,7 +6,6 @@
 //  Copyright © 2018 sadman samee. All rights reserved.
 //
 
-import Foundation
 
 class Bindable<T> {
     typealias Listener = ((T) -> Void)

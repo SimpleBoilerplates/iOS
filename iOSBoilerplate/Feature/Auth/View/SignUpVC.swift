@@ -11,7 +11,13 @@ import RxSwift
 import SwiftValidator
 import UIKit
 
-class SignUpVC: BaseTableViewController {
+protocol SignUpVCProtocol: class {
+    var onBack: (() -> Void)? { get set }
+    var onSignUp: (() -> Void)? { get set }
+    var onSignIn: (() -> Void)? { get set }
+
+}
+class SignUpVC: BaseTableViewController,SignUpVCProtocol {
     @IBOutlet var txtFieldFullName: UITextField!
     @IBOutlet var txtFieldEmailAddress: UITextField!
     @IBOutlet var txtFieldPassWord: UITextField!
@@ -19,13 +25,19 @@ class SignUpVC: BaseTableViewController {
     @IBOutlet var btnLogin: UIButton!
     let validator = Validator()
 
-    weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
+    //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     lazy var viewModel: SignUpVM = {
         SignUpVM()
     }()
 
     private var disposeBag = DisposeBag()
+
+    // MARK: - SignUpVCProtocol
+
+    var onBack: (() -> Void)?
+    var onSignUp: (() -> Void)?
+    var onSignIn: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +49,20 @@ class SignUpVC: BaseTableViewController {
 //        view.backgroundColor = KColor.primary
 //        tableView.backgroundColor = KColor.primary
     }
+    
+    // MARK: - Overrides
+    
+    override func didSelectCustomBackAction() {
+        self.onBack?()
+    }
 
     @IBAction func actionSignUp(_: Any) {
         validator.validate(self)
     }
 
     @IBAction func actionLogin(_: Any) {
-        authCoordinatorDelegate?.signIn()
+        self.onBack?()
+       // authCoordinatorDelegate?.signIn()
     }
 
     private func signUP() {
@@ -106,7 +125,7 @@ class SignUpVC: BaseTableViewController {
         viewModel
                 .onSuccess
                 .map { _ in
-                    self.authCoordinatorDelegate?.signIn()
+                    self.onSignIn?()
                 }
                 .subscribe()
                 .disposed(by: disposeBag)

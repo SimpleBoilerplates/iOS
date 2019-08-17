@@ -6,7 +6,6 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import Foundation
 import Moya
 
 public enum Auth {
@@ -18,6 +17,7 @@ extension Auth: TargetType, AccessTokenAuthorizable {
     public var baseURL: URL {
         return URL(string: K.Url.base)!
     }
+
     public var path: String {
         switch self {
         case .login:
