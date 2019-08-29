@@ -62,8 +62,8 @@ class CoordinatorNavigationController: UINavigationController {
         self.shouldUseViewControllerTitles = shouldUseViewControllerTitles
     }
 
-    func customizeTitle(titleColor: UIColor, largeTextFont: UIFont, smallTextFont: UIFont, isTranslucent: Bool = true, barTintColor: UIColor? = nil) {
-        self.navigationBar.prefersLargeTitles = true
+    func customizeTitle(titleColor: UIColor, largeTextFont: UIFont, smallTextFont: UIFont, isTranslucent: Bool = true, barTintColor: UIColor? = nil,prefersLargeTitles: Bool = false) {
+        self.navigationBar.prefersLargeTitles = prefersLargeTitles
         UINavigationBar.customNavBarStyle(color: titleColor, largeTextFont: largeTextFont, smallTextFont: smallTextFont, isTranslucent: isTranslucent, barTintColor: barTintColor)
     }
 

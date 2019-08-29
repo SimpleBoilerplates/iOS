@@ -7,43 +7,6 @@
 import Reachability
 import SystemConfiguration
 
-/* Using Alamofire
- import Alamofire
-
- open class Reachability {
-
- static var isReachable = false
- static let internetStatusChangedNotification = NSNotification.Name(rawValue: "internetStatusChangedNotification")
-
- static let reachabilityManager = Alamofire.NetworkReachabilityManager(host: K.HTTP.ReachabilityHost)
-
- static func listenForReachability() {
-
- reachabilityManager?.listener = { status in
- print("Network Status Changed: \(status)")
- switch status {
- case .notReachable:
- isReachable = false
- showInterNetNotification(isReachable: isReachable)
- NotificationCenter.default.post(name: Reachability.internetStatusChangedNotification, object: nil)
- case .reachable(_), .unknown:
- isReachable = true
- showInterNetNotification(isReachable: isReachable)
- NotificationCenter.default.post(name: Reachability.internetStatusChangedNotification, object: nil)
- break
- }
- }
-
- reachabilityManager?.startListening()
- }
- static func showInterNetNotification(isReachable: Bool) {
-
- //GGNotifyMessages.showInterNetConnection(isAvailable: isReachable)
-
- }
- }
- */
-
 // MARK: - using Reachiblity
 
 public protocol NetworkStatusListener: AnyObject {

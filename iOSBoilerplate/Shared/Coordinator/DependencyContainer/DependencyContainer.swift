@@ -49,11 +49,12 @@ class DependencyContainer {
 
     private func customoizeNavigationController() {
         self.rootController.enableSwipeBack()
-        self.rootController.customizeTitle(titleColor: UIColor.red,
-                largeTextFont: UIFont(name: "Menlo-Bold", size: 18)!,
-                smallTextFont: UIFont(name: "Menlo-Bold", size: 12)!,
-                isTranslucent: true,
-                barTintColor: nil)
+//        self.rootController.customizeTitle(titleColor: UIColor.red,
+//                largeTextFont: UIFont(name: "Menlo-Bold", size: 18)!,
+//                smallTextFont: UIFont(name: "Menlo-Bold", size: 12)!,
+//                isTranslucent: true,
+//                barTintColor: nil,
+//                prefersLargeTitles: false)
         self.rootController.customizeBackButton(backButtonImage: UIImage(named: "GoBack"),
                 backButtonTitle: "",
                 backButtonfont: UIFont(name: "Menlo-Bold", size: 15),

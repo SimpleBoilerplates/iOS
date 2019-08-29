@@ -34,6 +34,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Books"
         setUpTableView()
         bindViewModel()
       let nav =  self.navigationController as! CoordinatorNavigationController
