@@ -89,11 +89,11 @@ extension BaseViewController: NetworkStatusListener {
     func networkStatusDidChange(status: Reachability.Connection) {
         switch status {
         case .none:
-            print("ViewController: Network became unreachable")
+            printToConsole(message:"ViewController: Network became unreachable")
         case .wifi:
-            print("ViewController: Network reachable through WiFi")
+            printToConsole(message:"ViewController: Network reachable through WiFi")
         case .cellular:
-            print("ViewController: Network reachable through Cellular Data")
+            printToConsole(message:"ViewController: Network reachable through Cellular Data")
         }
         // loginButton.isEnabled = !(status == .notReachable)
     }

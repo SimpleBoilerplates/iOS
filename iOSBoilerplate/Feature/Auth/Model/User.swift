@@ -31,6 +31,7 @@ class User: Codable {
     var firebaseToken: String!
 
     init() {
+        
     }
 
     /**
