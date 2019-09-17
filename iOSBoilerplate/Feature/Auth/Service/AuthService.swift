@@ -8,12 +8,12 @@
 
 import Moya
 
-public enum Auth {
+public enum AuthService {
     case login(String, String)
     case signUp(String, String, String)
 }
 
-extension Auth: TargetType, AccessTokenAuthorizable {
+extension AuthService: TargetType, AccessTokenAuthorizable {
     public var baseURL: URL {
         return URL(string: K.Url.base)!
     }

@@ -9,15 +9,15 @@
 import Foundation
 import SwiftyJSON
 
-class UserSingleton {
+class UserService {
     
-    static let shared: UserSingleton = {
-        let instance = UserSingleton()
+    static let shared: UserService = {
+        let instance = UserService()
         // Setup code
         return instance
     }()
     
-    private init() {
+    init() {
        user = fetchUser()
     }
     

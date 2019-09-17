@@ -9,11 +9,11 @@
 
 import Moya
 
-public enum Books {
+public enum BooksService {
     case books
 }
 
-extension Books: TargetType, AccessTokenAuthorizable {
+extension BooksService: TargetType, AccessTokenAuthorizable {
     public var baseURL: URL {
         return URL(string: K.Url.base)!
     }

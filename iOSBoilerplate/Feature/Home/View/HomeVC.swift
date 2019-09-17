@@ -22,9 +22,13 @@ class HomeVC: BaseViewController, HomeVCProtocol {
     @IBOutlet var tableView: UITableView!
     // weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
-    lazy var viewModel: HomeVM = {
-        HomeVM()
-    }()
+//    lazy var viewModel: HomeVM = {
+//        HomeVM()
+//    }()
+    
+    lazy var viewModel : HomeVM = container.resolve(HomeVM.self)!
+    lazy var userService : UserService = container.resolve(UserService.self)!
+    
     private var disposeBag = DisposeBag()
 
 
@@ -54,7 +58,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
     // MARK: - Action
 
     @IBAction func actionLogout(_: Any) {
-        UserSingleton.shared.logout()
+        userService.logout()
         onSignOut?()
         //homeCoordinatorDelegate?.stop()
     }

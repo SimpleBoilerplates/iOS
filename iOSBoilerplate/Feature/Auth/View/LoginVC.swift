@@ -25,7 +25,8 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     private let validator = Validator()
-    private var loginVM: LogInVM = LogInVM()
+   // private var loginVM: LogInVM!
+    lazy var loginVM : LogInVM = container.resolve(LogInVM.self)!
 
     //MARK:- LoginVCProtocol
     var onBack: (() -> Void)?

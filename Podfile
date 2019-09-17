@@ -16,6 +16,7 @@ target 'iOSBoilerplate' do
   pod 'SwiftValidator' , :git => 'https://github.com/Sadmansamee/SwiftValidator.git', :branch => 'master'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
+  pod 'Swinject'
   
   #to check memory leak
   post_install do |installer|
@@ -35,6 +36,13 @@ target 'iOSBoilerplate' do
     # Pods for testing
     pod 'RxBlocking', '~> 5'
     pod 'RxTest', '~> 5'
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'Swinject'
+    pod 'SwinjectStoryboard'
+    pod 'ObjectMapper'
+    pod 'SwiftyJSON'
+
   end
 
   target 'iOSBoilerplateUITests' do

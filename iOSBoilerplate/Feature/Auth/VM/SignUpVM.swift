@@ -14,7 +14,13 @@ import SwiftyJSON
 
 class SignUpVM {
 
-    let authProvider = MoyaProvider<Auth>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+    fileprivate var authProvider : MoyaProvider<AuthService>
+
+    init(service : MoyaProvider<AuthService>) {
+        authProvider = service
+    }
+    
+    //let authProvider = MoyaProvider<AuthService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
     private let isLoadingVariable = BehaviorRelay(value: false)
     private let alertMessageVariable = PublishSubject<AlertMessage>()

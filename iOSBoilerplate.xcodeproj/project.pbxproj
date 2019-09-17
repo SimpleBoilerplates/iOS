@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A21A0D22307F76A00C9237C /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21A0D12307F76A00C9237C /* UserSingleton.swift */; };
+		1A21A0D22307F76A00C9237C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21A0D12307F76A00C9237C /* UserService.swift */; };
 		1A45976B2209E17600515891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597672209E17600515891 /* AppDelegate.swift */; };
 		1A45976F2209E19700515891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A45976D2209E19600515891 /* LaunchScreen.storyboard */; };
-		1A4597822209E19F00515891 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597732209E19F00515891 /* AuthAPI.swift */; };
+		1A4597822209E19F00515891 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597732209E19F00515891 /* AuthService.swift */; };
 		1A4597832209E19F00515891 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597752209E19F00515891 /* User.swift */; };
 		1A4597842209E19F00515891 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4597772209E19F00515891 /* Auth.storyboard */; };
 		1A4597862209E19F00515891 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4597792209E19F00515891 /* LoginVC.swift */; };
@@ -42,6 +42,7 @@
 		1A7971E6220DC50000866332 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971E5220DC50000866332 /* Book.swift */; };
 		1A7971EC220DD44C00866332 /* BookTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7971EA220DD44C00866332 /* BookTC.swift */; };
 		1A7971ED220DD44C00866332 /* BookTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7971EB220DD44C00866332 /* BookTC.xib */; };
+		1A9E3EDC232F603D005350DF /* Extension+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E3EDB232F603D005350DF /* Extension+DI.swift */; };
 		1AC54BAA232643790079CA7D /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC54BA9232643790079CA7D /* Print.swift */; };
 		1AF1F3742303D6E700D1F7A5 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */; };
 		1AF1F3762305020900D1F7A5 /* SwiftSugarClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */; };
@@ -94,10 +95,10 @@
 
 /* Begin PBXFileReference section */
 		0DDCC6FB22377EF9675C8B08 /* Pods-iOSBoilerplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBoilerplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate.debug.xcconfig"; sourceTree = "<group>"; };
-		1A21A0D12307F76A00C9237C /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
+		1A21A0D12307F76A00C9237C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		1A4597672209E17600515891 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A45976E2209E19600515891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1A4597732209E19F00515891 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		1A4597732209E19F00515891 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1A4597752209E19F00515891 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1A4597772209E19F00515891 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		1A4597792209E19F00515891 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		1A7971E5220DC50000866332 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		1A7971EA220DD44C00866332 /* BookTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTC.swift; sourceTree = "<group>"; };
 		1A7971EB220DD44C00866332 /* BookTC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookTC.xib; sourceTree = "<group>"; };
+		1A9E3EDB232F603D005350DF /* Extension+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DI.swift"; sourceTree = "<group>"; };
 		1AC54BA9232643790079CA7D /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
 		1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extensions.swift"; sourceTree = "<group>"; };
 		1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSugarClosure.swift; sourceTree = "<group>"; };
@@ -207,7 +209,7 @@
 				1AF1F39A2307188200D1F7A5 /* ApplicationCoordinator.swift */,
 				1A4597672209E17600515891 /* AppDelegate.swift */,
 				1AF1F3C02307B9E500D1F7A5 /* Main.storyboard */,
-				1A21A0D12307F76A00C9237C /* UserSingleton.swift */,
+				1A21A0D12307F76A00C9237C /* UserService.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -245,7 +247,7 @@
 			children = (
 				1AF1F389230713D800D1F7A5 /* AuthFactory.swift */,
 				1AF1F3982307188200D1F7A5 /* AuthCoordinator.swift */,
-				1A4597732209E19F00515891 /* AuthAPI.swift */,
+				1A4597732209E19F00515891 /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -313,6 +315,7 @@
 				1A7971DD220D54F600866332 /* Extension+ViewController.swift */,
 				1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */,
 				1AF1F3BB2307A3DC00D1F7A5 /* Extension+UINavigationBar.swift */,
+				1A9E3EDB232F603D005350DF /* Extension+DI.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -729,20 +732,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplateTests/Pods-iOSBoilerplateTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplateTests/Pods-iOSBoilerplateTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplateTests/Pods-iOSBoilerplateTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -777,38 +771,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBoilerplate/Pods-iOSBoilerplate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -876,6 +843,7 @@
 				1A4597B22209E1AE00515891 /* ShadowView.swift in Sources */,
 				1A4597AB2209E1AE00515891 /* ReachabilityHelper.swift in Sources */,
 				1AF1F3B62307188300D1F7A5 /* BaseCoordinator.swift in Sources */,
+				1A9E3EDC232F603D005350DF /* Extension+DI.swift in Sources */,
 				1A4597A22209E1AE00515891 /* Extension+Collection.swift in Sources */,
 				1AF1F3BA23071C1E00D1F7A5 /* CoordinatorNavigationController.swift in Sources */,
 				1A45978B2209E19F00515891 /* HomeVC.swift in Sources */,
@@ -894,11 +862,11 @@
 				1AC54BAA232643790079CA7D /* Print.swift in Sources */,
 				1A7971EC220DD44C00866332 /* BookTC.swift in Sources */,
 				1A7971E2220DB0DE00866332 /* HomeVM.swift in Sources */,
-				1A4597822209E19F00515891 /* AuthAPI.swift in Sources */,
+				1A4597822209E19F00515891 /* AuthService.swift in Sources */,
 				1AF1F3742303D6E700D1F7A5 /* Rx+Extensions.swift in Sources */,
 				1A4597AA2209E1AE00515891 /* Bindable.swift in Sources */,
 				1AF1F3B52307188300D1F7A5 /* Coordinator.swift in Sources */,
-				1A21A0D22307F76A00C9237C /* UserSingleton.swift in Sources */,
+				1A21A0D22307F76A00C9237C /* UserService.swift in Sources */,
 				1AF1F3BF2307A40900D1F7A5 /* CustomBackButton.swift in Sources */,
 				1AF1F38C230713D800D1F7A5 /* AuthFactory.swift in Sources */,
 				1AF1F3B42307188300D1F7A5 /* Presentable.swift in Sources */,

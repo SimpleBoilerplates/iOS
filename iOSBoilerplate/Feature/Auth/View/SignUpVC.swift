@@ -28,9 +28,8 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
 
     //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
-    lazy var viewModel: SignUpVM = {
-        SignUpVM()
-    }()
+   // private var viewModel: SignUpVM!
+    lazy var viewModel : SignUpVM = container.resolve(SignUpVM.self)!
 
     private var disposeBag = DisposeBag()
 

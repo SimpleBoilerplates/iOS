@@ -12,8 +12,15 @@ import RxSwift
 import SwiftyJSON
 
 struct LogInVM {
-    let authProvider = MoyaProvider<Auth>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+    
+    fileprivate var authProvider : MoyaProvider<AuthService>
+    fileprivate var userService : UserService
 
+    init(service : MoyaProvider<AuthService>,userService : UserService) {
+        authProvider = service
+        self.userService = userService
+    }
+    
     private let isLoadingVariable = BehaviorRelay(value: false)
     private let alertMessageVariable = PublishSubject<AlertMessage>()
 
@@ -57,7 +64,7 @@ struct LogInVM {
                     do {
                         let json = try JSON(data: response.data)
                         if !json.isError {
-                            UserSingleton.shared.setAcessToken(token: json["token"].stringValue)
+                            self.userService.setAcessToken(token: json["token"].stringValue)
                             self.successVariable.onNext(json)
                         } else {
                             self.alertMessageVariable.onNext(AlertMessage(title: json.message, message: ""))
