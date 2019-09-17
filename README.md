@@ -19,15 +19,11 @@ This is a very simple Boilerplate application, this has following features.
   - MVVM architecture
   - RxSwift
   - Coordinator Pattern
+  - Dependency Injection with [Swinject](https://github.com/Swinject/Swinject)
   - [Moya](https://github.com/Moya/Moya) for API call
   - Avoiding string identifier to instantiate a view controller from storyboard
   - Project by feature not by layer
 
-
-### RxSwift
-  * [Getting Started With RxSwift and RxCocoa](https://www.raywenderlich.com/1228891-getting-started-with-rxswift-and-rxcocoa)
-  * [Learn & Master ⚔️ the Basics of RxSwift in 10 Minutes](https://medium.com/ios-os-x-development/learn-and-master-%EF%B8%8F-the-basics-of-rxswift-in-10-minutes-818ea6e0a05b)
-  
 
 ### MVVM Tutorials
   * [MVVM pattern with Swift application](http://swiftyjimmy.com/mvvm-with-swift-application-part1/)
@@ -40,6 +36,14 @@ This is a very simple Boilerplate application, this has following features.
   * [MVVM with RxSwift](https://academy.realm.io/posts/slug-max-alexander-mvvm-rxswift/)
   * [MVVM + RxSwift on iOS](https://hackernoon.com/mvvm-rxswift-on-ios-part-1-69608b7ed5cd)
 
+### RxSwift
+  * [Getting Started With RxSwift and RxCocoa](https://www.raywenderlich.com/1228891-getting-started-with-rxswift-and-rxcocoa)
+  * [Learn & Master ⚔️ the Basics of RxSwift in 10 Minutes](https://medium.com/ios-os-x-development/learn-and-master-%EF%B8%8F-the-basics-of-rxswift-in-10-minutes-818ea6e0a05b)
+
+### Dependency Injection
+* [Swinject Tutorial for iOS: Getting Started Raywenderlich](https://www.raywenderlich.com/17-swinject-tutorial-for-ios-getting-started)
+* [Dependency Injection with Swinject](https://itnext.io/dependency-injection-with-swinject-73f3144b20f0)
+* [Dependency Injection Strategies in Swift](https://quickbirdstudios.com/blog/swift-dependency-injection-service-locators/)
 
 ### Coordinator Pattern
   * [How to implement flow coordinator pattern](https://medium.com/@pavlepesic/flow-coordination-pattern-5eb60cd220d5)
