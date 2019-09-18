@@ -16,7 +16,7 @@ extension UIViewController {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
-    var container : Container {
-        return (UIApplication.shared.delegate as! AppDelegate).getContainer()
+    var assembler : Assembler {
+        return (UIApplication.shared.delegate as! AppDelegate).getAssembler()
     }
 }

@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import SwiftValidator
 import UIKit
+import Swinject
 
 protocol SignUpVCProtocol: class {
     var onBack: (() -> Void)? { get set }
@@ -29,7 +30,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
     //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
    // private var viewModel: SignUpVM!
-    lazy var viewModel : SignUpVM = container.resolve(SignUpVM.self)!
+    lazy var viewModel : SignUpVM = Assembler.sharedAssembler.resolver.resolve(SignUpVM.self)!
 
     private var disposeBag = DisposeBag()
 

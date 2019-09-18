@@ -44,11 +44,14 @@
 		1A7971ED220DD44C00866332 /* BookTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A7971EB220DD44C00866332 /* BookTC.xib */; };
 		1A9E3EDC232F603D005350DF /* Extension+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E3EDB232F603D005350DF /* Extension+DI.swift */; };
 		1AC54BAA232643790079CA7D /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC54BA9232643790079CA7D /* Print.swift */; };
+		1ADA9A8823322C9800B2893C /* SharedAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA9A8723322C9800B2893C /* SharedAssembler.swift */; };
+		1ADA9A8A233251B700B2893C /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA9A89233251B700B2893C /* AuthAssembly.swift */; };
+		1ADA9A8C233251DE00B2893C /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA9A8B233251DE00B2893C /* HomeAssembly.swift */; };
 		1AF1F3742303D6E700D1F7A5 /* Rx+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */; };
 		1AF1F3762305020900D1F7A5 /* SwiftSugarClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */; };
 		1AF1F378230503A900D1F7A5 /* BookDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F377230503A900D1F7A5 /* BookDetailVC.swift */; };
 		1AF1F37A230503B800D1F7A5 /* BookDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F379230503B800D1F7A5 /* BookDetailVM.swift */; };
-		1AF1F38B230713D800D1F7A5 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F387230713D800D1F7A5 /* DependencyContainer.swift */; };
+		1AF1F38B230713D800D1F7A5 /* CoordinatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F387230713D800D1F7A5 /* CoordinatorContainer.swift */; };
 		1AF1F38C230713D800D1F7A5 /* AuthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F389230713D800D1F7A5 /* AuthFactory.swift */; };
 		1AF1F38D230713D800D1F7A5 /* HomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F38A230713D800D1F7A5 /* HomeFactory.swift */; };
 		1AF1F394230714DD00D1F7A5 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1F391230714DD00D1F7A5 /* CoordinatorFactory.swift */; };
@@ -138,11 +141,14 @@
 		1A7971EB220DD44C00866332 /* BookTC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookTC.xib; sourceTree = "<group>"; };
 		1A9E3EDB232F603D005350DF /* Extension+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+DI.swift"; sourceTree = "<group>"; };
 		1AC54BA9232643790079CA7D /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		1ADA9A8723322C9800B2893C /* SharedAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAssembler.swift; sourceTree = "<group>"; };
+		1ADA9A89233251B700B2893C /* AuthAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
+		1ADA9A8B233251DE00B2893C /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
 		1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extensions.swift"; sourceTree = "<group>"; };
 		1AF1F3752305020900D1F7A5 /* SwiftSugarClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSugarClosure.swift; sourceTree = "<group>"; };
 		1AF1F377230503A900D1F7A5 /* BookDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVC.swift; sourceTree = "<group>"; };
 		1AF1F379230503B800D1F7A5 /* BookDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailVM.swift; sourceTree = "<group>"; };
-		1AF1F387230713D800D1F7A5 /* DependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		1AF1F387230713D800D1F7A5 /* CoordinatorContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorContainer.swift; sourceTree = "<group>"; };
 		1AF1F389230713D800D1F7A5 /* AuthFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthFactory.swift; sourceTree = "<group>"; };
 		1AF1F38A230713D800D1F7A5 /* HomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactory.swift; sourceTree = "<group>"; };
 		1AF1F391230714DD00D1F7A5 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 				1AF1F389230713D800D1F7A5 /* AuthFactory.swift */,
 				1AF1F3982307188200D1F7A5 /* AuthCoordinator.swift */,
 				1A4597732209E19F00515891 /* AuthService.swift */,
+				1ADA9A89233251B700B2893C /* AuthAssembly.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -315,7 +322,6 @@
 				1A7971DD220D54F600866332 /* Extension+ViewController.swift */,
 				1AF1F3732303D6E700D1F7A5 /* Rx+Extensions.swift */,
 				1AF1F3BB2307A3DC00D1F7A5 /* Extension+UINavigationBar.swift */,
-				1A9E3EDB232F603D005350DF /* Extension+DI.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 		1A7971D7220D4A9600866332 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1ADA9A8B233251DE00B2893C /* HomeAssembly.swift */,
 				1AF1F38A230713D800D1F7A5 /* HomeFactory.swift */,
 				1AF1F3992307188200D1F7A5 /* HomeCoordinator.swift */,
 				1A7971DF220DAE9F00866332 /* BooksAPI.swift */,
@@ -459,7 +466,9 @@
 		1AF1F386230713D800D1F7A5 /* DependencyContainer */ = {
 			isa = PBXGroup;
 			children = (
-				1AF1F387230713D800D1F7A5 /* DependencyContainer.swift */,
+				1A9E3EDB232F603D005350DF /* Extension+DI.swift */,
+				1AF1F387230713D800D1F7A5 /* CoordinatorContainer.swift */,
+				1ADA9A8723322C9800B2893C /* SharedAssembler.swift */,
 			);
 			name = DependencyContainer;
 			path = Coordinator/DependencyContainer;
@@ -835,7 +844,7 @@
 			files = (
 				1A7971E0220DAE9F00866332 /* BooksAPI.swift in Sources */,
 				1A4597B12209E1AE00515891 /* LLSpinner.swift in Sources */,
-				1AF1F38B230713D800D1F7A5 /* DependencyContainer.swift in Sources */,
+				1AF1F38B230713D800D1F7A5 /* CoordinatorContainer.swift in Sources */,
 				1A4597892209E19F00515891 /* SignUpVM.swift in Sources */,
 				1AF1F3B72307188300D1F7A5 /* Router.swift in Sources */,
 				1A4597AF2209E1AE00515891 /* K+SB.swift in Sources */,
@@ -843,6 +852,7 @@
 				1A4597B22209E1AE00515891 /* ShadowView.swift in Sources */,
 				1A4597AB2209E1AE00515891 /* ReachabilityHelper.swift in Sources */,
 				1AF1F3B62307188300D1F7A5 /* BaseCoordinator.swift in Sources */,
+				1ADA9A8C233251DE00B2893C /* HomeAssembly.swift in Sources */,
 				1A9E3EDC232F603D005350DF /* Extension+DI.swift in Sources */,
 				1A4597A22209E1AE00515891 /* Extension+Collection.swift in Sources */,
 				1AF1F3BA23071C1E00D1F7A5 /* CoordinatorNavigationController.swift in Sources */,
@@ -859,6 +869,7 @@
 				1AF1F378230503A900D1F7A5 /* BookDetailVC.swift in Sources */,
 				1A4597A32209E1AE00515891 /* Extension+Json.swift in Sources */,
 				1AF1F3AD2307188200D1F7A5 /* HomeCoordinator.swift in Sources */,
+				1ADA9A8823322C9800B2893C /* SharedAssembler.swift in Sources */,
 				1AC54BAA232643790079CA7D /* Print.swift in Sources */,
 				1A7971EC220DD44C00866332 /* BookTC.swift in Sources */,
 				1A7971E2220DB0DE00866332 /* HomeVM.swift in Sources */,
@@ -883,6 +894,7 @@
 				1A4597B02209E1AE00515891 /* K.swift in Sources */,
 				1AF1F3AF2307188200D1F7A5 /* DeepLinkOption.swift in Sources */,
 				1AF1F3B82307188300D1F7A5 /* FadeAnimator.swift in Sources */,
+				1ADA9A8A233251B700B2893C /* AuthAssembly.swift in Sources */,
 				1AF1F38D230713D800D1F7A5 /* HomeFactory.swift in Sources */,
 				1AF1F3762305020900D1F7A5 /* SwiftSugarClosure.swift in Sources */,
 				1AF1F394230714DD00D1F7A5 /* CoordinatorFactory.swift in Sources */,

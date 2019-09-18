@@ -9,7 +9,7 @@ protocol AuthFactory {
     func instantiateSignUpVC() -> SignUpVC
 }
 
-extension DependencyContainer: AuthFactory {
+extension CoordinatorContainer: AuthFactory {
 
     func instantiateLoginVC() -> LoginVC {
         let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)

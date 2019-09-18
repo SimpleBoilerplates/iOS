@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import SwiftValidator
 import UIKit
+import Swinject
 
 protocol LoginVCProtocol: class {
     var onBack: (() -> Void)? { get set }
@@ -26,7 +27,8 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
 
     private let validator = Validator()
    // private var loginVM: LogInVM!
-    lazy var loginVM : LogInVM = container.resolve(LogInVM.self)!
+    
+    lazy var loginVM : LogInVM = assembler.resolver.resolve(LogInVM.self)!
 
     //MARK:- LoginVCProtocol
     var onBack: (() -> Void)?

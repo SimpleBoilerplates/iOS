@@ -10,7 +10,7 @@ protocol HomeFactory {
 
 }
 
-extension DependencyContainer: HomeFactory {
+extension CoordinatorContainer: HomeFactory {
 
     func instantiateHomeVC() -> HomeVC {
         let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)

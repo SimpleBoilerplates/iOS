@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import UIKit
+import  Swinject
 
 protocol HomeVCProtocol: class {
     //var onBack: (() -> Void)? { get set }
@@ -26,8 +27,8 @@ class HomeVC: BaseViewController, HomeVCProtocol {
 //        HomeVM()
 //    }()
     
-    lazy var viewModel : HomeVM = container.resolve(HomeVM.self)!
-    lazy var userService : UserService = container.resolve(UserService.self)!
+    lazy var viewModel : HomeVM = assembler.resolver.resolve(HomeVM.self)!
+    lazy var userService : UserService = assembler.resolver.resolve(UserService.self)!
     
     private var disposeBag = DisposeBag()
 
