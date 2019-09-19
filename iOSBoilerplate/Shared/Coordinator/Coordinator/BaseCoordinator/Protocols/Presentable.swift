@@ -1,7 +1,6 @@
 //
 //  Presentable.swift
 
-
 import UIKit
 
 protocol Presentable {

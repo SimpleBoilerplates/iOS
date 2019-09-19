@@ -36,7 +36,7 @@ class BaseViewController: UIViewController, CoordinatorNavigationControllerDeleg
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setupNavigationController()
+        setupNavigationController()
     }
 
     // MARK: - Private methods
@@ -49,13 +49,9 @@ class BaseViewController: UIViewController, CoordinatorNavigationControllerDeleg
 
     // MARK: - SwipeBackNavigationControllerDelegate
 
-    internal func transitionBackFinished() {
+    internal func transitionBackFinished() {}
 
-    }
-
-    internal func didSelectCustomBackAction() {
-
-    }
+    internal func didSelectCustomBackAction() {}
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -89,11 +85,11 @@ extension BaseViewController: NetworkStatusListener {
     func networkStatusDidChange(status: Reachability.Connection) {
         switch status {
         case .none:
-            printToConsole(message:"ViewController: Network became unreachable")
+            printToConsole(message: "ViewController: Network became unreachable")
         case .wifi:
-            printToConsole(message:"ViewController: Network reachable through WiFi")
+            printToConsole(message: "ViewController: Network reachable through WiFi")
         case .cellular:
-            printToConsole(message:"ViewController: Network reachable through Cellular Data")
+            printToConsole(message: "ViewController: Network reachable through Cellular Data")
         }
         // loginButton.isEnabled = !(status == .notReachable)
     }

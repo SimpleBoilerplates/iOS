@@ -1,11 +1,9 @@
 //
 //  BaseCoordinator.swift
 
-
 import Foundation
 
 class BaseCoordinator: Coordinator {
-
     // MARK: - Vars & Lets
 
     var childCoordinators = [Coordinator]()
@@ -40,8 +38,5 @@ class BaseCoordinator: Coordinator {
         start(with: nil)
     }
 
-    func start(with option: DeepLinkOption?) {
-
-    }
-
+    func start(with _: DeepLinkOption?) {}
 }

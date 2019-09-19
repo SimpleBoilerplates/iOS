@@ -1,7 +1,6 @@
 //
 //  CoordinatorFactory.swift
 
-
 import UIKit
 
 protocol CoordinatorFactoryProtocol {

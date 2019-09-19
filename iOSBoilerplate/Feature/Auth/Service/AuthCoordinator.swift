@@ -6,7 +6,6 @@
 import Foundation
 
 final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
-
     // MARK: - CoordinatorFinishOutput
 
     var finishFlow: (() -> Void)?
@@ -17,8 +16,9 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     private let factory: Factory
 
     // MARK: - Private methods
+
     private func showLoginVC() {
-        let vc = self.factory.instantiateLoginVC()
+        let vc = factory.instantiateLoginVC()
         vc.onBack = { [unowned self] in
             self.router.popModule()
         }
@@ -28,11 +28,11 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.onSignUp = {
             self.showSignUpVC()
         }
-        self.router.push(vc)
+        router.push(vc)
     }
 
     private func showSignUpVC() {
-        let vc = self.factory.instantiateSignUpVC()
+        let vc = factory.instantiateSignUpVC()
         vc.onBack = { [unowned self] in
             self.router.dismissModule()
         }
@@ -42,18 +42,19 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.onSignIn = {
             self.router.dismissModule()
         }
-        self.router.present(vc)
+        router.present(vc)
     }
 
     // MARK: - Coordinator
+
     override func start() {
-        self.showLoginVC()
+        showLoginVC()
     }
 
     // MARK: - Init
+
     init(router: RouterProtocol, factory: Factory) {
         self.router = router
         self.factory = factory
     }
-
 }

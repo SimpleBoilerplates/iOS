@@ -14,7 +14,6 @@ protocol CoordinatorNavigationControllerDelegate: class {
 }
 
 class CoordinatorNavigationController: UINavigationController {
-
     // MARK: - Vars & Lets
 
     private var transition: UIViewControllerAnimatedTransitioning?
@@ -37,20 +36,20 @@ class CoordinatorNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
+        delegate = self
     }
 
     // MARK: - Public methods
 
     func setTransition(transition: UIViewControllerAnimatedTransitioning?) {
-        if self.shouldEnableSwipeBack {
-            self.enableSwipeBack()
+        if shouldEnableSwipeBack {
+            enableSwipeBack()
         }
 
         self.transition = transition
 
         if transition != nil {
-            self.disableSwipeBack()
+            disableSwipeBack()
         }
     }
 
@@ -62,29 +61,29 @@ class CoordinatorNavigationController: UINavigationController {
         self.shouldUseViewControllerTitles = shouldUseViewControllerTitles
     }
 
-    func customizeTitle(titleColor: UIColor, largeTextFont: UIFont, smallTextFont: UIFont, isTranslucent: Bool = true, barTintColor: UIColor? = nil,prefersLargeTitles: Bool = false) {
-        self.navigationBar.prefersLargeTitles = prefersLargeTitles
+    func customizeTitle(titleColor: UIColor, largeTextFont: UIFont, smallTextFont: UIFont, isTranslucent: Bool = true, barTintColor: UIColor? = nil, prefersLargeTitles: Bool = false) {
+        navigationBar.prefersLargeTitles = prefersLargeTitles
         UINavigationBar.customNavBarStyle(color: titleColor, largeTextFont: largeTextFont, smallTextFont: smallTextFont, isTranslucent: isTranslucent, barTintColor: barTintColor)
     }
 
     func enableSwipeBack() {
-        self.shouldEnableSwipeBack = true
-        self.interactivePopGestureRecognizer?.isEnabled = true
-        self.interactivePopGestureRecognizer?.delegate = self
+        shouldEnableSwipeBack = true
+        interactivePopGestureRecognizer?.isEnabled = true
+        interactivePopGestureRecognizer?.delegate = self
     }
 
     // MARK: - Private methods
 
     private func disableSwipeBack() {
-        self.interactivePopGestureRecognizer?.isEnabled = false
-        self.interactivePopGestureRecognizer?.delegate = nil
+        interactivePopGestureRecognizer?.isEnabled = false
+        interactivePopGestureRecognizer?.delegate = nil
     }
 
     private func setupCustomBackButton(viewController: UIViewController) {
-        if self.backButtonImage != nil || self.backButtonTitle != nil {
+        if backButtonImage != nil || backButtonTitle != nil {
             viewController.navigationItem.hidesBackButton = true
-            let backButtonTitle = self.shouldUseViewControllerTitles ? self.viewControllers[self.viewControllers.count - 2].title : self.backButtonTitle
-            let button = CustomBackButton.initCustomBackButton(backButtonImage: self.backButtonImage, backButtonTitle: backButtonTitle, backButtonfont: self.backButtonfont, backButtonTitleColor: self.backButtonTitleColor)
+            let backButtonTitle = shouldUseViewControllerTitles ? viewControllers[self.viewControllers.count - 2].title : self.backButtonTitle
+            let button = CustomBackButton.initCustomBackButton(backButtonImage: backButtonImage, backButtonTitle: backButtonTitle, backButtonfont: backButtonfont, backButtonTitleColor: backButtonTitleColor)
             button.addTarget(self, action: #selector(actionBack(sender:)), for: .touchUpInside)
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
         }
@@ -92,16 +91,16 @@ class CoordinatorNavigationController: UINavigationController {
 
     // MARK: - Actions
 
-    @objc private func actionBack(sender: UIBarButtonItem) {
-        self.swipeBackDelegate?.didSelectCustomBackAction()
+    @objc private func actionBack(sender _: UIBarButtonItem) {
+        swipeBackDelegate?.didSelectCustomBackAction()
     }
 
     // MARK: - Overrides
 
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        self.duringPushAnimation = true
+        duringPushAnimation = true
         super.pushViewController(viewController, animated: animated)
-        self.setupCustomBackButton(viewController: viewController)
+        setupCustomBackButton(viewController: viewController)
     }
 
     // MARK: - Initialization
@@ -113,40 +112,36 @@ class CoordinatorNavigationController: UINavigationController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
 }
 
 // MARK: - Extensions
+
 // MARK: - UIGestureRecognizerDelegate
 
 extension CoordinatorNavigationController: UIGestureRecognizerDelegate {
-
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        guard gestureRecognizer == self.interactivePopGestureRecognizer else {
+        guard gestureRecognizer == interactivePopGestureRecognizer else {
             return true
         }
 
-        return self.viewControllers.count > 1 && self.duringPushAnimation == false
+        return viewControllers.count > 1 && duringPushAnimation == false
     }
 
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_: UIGestureRecognizer, shouldBeRequiredToFailBy _: UIGestureRecognizer) -> Bool {
         return true
     }
-
 }
 
 // MARK: - UINavigationControllerDelegate
 
 extension CoordinatorNavigationController: UINavigationControllerDelegate {
-
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return self.transition
+    func navigationController(_: UINavigationController, animationControllerFor _: UINavigationController.Operation, from _: UIViewController, to _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition
     }
 
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, willShow _: UIViewController, animated _: Bool) {
         if let coordinator = navigationController.topViewController?.transitionCoordinator {
-            coordinator.notifyWhenInteractionChanges { (context) in
+            coordinator.notifyWhenInteractionChanges { context in
                 if !context.isCancelled {
                     self.swipeBackDelegate?.transitionBackFinished()
                 }
@@ -154,12 +149,11 @@ extension CoordinatorNavigationController: UINavigationControllerDelegate {
         }
     }
 
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, didShow _: UIViewController, animated _: Bool) {
         guard let swipeNavigationController = navigationController as? CoordinatorNavigationController else {
             return
         }
 
         swipeNavigationController.duringPushAnimation = false
     }
-
 }

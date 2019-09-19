@@ -1,17 +1,14 @@
 //
 //  WalktroughViewControllerFactoryImp.swift
 
-
 import UIKit
 
 protocol HomeFactory {
     func instantiateHomeVC() -> HomeVC
     func instantiateBookDetailVC(viewModel: BookDetailVM) -> BookDetailVC
-
 }
 
 extension CoordinatorContainer: HomeFactory {
-
     func instantiateHomeVC() -> HomeVC {
         let vc = UIStoryboard.storyboard(storyboard: .Home).instantiateViewController(HomeVC.self)
         return vc
@@ -22,5 +19,4 @@ extension CoordinatorContainer: HomeFactory {
         vc.viewModel = viewModel
         return vc
     }
-
 }

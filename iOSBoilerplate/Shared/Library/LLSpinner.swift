@@ -18,7 +18,7 @@ open class LLSpinner {
 
     public static func spin(style: UIActivityIndicatorView.Style = style, backgroundColor: UIColor = backgroundColor, touchHandler: (() -> Void)? = nil) {
         if spinnerView == nil,
-           let window = UIApplication.shared.keyWindow {
+            let window = UIApplication.shared.keyWindow {
             let frame = UIScreen.main.bounds
             spinnerView = UIActivityIndicatorView(frame: frame)
             spinnerView!.backgroundColor = backgroundColor

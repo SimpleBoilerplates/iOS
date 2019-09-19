@@ -9,14 +9,13 @@
 import RxCocoa
 import RxSwift
 import SwiftValidator
-import UIKit
 import Swinject
+import UIKit
 
 protocol SignUpVCProtocol: class {
     var onBack: (() -> Void)? { get set }
     var onSignUp: (() -> Void)? { get set }
     var onSignIn: (() -> Void)? { get set }
-
 }
 
 class SignUpVC: BaseTableViewController, SignUpVCProtocol {
@@ -27,10 +26,10 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
 
     let validator = Validator()
 
-    //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
+    // weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
-   // private var viewModel: SignUpVM!
-    lazy var viewModel : SignUpVM = Assembler.sharedAssembler.resolver.resolve(SignUpVM.self)!
+    // private var viewModel: SignUpVM!
+    lazy var viewModel: SignUpVM = Assembler.sharedAssembler.resolver.resolve(SignUpVM.self)!
 
     private var disposeBag = DisposeBag()
 
@@ -54,7 +53,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
     // MARK: - Overrides
 
     override func didSelectCustomBackAction() {
-        self.onBack?()
+        onBack?()
     }
 
     @IBAction func actionSignUp(_: Any) {
@@ -62,7 +61,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
     }
 
     @IBAction func actionLogin(_: Any) {
-        self.onSignIn?()
+        onSignIn?()
         // authCoordinatorDelegate?.signIn()
     }
 
@@ -84,26 +83,26 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
         (txtFieldFullName.rx.text <-> viewModel.fullName).disposed(by: disposeBag)
 
         viewModel.isValid.map {
-                    $0
-                }
-                .bind(to: btnSignUp.rx.isEnabled)
-                .disposed(by: disposeBag)
+            $0
+        }
+        .bind(to: btnSignUp.rx.isEnabled)
+        .disposed(by: disposeBag)
 
         viewModel
-                .onShowAlert
-                .map { [weak self] in
-                    AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onShowAlert
+            .map { [weak self] in
+                AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
         viewModel
-                .onShowingLoading
-                .map { [weak self] in
-                    self?.setLoadingHud(visible: $0)
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onShowingLoading
+            .map { [weak self] in
+                self?.setLoadingHud(visible: $0)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
 //        viewModel.alertMessage.subscribe { (alertMessage) in
 //            AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
@@ -124,12 +123,12 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
 //            }.disposed(by: disposeBag)
 
         viewModel
-                .onSuccess
-                .map { _ in
-                    self.onSignIn?()
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onSuccess
+            .map { _ in
+                self.onSignIn?()
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 //        viewModel.onSuccess.subscribe{ (success) in
 //            guard let success = success.element else {
 //                return

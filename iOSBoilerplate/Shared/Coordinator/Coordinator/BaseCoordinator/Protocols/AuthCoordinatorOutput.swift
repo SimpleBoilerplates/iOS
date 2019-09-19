@@ -1,7 +1,6 @@
 //
 //  AuthCoordinatorOutput.swift
 
-
 import Foundation
 
 protocol CoordinatorFinishOutput {

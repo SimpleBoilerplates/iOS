@@ -6,7 +6,6 @@
 //  Copyright © 2018 sadman samee. All rights reserved.
 //
 
-
 class Bindable<T> {
     typealias Listener = ((T) -> Void)
     var listener: Listener?

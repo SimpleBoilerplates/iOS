@@ -9,7 +9,6 @@
 import UIKit
 
 class CustomBackButton: UIButton {
-
     static func initCustomBackButton(backButtonImage: UIImage? = nil, backButtonTitle: String? = nil, backButtonfont: UIFont? = nil, backButtonTitleColor: UIColor? = nil) -> UIButton {
         let button = UIButton(type: .system)
         if let backButtonImage = backButtonImage {
@@ -29,5 +28,4 @@ class CustomBackButton: UIButton {
 
         return button
     }
-
 }

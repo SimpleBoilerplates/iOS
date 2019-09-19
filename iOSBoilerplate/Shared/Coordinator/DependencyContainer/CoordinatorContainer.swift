@@ -1,15 +1,13 @@
 //
 //  DependencyContainer.swift
 
-
-import UIKit
 import Alamofire
+import UIKit
 
 typealias Factory = CoordinatorFactoryProtocol & ViewControllerFactory
 typealias ViewControllerFactory = AuthFactory & HomeFactory
 
 class CoordinatorContainer {
-
     // MARK: - Vars & Lets
 
     private var rootController: CoordinatorNavigationController
@@ -21,40 +19,39 @@ class CoordinatorContainer {
     // MARK: - Public func
 
     func start() {
-        self.aplicationCoordinator.start()
+        aplicationCoordinator.start()
     }
 
     // MARK: - Initialization
 
     init(rootController: CoordinatorNavigationController) {
         self.rootController = rootController
-        self.customoizeNavigationController()
+        customoizeNavigationController()
     }
 
     // MARK: - Private methods
 
     private func customoizeNavigationController() {
-        self.rootController.enableSwipeBack()
+        rootController.enableSwipeBack()
 //        self.rootController.customizeTitle(titleColor: UIColor.red,
 //                largeTextFont: UIFont(name: "Menlo-Bold", size: 18)!,
 //                smallTextFont: UIFont(name: "Menlo-Bold", size: 12)!,
 //                isTranslucent: true,
 //                barTintColor: nil,
 //                prefersLargeTitles: false)
-        self.rootController.customizeBackButton(backButtonImage: UIImage(named: "GoBack"),
-                backButtonTitle: "",
-                backButtonfont: UIFont(name: "Menlo-Bold", size: 15),
-                backButtonTitleColor: .black,
-                shouldUseViewControllerTitles: false)
+        rootController.customizeBackButton(backButtonImage: UIImage(named: "GoBack"),
+                                           backButtonTitle: "",
+                                           backButtonfont: UIFont(name: "Menlo-Bold", size: 15),
+                                           backButtonTitleColor: .black,
+                                           shouldUseViewControllerTitles: false)
     }
-
 }
 
 // MARK: - Extensions
+
 // MARK: - CoordinatorFactoryProtocol
 
 extension CoordinatorContainer: CoordinatorFactoryProtocol {
-
     func instantiateApplicationCoordinator() -> ApplicationCoordinator {
         return ApplicationCoordinator(router: Router(rootController: rootController), factory: self as Factory, launchInstructor: LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated()))
     }
@@ -66,5 +63,4 @@ extension CoordinatorContainer: CoordinatorFactoryProtocol {
     func instantiateHomeCoordinator(router: RouterProtocol) -> HomeCoordinator {
         return HomeCoordinator(router: router, factory: self)
     }
-
 }

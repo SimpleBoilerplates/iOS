@@ -6,7 +6,6 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-
 struct KEnum {
     enum Params: String {
         case user

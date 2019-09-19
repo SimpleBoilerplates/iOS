@@ -215,7 +215,6 @@
 				1AF1F39A2307188200D1F7A5 /* ApplicationCoordinator.swift */,
 				1A4597672209E17600515891 /* AppDelegate.swift */,
 				1AF1F3C02307B9E500D1F7A5 /* Main.storyboard */,
-				1A21A0D12307F76A00C9237C /* UserService.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -251,6 +250,7 @@
 		1A4597722209E19F00515891 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1A21A0D12307F76A00C9237C /* UserService.swift */,
 				1AF1F389230713D800D1F7A5 /* AuthFactory.swift */,
 				1AF1F3982307188200D1F7A5 /* AuthCoordinator.swift */,
 				1A4597732209E19F00515891 /* AuthService.swift */,

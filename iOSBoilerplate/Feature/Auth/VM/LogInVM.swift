@@ -12,21 +12,20 @@ import RxSwift
 import SwiftyJSON
 
 struct LogInVM {
-    
-    fileprivate var authProvider : MoyaProvider<AuthService>
-    fileprivate var userService : UserService
+    fileprivate var authProvider: MoyaProvider<AuthService>
+    fileprivate var userService: UserService
 
-    init(service : MoyaProvider<AuthService>,userService : UserService) {
+    init(service: MoyaProvider<AuthService>, userService: UserService) {
         authProvider = service
         self.userService = userService
     }
-    
+
     private let isLoadingVariable = BehaviorRelay(value: false)
     private let alertMessageVariable = PublishSubject<AlertMessage>()
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()
-                .distinctUntilChanged()
+            .distinctUntilChanged()
     }
 
     var onShowAlert: Observable<AlertMessage> {
@@ -49,7 +48,7 @@ struct LogInVM {
                 return false
             }
             return email.count > 0
-                    && password.count > 0
+                && password.count > 0
         }.share()
     }
 

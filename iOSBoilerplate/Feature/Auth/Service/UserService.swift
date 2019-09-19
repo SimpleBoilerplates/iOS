@@ -10,60 +10,58 @@ import Foundation
 import SwiftyJSON
 
 class UserService {
-    
     static let shared: UserService = {
         let instance = UserService()
         // Setup code
         return instance
     }()
-    
+
     init() {
-       user = fetchUser()
+        user = fetchUser()
     }
-    
+
     private var user: User?
 
-    func isAuthonticated() -> Bool{
+    func isAuthonticated() -> Bool {
         if let tok = UserDefaults.standard.value(forKey: "token"), let tokenString = tok as? String {
-            return  true
+            return true
         } else {
-            return  false
+            return false
         }
     }
-    
-    func getAcessToken() -> String{
+
+    func getAcessToken() -> String {
         if let tok = UserDefaults.standard.value(forKey: "token"), let tokenString = tok as? String {
-            return  tokenString
+            return tokenString
         } else {
-            return  ""
+            return ""
         }
     }
-    
+
     func setAcessToken(token: String) {
         UserDefaults.standard.set(token, forKey: "token")
     }
-    
-    func fetchUser() -> User?{
+
+    func fetchUser() -> User? {
         var user: User?
-                if let usr = UserDefaults.standard.value(forKey: "user") {
-                    let usrDictionary = usr as! Dictionary<String, Any>
-                    let json = JSON(parseJSON: usrDictionary.json)
-                    user = User(fromJson: json)
+        if let usr = UserDefaults.standard.value(forKey: "user") {
+            let usrDictionary = usr as! [String: Any]
+            let json = JSON(parseJSON: usrDictionary.json)
+            user = User(fromJson: json)
         }
         return user
     }
-    
+
     func saveUser(user: User) {
         UserDefaults.standard.set(user.toDictionary(), forKey: "user")
         self.user = user
     }
-    
-     func logout() {
+
+    func logout() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "user")
         defaults.removeObject(forKey: "token")
         defaults.synchronize()
         user = nil
     }
-    
 }

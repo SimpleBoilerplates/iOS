@@ -9,8 +9,8 @@
 import RxCocoa
 import RxSwift
 import SwiftValidator
-import UIKit
 import Swinject
+import UIKit
 
 protocol LoginVCProtocol: class {
     var onBack: (() -> Void)? { get set }
@@ -23,14 +23,15 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     @IBOutlet var txtFieldPassword: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
 
-    //weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
+    // weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     private let validator = Validator()
-   // private var loginVM: LogInVM!
-    
-    lazy var loginVM : LogInVM = assembler.resolver.resolve(LogInVM.self)!
+    // private var loginVM: LogInVM!
 
-    //MARK:- LoginVCProtocol
+    lazy var loginVM: LogInVM = assembler.resolver.resolve(LogInVM.self)!
+
+    // MARK: - LoginVCProtocol
+
     var onBack: (() -> Void)?
     var onLogin: (() -> Void)?
     var onSignUp: (() -> Void)?
@@ -57,7 +58,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     // MARK: - Overrides
 
     override func didSelectCustomBackAction() {
-        self.onBack?()
+        onBack?()
     }
 
     @IBAction func actionLogin(_: Any) {
@@ -65,7 +66,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     }
 
     @IBAction func actionSignUP(_: Any) {
-        self.onSignUp?()
+        onSignUp?()
         // authCoordinatorDelegate?.signUp()
     }
 
@@ -73,8 +74,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
         loginVM.login()
     }
 
-    private func setUI() {
-    }
+    private func setUI() {}
 
     private func setLoadingHud(visible: Bool) {
         if visible {
@@ -89,10 +89,10 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
         (txtFieldEmail.rx.text <-> loginVM.email).disposed(by: disposeBag)
 
         loginVM.isValid.map {
-                    $0
-                }
-                .bind(to: btnLogin.rx.isEnabled)
-                .disposed(by: disposeBag)
+            $0
+        }
+        .bind(to: btnLogin.rx.isEnabled)
+        .disposed(by: disposeBag)
 
 //        viewModel.onShowAlert.subscribe { (alertMessage) in
 //                AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
@@ -114,28 +114,28 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
         ////
 //
         loginVM
-                .onShowAlert
-                .map { [weak self] in
-                    AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onShowAlert
+            .map { [weak self] in
+                AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
         loginVM
-                .onShowingLoading
-                .map { [weak self] in
-                    self?.setLoadingHud(visible: $0)
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onShowingLoading
+            .map { [weak self] in
+                self?.setLoadingHud(visible: $0)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
         loginVM
-                .onSuccess
-                .map { _ in
-                    self.onLogin?()
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onSuccess
+            .map { _ in
+                self.onLogin?()
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
 //        viewModel.onSuccess.subscribe{ (success) in
 //            guard let success = success.element else {

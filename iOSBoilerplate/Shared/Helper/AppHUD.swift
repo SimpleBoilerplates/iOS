@@ -10,15 +10,14 @@ struct AlertMessage {
 }
 
 class AppHUD {
-    
     static let shared: AppHUD = {
         let instance = AppHUD()
         // Setup code
         return instance
     }()
-    
+
     private init() {}
-     func showHUD() {
+    func showHUD() {
         LLSpinner.backgroundColor = UIColor(white: 0, alpha: 0.6)
         LLSpinner.style = .white
         LLSpinner.spin()
@@ -26,12 +25,12 @@ class AppHUD {
         // HUD.show(.progress)
     }
 
-     func hideHUD() {
+    func hideHUD() {
         LLSpinner.stop()
         // HUD.hide()
     }
 
-     func showErrorMessage(_ message: String, title: String) {
+    func showErrorMessage(_ message: String, title: String) {
         let view = MessageView.viewFromNib(layout: .messageView)
 
         // Theme message elements with the warning style.
@@ -51,7 +50,7 @@ class AppHUD {
         SwiftMessages.show(view: view)
     }
 
-     func showWarningMessage(_ message: String, title: String) {
+    func showWarningMessage(_ message: String, title: String) {
         let view = MessageView.viewFromNib(layout: .messageView)
 
         // Theme message elements with the warning style.
@@ -71,7 +70,7 @@ class AppHUD {
         SwiftMessages.show(view: view)
     }
 
-     func showSuccessMessage(_ message: String, title: String) {
+    func showSuccessMessage(_ message: String, title: String) {
         let view = MessageView.viewFromNib(layout: .messageView)
 
         // Theme message elements with the warning style.

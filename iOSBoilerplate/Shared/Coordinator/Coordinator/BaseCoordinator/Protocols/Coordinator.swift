@@ -1,7 +1,6 @@
 //
 //  Coordinator.swift
 
-
 import Foundation
 
 protocol Coordinator: class {

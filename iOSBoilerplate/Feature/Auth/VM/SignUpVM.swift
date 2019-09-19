@@ -6,28 +6,26 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-
 import Moya
 import RxRelay
 import RxSwift
 import SwiftyJSON
 
 class SignUpVM {
+    fileprivate var authProvider: MoyaProvider<AuthService>
 
-    fileprivate var authProvider : MoyaProvider<AuthService>
-
-    init(service : MoyaProvider<AuthService>) {
+    init(service: MoyaProvider<AuthService>) {
         authProvider = service
     }
-    
-    //let authProvider = MoyaProvider<AuthService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+
+    // let authProvider = MoyaProvider<AuthService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
     private let isLoadingVariable = BehaviorRelay(value: false)
     private let alertMessageVariable = PublishSubject<AlertMessage>()
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()
-                .distinctUntilChanged()
+            .distinctUntilChanged()
     }
 
     var onShowAlert: Observable<AlertMessage> {
@@ -51,7 +49,7 @@ class SignUpVM {
                 return false
             }
             return email.count > 0
-                    && password.count > 0
+                && password.count > 0
         }.share()
     }
 

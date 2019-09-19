@@ -10,23 +10,23 @@ import Foundation
 import Moya
 import Swinject
 
-class HomeAssembly: Assembly{
+class HomeAssembly: Assembly {
     func assemble(container: Container) {
         let userService = UserService()
-        
+
         let tokenClosure: () -> String = {
             userService.getAcessToken()
         }
-        
-        container.register(UserService.self, factory: { (container) in
+
+        container.register(UserService.self, factory: { _ in
             userService
         }).inObjectScope(ObjectScope.container)
-        
-        container.register(MoyaProvider<BooksService>.self, factory: { (container) in
+
+        container.register(MoyaProvider<BooksService>.self, factory: { _ in
             MoyaProvider<BooksService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
         }).inObjectScope(ObjectScope.container)
-        
-        container.register(HomeVM.self, factory: { (container) in
+
+        container.register(HomeVM.self, factory: { container in
             HomeVM(service: container.resolve(MoyaProvider<BooksService>.self)!)
         }).inObjectScope(ObjectScope.container)
     }

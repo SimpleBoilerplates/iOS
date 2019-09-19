@@ -7,33 +7,30 @@
 
 import RxCocoa
 import RxSwift
+import Swinject
 import UIKit
-import  Swinject
 
 protocol HomeVCProtocol: class {
-    //var onBack: (() -> Void)? { get set }
+    // var onBack: (() -> Void)? { get set }
     var onSignOut: (() -> Void)? { get set }
     var onBookSelected: ((BookDetailVM) -> Void)? { get set }
-
 }
 
 class HomeVC: BaseViewController, HomeVCProtocol {
-
-
     @IBOutlet var tableView: UITableView!
     // weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
 //    lazy var viewModel: HomeVM = {
 //        HomeVM()
 //    }()
-    
-    lazy var viewModel : HomeVM = assembler.resolver.resolve(HomeVM.self)!
-    lazy var userService : UserService = assembler.resolver.resolve(UserService.self)!
-    
+
+    lazy var viewModel: HomeVM = assembler.resolver.resolve(HomeVM.self)!
+    lazy var userService: UserService = assembler.resolver.resolve(UserService.self)!
+
     private var disposeBag = DisposeBag()
 
+    // MARK: - HomeVCProtocol
 
-    //MARK:- HomeVCProtocol
     var onSignOut: (() -> Void)?
     var onBookSelected: ((BookDetailVM) -> Void)?
 
@@ -42,7 +39,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
         title = "Books"
         setUpTableView()
         bindViewModel()
-      let nav =  self.navigationController as! CoordinatorNavigationController
+        let nav = navigationController as! CoordinatorNavigationController
         nav.customizeBackButton()
     }
 
@@ -50,6 +47,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
 //        super.viewDidDisappear(animated)
 //        coordinator?.didFinishBuying()
 //    }
+
     // MARK: - Overrides
 
     override func didSelectCustomBackAction() {
@@ -61,7 +59,7 @@ class HomeVC: BaseViewController, HomeVCProtocol {
     @IBAction func actionLogout(_: Any) {
         userService.logout()
         onSignOut?()
-        //homeCoordinatorDelegate?.stop()
+        // homeCoordinatorDelegate?.stop()
     }
 }
 
@@ -80,20 +78,20 @@ extension HomeVC {
         viewModel.getBooks()
 
         viewModel
-                .onShowAlert
-                .map { [weak self] in
-                    AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onShowAlert
+            .map { [weak self] in
+                AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
         viewModel
-                .onShowingLoading
-                .map { [weak self] in
-                    self?.setLoadingHud(visible: $0)
-                }
-                .subscribe()
-                .disposed(by: disposeBag)
+            .onShowingLoading
+            .map { [weak self] in
+                self?.setLoadingHud(visible: $0)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
 //    viewModel.alertMessage.subscribe { (alertMessage) in
 //        AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
@@ -114,23 +112,23 @@ extension HomeVC {
 //        }.disposed(by: disposeBag)
 
         tableView
-                .rx.setDelegate(self)
-                .disposed(by: disposeBag)
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
 
         tableView
-                .rx
-                .modelSelected(BookTableViewCellType.self)
-                .subscribe(
-                        onNext: { [weak self] cellType in
-                            if case let .normal(vm) = cellType {
-                                self?.onBookSelected?(BookDetailVM(bookVM: vm))
-                            }
-                            if let selectedRowIndexPath = self?.tableView.indexPathForSelectedRow {
-                                self?.tableView?.deselectRow(at: selectedRowIndexPath, animated: true)
-                            }
-                        }
-                )
-                .disposed(by: disposeBag)
+            .rx
+            .modelSelected(BookTableViewCellType.self)
+            .subscribe(
+                onNext: { [weak self] cellType in
+                    if case let .normal(vm) = cellType {
+                        self?.onBookSelected?(BookDetailVM(bookVM: vm))
+                    }
+                    if let selectedRowIndexPath = self?.tableView.indexPathForSelectedRow {
+                        self?.tableView?.deselectRow(at: selectedRowIndexPath, animated: true)
+                    }
+                }
+            )
+            .disposed(by: disposeBag)
 
         viewModel.bookCells.bind(to: tableView.rx.items) { tableView, _, element in
             // let indexPath = IndexPath(item: index, section: 0)

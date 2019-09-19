@@ -59,10 +59,10 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
 
     public var authorizationType: AuthorizationType {
         switch self {
-                //        case .targetThatNeedsBearerAuth:
-                //            return .bearer
-                //        case .targetThatNeedsBasicAuth:
-                //            return .basic
+        //        case .targetThatNeedsBearerAuth:
+        //            return .bearer
+        //        case .targetThatNeedsBasicAuth:
+        //            return .basic
         case .login, .signUp:
             return .none
         }

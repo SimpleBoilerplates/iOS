@@ -1,10 +1,7 @@
 //
 //  ApplicationCoordinator.swift
 
-
-
 final class ApplicationCoordinator: BaseCoordinator {
-
     // MARK: - Vars & Lets
 
     private let factory: Factory
@@ -15,7 +12,6 @@ final class ApplicationCoordinator: BaseCoordinator {
 
     override func start(with option: DeepLinkOption?) {
         if option != nil {
-
         } else {
             switch launchInstructor {
             case .auth: runAuthFlow()
@@ -27,33 +23,32 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Private methods
 
     private func runAuthFlow() {
-        let coordinator = self.factory.instantiateAuthCoordinator(router: self.router)
+        let coordinator = factory.instantiateAuthCoordinator(router: router)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
             self.launchInstructor = LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated())
             self.start()
         }
-        self.addDependency(coordinator)
+        addDependency(coordinator)
         coordinator.start()
     }
 
     private func runHomeFlow() {
-        let coordinator = self.factory.instantiateHomeCoordinator(router: self.router)
+        let coordinator = factory.instantiateHomeCoordinator(router: router)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
             self.launchInstructor = LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated())
             self.start()
         }
-        self.addDependency(coordinator)
+        addDependency(coordinator)
         coordinator.start()
     }
 
-
     // MARK: - Init
+
     init(router: RouterProtocol, factory: Factory, launchInstructor: LaunchInstructor) {
         self.router = router
         self.factory = factory
         self.launchInstructor = launchInstructor
     }
-
 }

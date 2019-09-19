@@ -30,9 +30,7 @@ class User: Codable {
     var lng: Double!
     var firebaseToken: String!
 
-    init() {
-        
-    }
+    init() {}
 
     /**
      * Instantiate the instance using the passed json values to set the properties values

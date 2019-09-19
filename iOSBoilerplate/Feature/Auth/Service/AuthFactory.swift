@@ -10,18 +10,15 @@ protocol AuthFactory {
 }
 
 extension CoordinatorContainer: AuthFactory {
-
     func instantiateLoginVC() -> LoginVC {
         let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(LoginVC.self)
-        //vc.viewModel = ChooseLoginRegisterViewModel()
+        // vc.viewModel = ChooseLoginRegisterViewModel()
         return vc
     }
 
     func instantiateSignUpVC() -> SignUpVC {
         let vc = UIStoryboard.storyboard(storyboard: .Auth).instantiateViewController(SignUpVC.self)
-        //vc.viewModel = LoginViewModel(authServices: self.authNetworkServices)
+        // vc.viewModel = LoginViewModel(authServices: self.authNetworkServices)
         return vc
     }
-
-
 }

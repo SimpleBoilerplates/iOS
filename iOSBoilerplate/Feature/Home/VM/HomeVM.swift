@@ -6,7 +6,6 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-
 import Moya
 import RxRelay
 import RxSwift
@@ -25,10 +24,10 @@ protocol HomeVMType {
 class HomeVM {
     let booksProvider: MoyaProvider<BooksService>
 
-    init(service : MoyaProvider<BooksService>) {
+    init(service: MoyaProvider<BooksService>) {
         booksProvider = service
     }
-    
+
 //    init() {
 //        let tokenClosure: () -> String = {
 //            UserSingleton.shared.getAcessToken()
@@ -38,7 +37,7 @@ class HomeVM {
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()
-                .distinctUntilChanged()
+            .distinctUntilChanged()
     }
 
     var onShowAlert: Observable<AlertMessage> {

@@ -13,18 +13,17 @@ protocol BookDetailVCProtocol: class {
 }
 
 class BookDetailVC: BaseViewController, BookDetailVCProtocol {
-
     var viewModel: BookDetailVM?
 
     var onBack: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     // MARK: - Overrides
+
     override func didSelectCustomBackAction() {
-        self.onBack?()
+        onBack?()
     }
 }

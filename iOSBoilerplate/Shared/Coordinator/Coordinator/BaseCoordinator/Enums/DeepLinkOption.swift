@@ -1,9 +1,6 @@
 //
 //  DeepLinkOption.swift
 
-
 import Foundation
 
-enum DeepLinkOption {
-
-}
+enum DeepLinkOption {}

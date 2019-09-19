@@ -36,11 +36,11 @@ class ReachabilityManager: NSObject {
         case .none:
 
             break
-                // debugPrint(“Network became unreachable”)
+        // debugPrint(“Network became unreachable”)
         case .wifi: break
-                // debugPrint(“Network reachable through WiFi”)
+        // debugPrint(“Network reachable through WiFi”)
         case .cellular: break
-                // debugPrint(“Network reachable through Cellular Data”)
+            // debugPrint(“Network reachable through Cellular Data”)
         }
 
         // Sending message to each of the delegates
@@ -52,9 +52,9 @@ class ReachabilityManager: NSObject {
     /// Starts monitoring the network availability status
     func startMonitoring() {
         NotificationCenter.default.addObserver(self,
-                selector: #selector(reachabilityChanged),
-                name: Notification.Name.reachabilityChanged,
-                object: reachability)
+                                               selector: #selector(reachabilityChanged),
+                                               name: Notification.Name.reachabilityChanged,
+                                               object: reachability)
         do {
             try reachability.startNotifier()
         } catch {
@@ -66,8 +66,8 @@ class ReachabilityManager: NSObject {
     func stopMonitoring() {
         reachability.stopNotifier()
         NotificationCenter.default.removeObserver(self,
-                name: Notification.Name.reachabilityChanged,
-                object: reachability)
+                                                  name: Notification.Name.reachabilityChanged,
+                                                  object: reachability)
     }
 
     /// Adds a new listener to the listeners array

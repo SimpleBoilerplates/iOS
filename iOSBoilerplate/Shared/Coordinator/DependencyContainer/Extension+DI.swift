@@ -1,4 +1,3 @@
-
 //
 //  Extension+DI.swift
 //  iOSBoilerplate
@@ -7,16 +6,15 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 import Foundation
-import UIKit
 import Swinject
+import UIKit
 
 extension UIViewController {
-    
     func getAppDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
-    
-    var assembler : Assembler {
+
+    var assembler: Assembler {
         return (UIApplication.shared.delegate as! AppDelegate).getAssembler()
     }
 }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-func printToConsole(message : String) {
+func printToConsole(message: String) {
     #if DEBUG
-    print(message)
+        print(message)
     #endif
 }

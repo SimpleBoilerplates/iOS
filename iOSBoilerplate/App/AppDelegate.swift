@@ -6,27 +6,27 @@
 //  Copyright © 2019 sadman samee. All rights reserved.
 //
 
-import UIKit
-import Swinject
 import Moya
+import Swinject
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    
+
     var rootController: CoordinatorNavigationController {
-        return self.window!.rootViewController as! CoordinatorNavigationController
+        return window!.rootViewController as! CoordinatorNavigationController
     }
+
     private lazy var dependencyConatiner = CoordinatorContainer(rootController: self.rootController)
 
     let assembler = Assembler([
         AuthAssembly(),
         HomeAssembly()
-        ],container: Container()
-    )
-  
+    ], container: Container())
+
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.dependencyConatiner.start()
+        dependencyConatiner.start()
 
         // CHECK RESOURCE COUNT IN EVERY SECOND
 //        _ = Observable<Int>
@@ -40,22 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_: UIApplication) {
-   
-    }
+    func applicationWillResignActive(_: UIApplication) {}
 
-    func applicationDidEnterBackground(_: UIApplication) {
-    }
+    func applicationDidEnterBackground(_: UIApplication) {}
 
-    func applicationWillEnterForeground(_: UIApplication) {
-    }
+    func applicationWillEnterForeground(_: UIApplication) {}
 
-    func applicationDidBecomeActive(_: UIApplication) {
-    }
+    func applicationDidBecomeActive(_: UIApplication) {}
 
-    func applicationWillTerminate(_: UIApplication) {
-    }
-
+    func applicationWillTerminate(_: UIApplication) {}
 }
 
 extension AppDelegate {
@@ -63,4 +56,3 @@ extension AppDelegate {
         return assembler
     }
 }
-
