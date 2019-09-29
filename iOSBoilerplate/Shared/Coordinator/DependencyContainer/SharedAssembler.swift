@@ -14,7 +14,7 @@ extension Assembler {
         let container = Container()
         let assembler = Assembler([
             AuthAssembly(),
-            HomeAssembly()
+            HomeAssembly(),
         ], container: container)
         return assembler
     }()

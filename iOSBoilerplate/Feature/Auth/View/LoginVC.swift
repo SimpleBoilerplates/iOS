@@ -9,7 +9,6 @@
 import RxCocoa
 import RxSwift
 import SwiftValidator
-import Swinject
 import UIKit
 
 protocol LoginVCProtocol: class {

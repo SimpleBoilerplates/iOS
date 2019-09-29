@@ -42,6 +42,7 @@ target 'iOSBoilerplate' do
     pod 'SwinjectStoryboard'
     pod 'ObjectMapper'
     pod 'SwiftyJSON'
+    pod 'Mockingjay'
 
   end
 

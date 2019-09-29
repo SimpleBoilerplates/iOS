@@ -22,9 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let assembler = Assembler([
         AuthAssembly(),
-        HomeAssembly()
+        HomeAssembly(),
     ], container: Container())
+    
+    
 
+    func application(_: UIApplication, willFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        setupDependencies()
+        
+        return true
+    }
+    
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         dependencyConatiner.start()
 
@@ -52,6 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
+    
+    func setupDependencies(){
+        
+    }
+    
     func getAssembler() -> Assembler {
         return assembler
     }

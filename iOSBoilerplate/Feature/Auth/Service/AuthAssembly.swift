@@ -12,7 +12,7 @@ import Swinject
 
 class AuthAssembly: Assembly {
     func assemble(container: Container) {
-        //let userService = UserService()
+        // let userService = UserService()
 
         container.register(UserService.self, factory: { _ in
             UserService()
@@ -29,5 +29,9 @@ class AuthAssembly: Assembly {
         container.register(LogInVM.self, factory: { container in
             LogInVM(service: container.resolve(MoyaProvider<AuthService>.self)!, userService: container.resolve(UserService.self)!)
         }).inObjectScope(ObjectScope.container)
+        
+        
+        
+        
     }
 }

@@ -72,3 +72,14 @@ extension BooksService: TargetType, AccessTokenAuthorizable {
         }
     }
 }
+
+extension BooksService: MoyaCacheable {
+    var cachePolicy: MoyaCacheablePolicy {
+        switch self {
+        case .books:
+            return .returnCacheDataElseLoad
+        default:
+            return .reloadIgnoringLocalAndRemoteCacheData
+        }
+    }
+}
