@@ -14,27 +14,29 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
+    internal let container = Container()
+
+    private var appCoordinator: AppCoordinator!
+
     var rootController: CoordinatorNavigationController {
         return window!.rootViewController as! CoordinatorNavigationController
     }
 
-    private lazy var dependencyConatiner = CoordinatorContainer(rootController: self.rootController)
-
-    let assembler = Assembler([
-        AuthAssembly(),
-        HomeAssembly(),
-    ], container: Container())
-    
-    
+    var assembler: Assembler!
 
     func application(_: UIApplication, willFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        setupDependencies()
-        
+        assembler = Assembler([
+            AuthAssembly(),
+            HomeAssembly()
+        ], container: container)
+
+        appCoordinator = AppCoordinator(window: window!, container: container, navigationController: rootController, launchInstructor: LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated()))
+        appCoordinator.start()
         return true
     }
-    
+
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        dependencyConatiner.start()
+        // dependencyConatiner.start()
 
         // CHECK RESOURCE COUNT IN EVERY SECOND
 //        _ = Observable<Int>
@@ -60,11 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    
-    func setupDependencies(){
-        
-    }
-    
     func getAssembler() -> Assembler {
         return assembler
     }

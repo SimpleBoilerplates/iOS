@@ -14,7 +14,7 @@ extension UIViewController {
         return UIApplication.shared.delegate as! AppDelegate
     }
 
-    var assembler: Assembler {
-        return (UIApplication.shared.delegate as! AppDelegate).getAssembler()
-    }
+//    var assembler: Assembler {
+//        return (UIApplication.shared.delegate as! AppDelegate).getAssembler()
+//    }
 }

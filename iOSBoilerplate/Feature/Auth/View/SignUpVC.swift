@@ -18,7 +18,7 @@ protocol SignUpVCProtocol: class {
     var onSignIn: (() -> Void)? { get set }
 }
 
-class SignUpVC: BaseTableViewController, SignUpVCProtocol {
+class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable {
     @IBOutlet var txtFieldFullName: UITextField!
     @IBOutlet var txtFieldEmailAddress: UITextField!
     @IBOutlet var txtFieldPassWord: UITextField!
@@ -29,7 +29,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol {
     // weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     // private var viewModel: SignUpVM!
-    lazy var viewModel: SignUpVM = Assembler.sharedAssembler.resolver.resolve(SignUpVM.self)!
+    var viewModel: SignUpVM! // = Assembler.sharedAssembler.resolver.resolve(SignUpVM.self)!
 
     private var disposeBag = DisposeBag()
 

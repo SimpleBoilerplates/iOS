@@ -1,12 +1,17 @@
 //
+import Swinject
 //  ApplicationCoordinator.swift
+import UIKit
 
-final class ApplicationCoordinator: BaseCoordinator {
-    // MARK: - Vars & Lets
+final class AppCoordinator: BaseCoordinator {
+    // MARK: - Properties
 
-    private let factory: Factory
-    private let router: RouterProtocol
+    private let window: UIWindow
+    let container: Container
+    // private let factory: Factory
+    // private let router: RouterProtocol
     private var launchInstructor: LaunchInstructor
+    private var navigationController: CoordinatorNavigationController
 
     // MARK: - Coordinator
 
@@ -23,7 +28,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Private methods
 
     private func runAuthFlow() {
-        let coordinator = factory.instantiateAuthCoordinator(router: router)
+        let coordinator = AuthCoordinator(container: container, navigationController: navigationController) // factory.instantiateAuthCoordinator(router: router)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
             self.launchInstructor = LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated())
@@ -34,7 +39,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     }
 
     private func runHomeFlow() {
-        let coordinator = factory.instantiateHomeCoordinator(router: router)
+        let coordinator = HomeCoordinator(container: container, navigationController: navigationController) // factory.instantiateHomeCoordinator(router: router)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
             self.launchInstructor = LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated())
@@ -46,9 +51,18 @@ final class ApplicationCoordinator: BaseCoordinator {
 
     // MARK: - Init
 
-    init(router: RouterProtocol, factory: Factory, launchInstructor: LaunchInstructor) {
-        self.router = router
-        self.factory = factory
+    init(window: UIWindow, container: Container, navigationController: CoordinatorNavigationController, launchInstructor: LaunchInstructor) {
+        self.window = window
+        self.container = container
+        self.navigationController = navigationController
         self.launchInstructor = launchInstructor
+
+        self.window.rootViewController = navigationController
     }
+
+//    init(router: RouterProtocol, factory: Factory, launchInstructor: LaunchInstructor) {
+//        self.router = router
+//        self.factory = factory
+//        self.launchInstructor = launchInstructor
+//    }
 }

@@ -161,7 +161,7 @@ open class SwiftMessagesSegue: UIStoryboardSegue {
      `messageView`. This view provides configurable squircle (round) corners (see the parent
      class `CornerRoundingView`).
     */
-    public var containerView = CornerRoundingView()
+    public var containerView: CornerRoundingView = CornerRoundingView()
 
     /**
      Specifies how the view controller's view is installed into the

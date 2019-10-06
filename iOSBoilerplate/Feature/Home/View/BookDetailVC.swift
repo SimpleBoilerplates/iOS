@@ -12,7 +12,7 @@ protocol BookDetailVCProtocol: class {
     var onBack: (() -> Void)? { get set }
 }
 
-class BookDetailVC: BaseViewController, BookDetailVCProtocol {
+class BookDetailVC: BaseViewController, BookDetailVCProtocol, HomeStoryboardLodable {
     var viewModel: BookDetailVM?
 
     var onBack: (() -> Void)?

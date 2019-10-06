@@ -9,13 +9,13 @@
 import Foundation
 import Swinject
 
-extension Assembler {
-    static let sharedAssembler: Assembler = {
-        let container = Container()
-        let assembler = Assembler([
-            AuthAssembly(),
-            HomeAssembly(),
-        ], container: container)
-        return assembler
-    }()
-}
+// extension Assembler {
+//    static let sharedAssembler: Assembler = {
+//        let container = Container()
+//        let assembler = Assembler([
+//            AuthAssembly(),
+//            HomeAssembly(),
+//        ], container: container)
+//        return assembler
+//    }()
+// }

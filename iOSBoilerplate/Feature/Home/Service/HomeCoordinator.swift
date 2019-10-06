@@ -2,7 +2,7 @@
 //  WalktroughCoordinator.swift
 
 import Foundation
-
+import Swinject
 final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     // MARK: - CoordinatorFinishOutput
 
@@ -10,29 +10,9 @@ final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
 
     // MARK: - Vars & Lets
 
-    private let router: RouterProtocol
-    private let factory: Factory
-
-    // MARK: - Private metods
-
-    private func showHomeVC() {
-        let vc = factory.instantiateHomeVC()
-        vc.onSignOut = {
-            self.finishFlow?()
-        }
-        vc.onBookSelected = { viewModel in
-            self.showBookDetailVC(viewModel: viewModel)
-        }
-        router.push(vc)
-    }
-
-    private func showBookDetailVC(viewModel: BookDetailVM) {
-        let vc = factory.instantiateBookDetailVC(viewModel: viewModel)
-        vc.onBack = { [unowned self] in
-            self.router.popModule()
-        }
-        router.push(vc)
-    }
+    let navigationController: CoordinatorNavigationController
+    let container: Container
+    // private var childCoordinators = [AuthChildCoordinator: Coordinator]()
 
     // MARK: - Coordinator
 
@@ -42,8 +22,26 @@ final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
 
     // MARK: - Init
 
-    init(router: RouterProtocol, factory: Factory) {
-        self.router = router
-        self.factory = factory
+    init(container: Container, navigationController: CoordinatorNavigationController) {
+        self.container = container
+        self.navigationController = navigationController
+    }
+
+    // MARK: - Private metods
+
+    private func showHomeVC() {
+        let vc = container.resolveViewController(HomeVC.self)
+        vc.onSignOut = {
+            self.finishFlow?()
+        }
+        vc.onBookSelected = { viewModel in
+            self.showBookDetailVC(viewModel: viewModel)
+        }
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+    private func showBookDetailVC(viewModel _: BookDetailVM) {
+//        vc.onBack = { [unowned self] in
+//        }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import Moya
 import Swinject
 
-class AuthAssembly: Assembly {
+final class AuthAssembly: Assembly {
     func assemble(container: Container) {
         // let userService = UserService()
 
@@ -29,9 +29,13 @@ class AuthAssembly: Assembly {
         container.register(LogInVM.self, factory: { container in
             LogInVM(service: container.resolve(MoyaProvider<AuthService>.self)!, userService: container.resolve(UserService.self)!)
         }).inObjectScope(ObjectScope.container)
-        
-        
-        
-        
+
+        // view controllers
+        container.storyboardInitCompleted(LoginVC.self) { r, c in
+            c.viewModel = r.resolve(LogInVM.self)
+        }
+        container.storyboardInitCompleted(SignUpVC.self) { r, c in
+            c.viewModel = r.resolve(SignUpVM.self)
+        }
     }
 }

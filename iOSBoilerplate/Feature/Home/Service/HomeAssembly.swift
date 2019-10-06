@@ -9,8 +9,9 @@
 import Foundation
 import Moya
 import Swinject
+import SwinjectAutoregistration
 
-class HomeAssembly: Assembly {
+final class HomeAssembly: Assembly {
     func assemble(container: Container) {
         let userService = UserService()
 
@@ -29,5 +30,14 @@ class HomeAssembly: Assembly {
         container.register(HomeVM.self, factory: { container in
             HomeVM(service: container.resolve(MoyaProvider<BooksService>.self)!)
         }).inObjectScope(ObjectScope.container)
+
+        // view controllers
+        container.storyboardInitCompleted(HomeVC.self) { r, c in
+            c.viewModel = r.resolve(HomeVM.self)
+            c.userService = r.resolve(UserService.self)
+        }
+//           container.storyboardInitCompleted(BookDetailVC.self) { r, c in
+//
+//           }
     }
 }

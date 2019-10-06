@@ -9,6 +9,7 @@
 import RxCocoa
 import RxSwift
 import SwiftValidator
+import Swinject
 import UIKit
 
 protocol LoginVCProtocol: class {
@@ -17,7 +18,7 @@ protocol LoginVCProtocol: class {
     var onSignUp: (() -> Void)? { get set }
 }
 
-class LoginVC: BaseTableViewController, LoginVCProtocol {
+class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
     @IBOutlet var btnLogin: UIButton!
     @IBOutlet var txtFieldPassword: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
@@ -25,9 +26,8 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     // weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
 
     private let validator = Validator()
-    // private var loginVM: LogInVM!
 
-    lazy var loginVM: LogInVM = assembler.resolver.resolve(LogInVM.self)!
+    var viewModel: LogInVM! // = Assembler.sharedAssembler.resolver.resolve(LogInVM.self)!
 
     // MARK: - LoginVCProtocol
 
@@ -70,7 +70,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     }
 
     private func login() {
-        loginVM.login()
+        viewModel.login()
     }
 
     private func setUI() {}
@@ -84,10 +84,10 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
     }
 
     private func bindViewModel() {
-        (txtFieldPassword.rx.text <-> loginVM.password).disposed(by: disposeBag)
-        (txtFieldEmail.rx.text <-> loginVM.email).disposed(by: disposeBag)
+        (txtFieldPassword.rx.text <-> viewModel.password).disposed(by: disposeBag)
+        (txtFieldEmail.rx.text <-> viewModel.email).disposed(by: disposeBag)
 
-        loginVM.isValid.map {
+        viewModel.isValid.map {
             $0
         }
         .bind(to: btnLogin.rx.isEnabled)
@@ -112,7 +112,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
 //            }.disposed(by: disposeBag)
         ////
 //
-        loginVM
+        viewModel
             .onShowAlert
             .map { [weak self] in
                 AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
@@ -120,7 +120,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
             .subscribe()
             .disposed(by: disposeBag)
 
-        loginVM
+        viewModel
             .onShowingLoading
             .map { [weak self] in
                 self?.setLoadingHud(visible: $0)
@@ -128,7 +128,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol {
             .subscribe()
             .disposed(by: disposeBag)
 
-        loginVM
+        viewModel
             .onSuccess
             .map { _ in
                 self.onLogin?()

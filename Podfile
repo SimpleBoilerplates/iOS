@@ -17,7 +17,9 @@ target 'iOSBoilerplate' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'Swinject'
-  
+  pod 'SwinjectAutoregistration'
+  pod 'SwinjectStoryboard'
+
   #to check memory leak
   post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -42,7 +44,7 @@ target 'iOSBoilerplate' do
     pod 'SwinjectStoryboard'
     pod 'ObjectMapper'
     pod 'SwiftyJSON'
-    pod 'Mockingjay'
+    #pod 'Mockingjay'
 
   end
 

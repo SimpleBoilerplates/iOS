@@ -11,7 +11,7 @@ import RxRelay
 import RxSwift
 import SwiftyJSON
 
-class SignUpVM {
+final class SignUpVM {
     fileprivate var authProvider: MoyaProvider<AuthService>
 
     init(service: MoyaProvider<AuthService>) {

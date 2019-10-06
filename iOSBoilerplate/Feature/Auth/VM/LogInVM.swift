@@ -11,7 +11,7 @@ import RxRelay
 import RxSwift
 import SwiftyJSON
 
-struct LogInVM {
+final class LogInVM {
     fileprivate var authProvider: MoyaProvider<AuthService>
     fileprivate var userService: UserService
 

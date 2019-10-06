@@ -12,3 +12,5 @@ ${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework
 ${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework
+${BUILT_PRODUCTS_DIR}/SwinjectAutoregistration/SwinjectAutoregistration.framework
+${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework

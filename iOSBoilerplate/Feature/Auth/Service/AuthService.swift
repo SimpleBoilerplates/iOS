@@ -34,13 +34,6 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
         }
     }
 
-    public var sampleData: Data {
-        switch self {
-        case .login, .signUp:
-            return "".data(using: String.Encoding.utf8)!
-        }
-    }
-
     public var task: Task {
         switch self {
         case let .login(email, password):
@@ -74,6 +67,17 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
             return .successCodes
         default:
             return .none
+        }
+    }
+
+    public var sampleData: Data {
+        if isRunningTests {
+            switch self {
+            case .login, .signUp:
+                return "".data(using: String.Encoding.utf8)!
+            }
+        } else {
+            return "".data(using: String.Encoding.utf8)!
         }
     }
 }

@@ -16,7 +16,7 @@ protocol HomeVCProtocol: class {
     var onBookSelected: ((BookDetailVM) -> Void)? { get set }
 }
 
-class HomeVC: BaseViewController, HomeVCProtocol {
+class HomeVC: BaseViewController, HomeVCProtocol, HomeStoryboardLodable {
     @IBOutlet var tableView: UITableView!
     // weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
 
@@ -24,8 +24,8 @@ class HomeVC: BaseViewController, HomeVCProtocol {
 //        HomeVM()
 //    }()
 
-    lazy var viewModel: HomeVM = assembler.resolver.resolve(HomeVM.self)!
-    lazy var userService: UserService = assembler.resolver.resolve(UserService.self)!
+    var viewModel: HomeVM! // = Assembler.sharedAssembler.resolver.resolve(HomeVM.self)!
+    var userService: UserService! // = Assembler.sharedAssembler.resolver.resolve(UserService.self)!
 
     private var disposeBag = DisposeBag()
 

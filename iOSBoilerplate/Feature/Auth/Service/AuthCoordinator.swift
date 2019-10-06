@@ -3,7 +3,12 @@
 
 //
 
-import Foundation
+import Swinject
+import UIKit
+
+enum AuthChildCoordinator {
+    case about
+}
 
 final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     // MARK: - CoordinatorFinishOutput
@@ -12,38 +17,9 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
 
     // MARK: - Vars & Lets
 
-    private let router: RouterProtocol
-    private let factory: Factory
-
-    // MARK: - Private methods
-
-    private func showLoginVC() {
-        let vc = factory.instantiateLoginVC()
-        vc.onBack = { [unowned self] in
-            self.router.popModule()
-        }
-        vc.onLogin = {
-            self.finishFlow?()
-        }
-        vc.onSignUp = {
-            self.showSignUpVC()
-        }
-        router.push(vc)
-    }
-
-    private func showSignUpVC() {
-        let vc = factory.instantiateSignUpVC()
-        vc.onBack = { [unowned self] in
-            self.router.dismissModule()
-        }
-        vc.onSignUp = {
-            self.router.dismissModule()
-        }
-        vc.onSignIn = {
-            self.router.dismissModule()
-        }
-        router.present(vc)
-    }
+    let navigationController: CoordinatorNavigationController
+    let container: Container
+    // private var childCoordinators = [AuthChildCoordinator: Coordinator]()
 
     // MARK: - Coordinator
 
@@ -53,8 +29,39 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
 
     // MARK: - Init
 
-    init(router: RouterProtocol, factory: Factory) {
-        self.router = router
-        self.factory = factory
+    init(container: Container, navigationController: CoordinatorNavigationController) {
+        self.container = container
+        self.navigationController = navigationController
+    }
+
+    // MARK: - Private methods
+
+    private func showLoginVC() {
+        let vc = container.resolveViewController(LoginVC.self) // factory.instantiateLoginVC()
+        vc.onBack = { [unowned self] in
+            self.navigationController.popVC()
+        }
+        vc.onLogin = {
+            self.finishFlow?()
+        }
+        vc.onSignUp = {
+            self.showSignUpVC()
+        }
+
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+    private func showSignUpVC() {
+        let vc = container.resolveViewController(SignUpVC.self) // factory.instantiateSignUpVC()
+        vc.onBack = { [unowned self] in
+            self.navigationController.dismiss(animated: true, completion: nil)
+        }
+        vc.onSignUp = {
+            self.navigationController.dismiss(animated: true, completion: nil)
+        }
+        vc.onSignIn = {
+            self.navigationController.dismiss(animated: true, completion: nil)
+        }
+        navigationController.present(vc, animated: true, completion: nil)
     }
 }

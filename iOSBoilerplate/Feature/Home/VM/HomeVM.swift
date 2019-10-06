@@ -22,18 +22,11 @@ protocol HomeVMType {
 }
 
 class HomeVM {
-    let booksProvider: MoyaProvider<BooksService>
+    var booksProvider: MoyaProvider<BooksService>
 
     init(service: MoyaProvider<BooksService>) {
         booksProvider = service
     }
-
-//    init() {
-//        let tokenClosure: () -> String = {
-//            UserSingleton.shared.getAcessToken()
-//        }
-//        booksProvider = MoyaProvider<Books>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
-//    }
 
     var onShowingLoading: Observable<Bool> {
         return isLoadingVariable.asObservable()

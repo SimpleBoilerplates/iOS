@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class UserService {
+final class UserService {
     static let shared: UserService = {
         let instance = UserService()
         // Setup code
