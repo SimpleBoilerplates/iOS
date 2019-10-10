@@ -16,7 +16,7 @@ This is a very simple Boilerplate application, this has following features.
  
 # With
 
-  - MVVM architecture
+  - MVVM
   - RxSwift
   - Coordinator Pattern
   - Dependency Injection with [Swinject](https://github.com/Swinject/Swinject)
