@@ -8,8 +8,7 @@ final class AppCoordinator: BaseCoordinator {
 
     private let window: UIWindow
     let container: Container
-    // private let factory: Factory
-    // private let router: RouterProtocol
+
     private var launchInstructor: LaunchInstructor
     private var navigationController: CoordinatorNavigationController
 
@@ -28,7 +27,7 @@ final class AppCoordinator: BaseCoordinator {
     // MARK: - Private methods
 
     private func runAuthFlow() {
-        let coordinator = AuthCoordinator(container: container, navigationController: navigationController) // factory.instantiateAuthCoordinator(router: router)
+        let coordinator = AuthCoordinator(container: container, navigationController: navigationController)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
             self.launchInstructor = LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated())
@@ -39,7 +38,7 @@ final class AppCoordinator: BaseCoordinator {
     }
 
     private func runHomeFlow() {
-        let coordinator = HomeCoordinator(container: container, navigationController: navigationController) // factory.instantiateHomeCoordinator(router: router)
+        let coordinator = HomeCoordinator(container: container, navigationController: navigationController)
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
             self.launchInstructor = LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated())
@@ -59,10 +58,4 @@ final class AppCoordinator: BaseCoordinator {
 
         self.window.rootViewController = navigationController
     }
-
-//    init(router: RouterProtocol, factory: Factory, launchInstructor: LaunchInstructor) {
-//        self.router = router
-//        self.factory = factory
-//        self.launchInstructor = launchInstructor
-//    }
 }

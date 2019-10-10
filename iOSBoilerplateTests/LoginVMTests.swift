@@ -7,13 +7,13 @@
 //
 
 import Foundation
-@testable import iOSBoilerplate
 import Nimble
 import Quick
 import RxBlocking
 import RxSwift
 import RxTest
 import Moya
+@testable import iOSBoilerplate
 
 class LoginVMTests: QuickSpec{
     override func spec() {

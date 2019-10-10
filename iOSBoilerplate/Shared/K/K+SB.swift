@@ -15,7 +15,7 @@ import UIKit
 //    }
 // }
 
-enum Storyboard: String {
+enum KStoryboard: String {
     case Home
     case Auth
 }
@@ -30,12 +30,12 @@ protocol AuthStoryboardLodable: StoryboardLodable {}
 
 extension HomeStoryboardLodable where Self: UIViewController {
     @nonobjc static var storyboardName: String {
-        return "Home"
+        return KStoryboard.Home.rawValue
     }
 }
 
 extension AuthStoryboardLodable where Self: UIViewController {
     @nonobjc static var storyboardName: String {
-        return "Auth"
+        return KStoryboard.Auth.rawValue
     }
 }

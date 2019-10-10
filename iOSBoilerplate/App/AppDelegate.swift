@@ -36,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // dependencyConatiner.start()
-
         // CHECK RESOURCE COUNT IN EVERY SECOND
 //        _ = Observable<Int>
 //            .interval(1, scheduler: MainScheduler.instance)

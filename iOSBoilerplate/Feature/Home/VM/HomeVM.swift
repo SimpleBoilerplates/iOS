@@ -22,6 +22,7 @@ protocol HomeVMType {
 }
 
 class HomeVM {
+   
     var booksProvider: MoyaProvider<BooksService>
 
     init(service: MoyaProvider<BooksService>) {
@@ -61,12 +62,6 @@ class HomeVM {
                             BookTableViewCellType.normal(cellViewModel: Book(fromJson: $0))
                         }
 
-                        // var items = [BookTCVM]()
-//                        for item in json["data"] {
-//                            let book = Book(fromJson: item.1)
-//                            items.append(book)
-//                            //self.bookCells.append(book)
-//                        }
                         self.cells.accept(items)
                     }
                 } catch {

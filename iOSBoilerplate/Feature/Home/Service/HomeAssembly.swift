@@ -36,8 +36,7 @@ final class HomeAssembly: Assembly {
             c.viewModel = r.resolve(HomeVM.self)
             c.userService = r.resolve(UserService.self)
         }
-//           container.storyboardInitCompleted(BookDetailVC.self) { r, c in
-//
-//           }
+        container.storyboardInitCompleted(BookDetailVC.self) { _, _ in
+        }
     }
 }

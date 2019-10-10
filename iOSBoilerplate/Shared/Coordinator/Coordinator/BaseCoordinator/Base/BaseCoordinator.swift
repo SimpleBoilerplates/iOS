@@ -2,8 +2,9 @@
 //  BaseCoordinator.swift
 
 import Foundation
-
+import Swinject
 class BaseCoordinator: Coordinator {
+        
     // MARK: - Vars & Lets
 
     var childCoordinators = [Coordinator]()

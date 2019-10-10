@@ -104,24 +104,6 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
             .subscribe()
             .disposed(by: disposeBag)
 
-//        viewModel.alertMessage.subscribe { (alertMessage) in
-//            AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
-//            }
-//            .disposed(by: disposeBag)
-//
-//        viewModel.isLoading.subscribe{ (isLoading) in
-//            DispatchQueue.main.async {
-//                guard let isLoading = isLoading.element else {
-//                    return
-//                }
-//                if isLoading {
-//                    AppHUD.showHUD()
-//                } else {
-//                    AppHUD.hideHUD()
-//                }
-//            }
-//            }.disposed(by: disposeBag)
-
         viewModel
             .onSuccess
             .map { _ in
@@ -129,12 +111,6 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
             }
             .subscribe()
             .disposed(by: disposeBag)
-//        viewModel.onSuccess.subscribe{ (success) in
-//            guard let success = success.element else {
-//                return
-//            }
-//            self.goToLoginVC()
-//            }.disposed(by: disposeBag)
     }
 }
 

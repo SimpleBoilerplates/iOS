@@ -7,11 +7,10 @@ final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     // MARK: - CoordinatorFinishOutput
 
     var finishFlow: (() -> Void)?
-
+    let container: Container
     // MARK: - Vars & Lets
 
     let navigationController: CoordinatorNavigationController
-    let container: Container
     // private var childCoordinators = [AuthChildCoordinator: Coordinator]()
 
     // MARK: - Coordinator
@@ -40,8 +39,13 @@ final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         navigationController.pushViewController(vc, animated: true)
     }
 
-    private func showBookDetailVC(viewModel _: BookDetailVM) {
-//        vc.onBack = { [unowned self] in
-//        }
+    private func showBookDetailVC(viewModel: BookDetailVM) {
+        let vc = container.resolveViewController(BookDetailVC.self)
+        vc.viewModel = viewModel
+
+        vc.onBack = { [unowned self] in
+            self.navigationController.popVC()
+        }
+        self.navigationController.pushViewController(vc, animated: true)
     }
 }
