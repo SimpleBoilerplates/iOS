@@ -21,7 +21,6 @@ This is a very simple Boilerplate application, this has following features.
   - [Coordinator Pattern](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started)
   - Dependency Injection with [Swinject](https://github.com/Swinject/Swinject)
   - [Moya](https://github.com/Moya/Moya) for API call
-  - Avoiding string identifier to instantiate a view controller from storyboard
   - Project by feature not by layer
 
 
@@ -82,7 +81,7 @@ This project requires [Cocoapods](https://cocoapods.org//) to start.
 Install the dependencies .
 
 ```sh
-$ cd BooksDemoIOS
+$ cd iOS
 $ pod install
 ```
 
