@@ -14,39 +14,12 @@ class BaseTableViewController: UITableViewController, CoordinatorNavigationContr
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // NotificationCenter.default.addObserver(self, selector: #selector(self.internetStatusChangedNotification(_:)), name: Reachability.internetStatusChangedNotification, object: nil)
-
-//        if Reachability.isReachable
-//        {
-//            isConnectedToInternet = true
-//
-//        }else
-//        {
-//            isConnectedToInternet = false
-//        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
-//    func internetStatusChangedNotification(_ notification: NSNotification)  {
-//
-//        if Reachability.isReachable
-//        {
-//            isConnectedToInternet = true
-//            //AppHUD.showErrorMessage("", title: KString.Message.connectedToInternet)
-//        }else
-//        {
-//            isConnectedToInternet = false
-//            //AppHUD.showErrorMessage("", title: KString.Message.notConnectedToInternet)
-//        }
-//    }
 
     // MARK: - Controller lifecycle
 

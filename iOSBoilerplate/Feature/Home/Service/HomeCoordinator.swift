@@ -3,25 +3,31 @@
 
 import Foundation
 import Swinject
-final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
+
+enum HomeChildCoordinator {
+    case about
+}
+
+final class HomeCoordinator: Coordinator, CoordinatorFinishOutput {
     // MARK: - CoordinatorFinishOutput
 
     var finishFlow: (() -> Void)?
     let container: Container
+
     // MARK: - Vars & Lets
 
-    let navigationController: CoordinatorNavigationController
-    // private var childCoordinators = [AuthChildCoordinator: Coordinator]()
+    let navigationController: UINavigationController
+    private var childCoordinators = [HomeChildCoordinator: Coordinator]()
 
     // MARK: - Coordinator
 
-    override func start() {
+    func start() {
         showHomeVC()
     }
 
     // MARK: - Init
 
-    init(container: Container, navigationController: CoordinatorNavigationController) {
+    init(container: Container, navigationController: UINavigationController) {
         self.container = container
         self.navigationController = navigationController
     }
@@ -36,6 +42,7 @@ final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.onBookSelected = { viewModel in
             self.showBookDetailVC(viewModel: viewModel)
         }
+        
         navigationController.pushViewController(vc, animated: true)
     }
 
@@ -46,6 +53,6 @@ final class HomeCoordinator: BaseCoordinator, CoordinatorFinishOutput {
         vc.onBack = { [unowned self] in
             self.navigationController.popVC()
         }
-        self.navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

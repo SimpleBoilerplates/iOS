@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 import SwiftyJSON
 
 final class UserService {
@@ -23,23 +24,19 @@ final class UserService {
     private var user: User?
 
     func isAuthonticated() -> Bool {
-        if let tok = UserDefaults.standard.value(forKey: "token"), let tokenString = tok as? String {
+        if loadToken() != nil {
             return true
         } else {
             return false
         }
     }
 
-    func getAcessToken() -> String {
-        if let tok = UserDefaults.standard.value(forKey: "token"), let tokenString = tok as? String {
-            return tokenString
-        } else {
-            return ""
-        }
+    func save(token: String) {
+        KeychainWrapper.standard.set(token, forKey: "token")
     }
 
-    func setAcessToken(token: String) {
-        UserDefaults.standard.set(token, forKey: "token")
+    func loadToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: "token")
     }
 
     func fetchUser() -> User? {
@@ -60,7 +57,7 @@ final class UserService {
     func logout() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "user")
-        defaults.removeObject(forKey: "token")
+        KeychainWrapper.standard.removeObject(forKey: "token")
         defaults.synchronize()
         user = nil
     }

@@ -15,7 +15,7 @@ public enum AuthService {
 
 extension AuthService: TargetType, AccessTokenAuthorizable {
     public var baseURL: URL {
-        return URL(string: K.Url.base)!
+        return URL(string: Constant.Url.base)!
     }
 
     public var path: String {
@@ -52,10 +52,6 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
 
     public var authorizationType: AuthorizationType {
         switch self {
-        //        case .targetThatNeedsBearerAuth:
-        //            return .bearer
-        //        case .targetThatNeedsBasicAuth:
-        //            return .basic
         case .login, .signUp:
             return .none
         }
@@ -65,8 +61,6 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
         switch self {
         case .login, .signUp:
             return .successCodes
-        default:
-            return .none
         }
     }
 

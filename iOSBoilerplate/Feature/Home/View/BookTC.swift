@@ -25,7 +25,7 @@ class BookTC: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    var viewModel: BookVM? {
+    var viewModel: BookViewModel? {
         didSet {
             bindViewModel()
         }

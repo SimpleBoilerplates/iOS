@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BookDetailVCProtocol: class {
+protocol BookDetailVCProtocol: AnyObject {
     var onBack: (() -> Void)? { get set }
 }
 

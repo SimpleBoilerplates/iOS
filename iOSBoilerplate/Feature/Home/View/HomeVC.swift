@@ -10,7 +10,7 @@ import RxSwift
 import Swinject
 import UIKit
 
-protocol HomeVCProtocol: class {
+protocol HomeVCProtocol: AnyObject {
     // var onBack: (() -> Void)? { get set }
     var onSignOut: (() -> Void)? { get set }
     var onBookSelected: ((BookDetailVM) -> Void)? { get set }
@@ -19,10 +19,11 @@ protocol HomeVCProtocol: class {
 class HomeVC: BaseViewController, HomeVCProtocol, HomeStoryboardLodable {
     @IBOutlet var tableView: UITableView!
 
-    var viewModel: HomeVM!
-    var userService: UserService! 
+    var homeViewModel: HomeViewModel!
 
     private var disposeBag = DisposeBag()
+
+    var btnLogout: UIBarButtonItem!
 
     // MARK: - HomeVCProtocol
 
@@ -31,25 +32,32 @@ class HomeVC: BaseViewController, HomeVCProtocol, HomeStoryboardLodable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Books"
+       
+        setUI()
         setUpTableView()
         bindViewModel()
-        let nav = navigationController as! CoordinatorNavigationController
-        nav.customizeBackButton()
+        viewModelTableView()
+       
+       // let nav = navigationController as! CoordinatorNavigationController
+       // nav.customizeBackButton()
     }
 
+    
+    private func setUI(){
+        title = "Books"
+
+        btnLogout = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = btnLogout
+    }
+    
     // MARK: - Overrides
 
     override func didSelectCustomBackAction() {
         // self.onBack?()
     }
 
-    // MARK: - Action
+    
 
-    @IBAction func actionLogout(_: Any) {
-        userService.logout()
-        onSignOut?()
-    }
 }
 
 // MARK: - Private functions
@@ -64,25 +72,49 @@ extension HomeVC {
     }
 
     private func bindViewModel() {
-        viewModel.getBooks()
+        homeViewModel.getBooks()
 
-        viewModel
+        btnLogout.rx.tap.asObservable()
+            .bind(to: homeViewModel.logoutTapped)
+            .disposed(by: disposeBag)
+
+        homeViewModel
+            .onLogout
+            .map { [weak self] isLoggedOut in
+
+                guard let self = self else {
+                    return
+                }
+                
+                if isLoggedOut {
+                    self.onSignOut?()
+                }
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
+
+        homeViewModel
             .onShowAlert
-            .map { [weak self] in
+            .map {
+
                 AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
             }
             .subscribe()
             .disposed(by: disposeBag)
 
-        viewModel
+        homeViewModel
             .onShowingLoading
             .map { [weak self] in
-                self?.setLoadingHud(visible: $0)
+                guard let self = self else {
+                    return
+                }
+                self.setLoadingHud(visible: $0)
             }
             .subscribe()
             .disposed(by: disposeBag)
-
-
+    }
+    
+    private func viewModelTableView() {
         tableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
@@ -92,17 +124,22 @@ extension HomeVC {
             .modelSelected(BookTableViewCellType.self)
             .subscribe(
                 onNext: { [weak self] cellType in
-                    if case let .normal(vm) = cellType {
-                        self?.onBookSelected?(BookDetailVM(bookVM: vm))
+
+                    guard let self = self else {
+                        return
                     }
-                    if let selectedRowIndexPath = self?.tableView.indexPathForSelectedRow {
-                        self?.tableView?.deselectRow(at: selectedRowIndexPath, animated: true)
+
+                    if case let .normal(vm) = cellType {
+                        self.onBookSelected?(BookDetailVM(bookVM: vm))
+                    }
+                    if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
+                        self.tableView?.deselectRow(at: selectedRowIndexPath, animated: true)
                     }
                 }
             )
             .disposed(by: disposeBag)
 
-        viewModel.bookCells.bind(to: tableView.rx.items) { tableView, _, element in
+        homeViewModel.onBookCells.bind(to: tableView.rx.items) { tableView, _, element in
             // let indexPath = IndexPath(item: index, section: 0)
             switch element {
             case let .normal(viewModel):
@@ -120,8 +157,6 @@ extension HomeVC {
 
 extension HomeVC {
     func setUpTableView() {
-        // tableView.delegate = self
-        // tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(BookTC.nib, forCellReuseIdentifier: BookTC.id)
     }

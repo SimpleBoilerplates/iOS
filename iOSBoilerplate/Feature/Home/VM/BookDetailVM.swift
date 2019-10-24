@@ -7,5 +7,5 @@
 //
 
 struct BookDetailVM {
-    var bookVM: BookVM!
+    var bookVM: BookViewModel!
 }

@@ -16,7 +16,7 @@ final class HomeAssembly: Assembly {
         let userService = UserService()
 
         let tokenClosure: () -> String = {
-            userService.getAcessToken()
+            userService.loadToken() ?? ""
         }
 
         container.register(UserService.self, factory: { _ in
@@ -27,14 +27,13 @@ final class HomeAssembly: Assembly {
             MoyaProvider<BooksService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
         }).inObjectScope(ObjectScope.container)
 
-        container.register(HomeVM.self, factory: { container in
-            HomeVM(service: container.resolve(MoyaProvider<BooksService>.self)!)
+        container.register(HomeViewModel.self, factory: { container in
+            HomeViewModel(service: container.resolve(MoyaProvider<BooksService>.self)!, userService: userService)
         }).inObjectScope(ObjectScope.container)
 
         // view controllers
         container.storyboardInitCompleted(HomeVC.self) { r, c in
-            c.viewModel = r.resolve(HomeVM.self)
-            c.userService = r.resolve(UserService.self)
+            c.homeViewModel = r.resolve(HomeViewModel.self)
         }
         container.storyboardInitCompleted(BookDetailVC.self) { _, _ in
         }

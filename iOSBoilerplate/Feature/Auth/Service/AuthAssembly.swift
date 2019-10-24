@@ -22,20 +22,20 @@ final class AuthAssembly: Assembly {
             MoyaProvider<AuthService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
         }).inObjectScope(ObjectScope.container)
 
-        container.register(SignUpVM.self, factory: { container in
-            SignUpVM(service: container.resolve(MoyaProvider<AuthService>.self)!)
+        container.register(SignUpViewModel.self, factory: { container in
+            SignUpViewModel(service: container.resolve(MoyaProvider<AuthService>.self)!)
         }).inObjectScope(ObjectScope.container)
 
-        container.register(LogInVM.self, factory: { container in
-            LogInVM(service: container.resolve(MoyaProvider<AuthService>.self)!, userService: container.resolve(UserService.self)!)
+        container.register(LogInViewModel.self, factory: { container in
+            LogInViewModel(service: container.resolve(MoyaProvider<AuthService>.self)!, userService: container.resolve(UserService.self)!)
         }).inObjectScope(ObjectScope.container)
 
         // view controllers
         container.storyboardInitCompleted(LoginVC.self) { r, c in
-            c.viewModel = r.resolve(LogInVM.self)
+            c.loginViewModel = r.resolve(LogInViewModel.self)
         }
         container.storyboardInitCompleted(SignUpVC.self) { r, c in
-            c.viewModel = r.resolve(SignUpVM.self)
+            c.signUpViewModel = r.resolve(SignUpViewModel.self)
         }
     }
 }

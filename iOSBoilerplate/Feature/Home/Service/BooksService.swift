@@ -14,7 +14,7 @@ public enum BooksService {
 
 extension BooksService: TargetType, AccessTokenAuthorizable {
     public var baseURL: URL {
-        return URL(string: K.Url.base)!
+        return URL(string: Constant.Url.base)!
     }
 
     public var path: String {

@@ -114,9 +114,6 @@
                                                             <real key="value" value="7"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="actionLogin:" destination="mll-wd-16c" eventType="touchUpInside" id="Lbj-fW-QUB"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -193,7 +190,7 @@
         <!--Sign UpVC-->
         <scene sceneID="yRn-cq-A6b">
             <objects>
-                <tableViewController storyboardIdentifier="SignUpVC" id="CBx-BM-OKi" customClass="SignUpVC" customModule="iOSBoilerplate" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SignUpVC" modalPresentationStyle="fullScreen" id="CBx-BM-OKi" customClass="SignUpVC" customModule="iOSBoilerplate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dAQ-Lo-q5i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,9 +315,6 @@
                                                             <real key="value" value="7"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="actionSignUp:" destination="CBx-BM-OKi" eventType="touchUpInside" id="1RP-go-hG9"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

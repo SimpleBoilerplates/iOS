@@ -9,8 +9,7 @@
 
 import UIKit
 
-
-//extension UIStoryboard {
+// extension UIStoryboard {
 //    /// The uniform place where we state all the storyboard we have in our application
 //
 //    /// Convenience Initializers
@@ -42,19 +41,19 @@ import UIKit
 //
 //        return viewController
 //    }
-//}
+// }
 //
-//protocol StoryboardIdentifiable {
+// protocol StoryboardIdentifiable {
 //    static var storyboardIdentifier: String { get }
-//}
+// }
 //
-//extension StoryboardIdentifiable where Self: UIViewController {
+// extension StoryboardIdentifiable where Self: UIViewController {
 //    static var storyboardIdentifier: String {
 //        return String(describing: self)
 //    }
-//}
+// }
 //
-//extension UIViewController: StoryboardIdentifiable {}
+// extension UIViewController: StoryboardIdentifiable {}
 
 // extension UITableViewHeaderFooterView:  XIBIdentifiable  {
 //

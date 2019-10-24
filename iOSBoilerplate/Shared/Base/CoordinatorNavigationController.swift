@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CoordinatorNavigationControllerDelegate: class {
+protocol CoordinatorNavigationControllerDelegate: AnyObject {
     func transitionBackFinished()
     func didSelectCustomBackAction()
 }

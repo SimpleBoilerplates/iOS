@@ -10,26 +10,26 @@ enum AuthChildCoordinator {
     case about
 }
 
-final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
+final class AuthCoordinator: Coordinator, CoordinatorFinishOutput {
     // MARK: - CoordinatorFinishOutput
 
     var finishFlow: (() -> Void)?
 
     // MARK: - Vars & Lets
 
-    let navigationController: CoordinatorNavigationController
+    let navigationController: UINavigationController
     let container: Container
-    // private var childCoordinators = [AuthChildCoordinator: Coordinator]()
+    private var childCoordinators = [AuthChildCoordinator: Coordinator]()
 
     // MARK: - Coordinator
 
-    override func start() {
+    func start() {
         showLoginVC()
     }
 
     // MARK: - Init
 
-    init(container: Container, navigationController: CoordinatorNavigationController) {
+    init(container: Container, navigationController: UINavigationController) {
         self.container = container
         self.navigationController = navigationController
     }
@@ -37,7 +37,7 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     // MARK: - Private methods
 
     private func showLoginVC() {
-        let vc = container.resolveViewController(LoginVC.self) // factory.instantiateLoginVC()
+        let vc = container.resolveViewController(LoginVC.self)
         vc.onBack = { [unowned self] in
             self.navigationController.popVC()
         }
@@ -52,7 +52,7 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorFinishOutput {
     }
 
     private func showSignUpVC() {
-        let vc = container.resolveViewController(SignUpVC.self) // factory.instantiateSignUpVC()
+        let vc = container.resolveViewController(SignUpVC.self) 
         vc.onBack = { [unowned self] in
             self.navigationController.dismiss(animated: true, completion: nil)
         }

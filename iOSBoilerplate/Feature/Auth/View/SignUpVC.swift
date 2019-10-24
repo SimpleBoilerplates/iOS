@@ -12,7 +12,7 @@ import SwiftValidator
 import Swinject
 import UIKit
 
-protocol SignUpVCProtocol: class {
+protocol SignUpVCProtocol: AnyObject {
     var onBack: (() -> Void)? { get set }
     var onSignUp: (() -> Void)? { get set }
     var onSignIn: (() -> Void)? { get set }
@@ -26,10 +26,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
 
     let validator = Validator()
 
-    // weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
-
-    // private var viewModel: SignUpVM!
-    var viewModel: SignUpVM! // = Assembler.sharedAssembler.resolver.resolve(SignUpVM.self)!
+    var signUpViewModel: SignUpViewModel!
 
     private var disposeBag = DisposeBag()
 
@@ -41,13 +38,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
         bindVieModel()
-    }
-
-    private func setUI() {
-//        view.backgroundColor = KColor.primary
-//        tableView.backgroundColor = KColor.primary
     }
 
     // MARK: - Overrides
@@ -56,17 +47,12 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
         onBack?()
     }
 
-    @IBAction func actionSignUp(_: Any) {
-        validator.validate(self)
-    }
-
     @IBAction func actionLogin(_: Any) {
         onSignIn?()
-        // authCoordinatorDelegate?.signIn()
     }
 
     private func signUP() {
-        viewModel.signUp()
+        signUpViewModel.signUp()
     }
 
     private func setLoadingHud(visible: Bool) {
@@ -76,27 +62,39 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
             AppHUD.shared.hideHUD()
         }
     }
+    
+    private func bind(textField: UITextField, to behaviorRelay: BehaviorRelay<String>) {
+           behaviorRelay.asObservable()
+               .bind(to: textField.rx.text)
+               .disposed(by: disposeBag)
+           textField.rx.text.orEmpty
+               .bind(to: behaviorRelay)
+               .disposed(by: disposeBag)
+       }
 
     func bindVieModel() {
-        (txtFieldPassWord.rx.text <-> viewModel.password).disposed(by: disposeBag)
-        (txtFieldEmailAddress.rx.text <-> viewModel.email).disposed(by: disposeBag)
-        (txtFieldFullName.rx.text <-> viewModel.fullName).disposed(by: disposeBag)
+       
+        bind(textField: txtFieldPassWord, to: signUpViewModel.password)
+        bind(textField: txtFieldEmailAddress, to: signUpViewModel.email)
+        bind(textField: txtFieldFullName, to: signUpViewModel.fullName)
 
-        viewModel.isValid.map {
-            $0
-        }
-        .bind(to: btnSignUp.rx.isEnabled)
-        .disposed(by: disposeBag)
+        signUpViewModel.isValidAll
+               .bind(to: btnSignUp.rx.isEnabled)
+               .disposed(by: disposeBag)
+        
+        btnSignUp.rx.tap.asObservable()
+               .bind(to: signUpViewModel.signButtonTapped)
+               .disposed(by: disposeBag)
 
-        viewModel
+        signUpViewModel
             .onShowAlert
-            .map { [weak self] in
+            .map { 
                 AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
             }
             .subscribe()
             .disposed(by: disposeBag)
 
-        viewModel
+        signUpViewModel
             .onShowingLoading
             .map { [weak self] in
                 self?.setLoadingHud(visible: $0)
@@ -104,7 +102,7 @@ class SignUpVC: BaseTableViewController, SignUpVCProtocol, AuthStoryboardLodable
             .subscribe()
             .disposed(by: disposeBag)
 
-        viewModel
+        signUpViewModel
             .onSuccess
             .map { _ in
                 self.onSignIn?()

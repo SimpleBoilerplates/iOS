@@ -12,7 +12,7 @@ import SwiftValidator
 import Swinject
 import UIKit
 
-protocol LoginVCProtocol: class {
+protocol LoginVCProtocol: AnyObject {
     var onBack: (() -> Void)? { get set }
     var onLogin: (() -> Void)? { get set }
     var onSignUp: (() -> Void)? { get set }
@@ -23,11 +23,9 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
     @IBOutlet var txtFieldPassword: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
 
-    // weak var authCoordinatorDelegate: AuthCoordinatorDelegate?
-
     private let validator = Validator()
 
-    var viewModel: LogInVM! // = Assembler.sharedAssembler.resolver.resolve(LogInVM.self)!
+    var loginViewModel: LogInViewModel!
 
     // MARK: - LoginVCProtocol
 
@@ -49,11 +47,6 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-
     // MARK: - Overrides
 
     override func didSelectCustomBackAction() {
@@ -61,16 +54,15 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
     }
 
     @IBAction func actionLogin(_: Any) {
-        validator.validate(self)
+        //validator.validate(self)
     }
 
     @IBAction func actionSignUP(_: Any) {
         onSignUp?()
-        // authCoordinatorDelegate?.signUp()
     }
 
     private func login() {
-        viewModel.login()
+        loginViewModel.login()
     }
 
     private func setUI() {}
@@ -82,45 +74,39 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
             AppHUD.shared.hideHUD()
         }
     }
+    
+    private func bind(textField: UITextField, to behaviorRelay: BehaviorRelay<String>) {
+         behaviorRelay.asObservable()
+             .bind(to: textField.rx.text)
+             .disposed(by: disposeBag)
+         textField.rx.text.orEmpty
+             .bind(to: behaviorRelay)
+             .disposed(by: disposeBag)
+     }
 
     private func bindViewModel() {
-        (txtFieldPassword.rx.text <-> viewModel.password).disposed(by: disposeBag)
-        (txtFieldEmail.rx.text <-> viewModel.email).disposed(by: disposeBag)
+        
+        bind(textField: txtFieldPassword, to: loginViewModel.password)
+        bind(textField: txtFieldEmail, to: loginViewModel.email)
 
-        viewModel.isValid.map {
-            $0
-        }
+        loginViewModel.isValidAll
         .bind(to: btnLogin.rx.isEnabled)
         .disposed(by: disposeBag)
-
-//        viewModel.onShowAlert.subscribe { (alertMessage) in
-//                AppHUD.showErrorMessage(alertMessage.element?.message ?? "", title: alertMessage.element?.title ?? "")
-//            }
-//            .disposed(by: disposeBag)
-
-//        viewModel.onShowingLoading.subscribe{ (isLoading) in
-//            DispatchQueue.main.async {
-//                guard let isLoading = isLoading.element else {
-//                    return
-//                }
-//                if isLoading {
-//                    AppHUD.showHUD()
-//                } else {
-//                    AppHUD.hideHUD()
-//                }
-//            }
-//            }.disposed(by: disposeBag)
-        ////
-//
-        viewModel
+        
+        
+        btnLogin.rx.tap.asObservable()
+        .bind(to: loginViewModel.loginButtonTapped)
+        .disposed(by: disposeBag)
+        
+        loginViewModel
             .onShowAlert
-            .map { [weak self] in
+            .map { 
                 AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
             }
             .subscribe()
             .disposed(by: disposeBag)
 
-        viewModel
+        loginViewModel
             .onShowingLoading
             .map { [weak self] in
                 self?.setLoadingHud(visible: $0)
@@ -128,20 +114,18 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
             .subscribe()
             .disposed(by: disposeBag)
 
-        viewModel
+        loginViewModel
             .onSuccess
-            .map { _ in
+            .map{ [weak self] isSuccess in
+
+            guard let self = self else {
+                return
+            }
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
                 self.onLogin?()
             }
             .subscribe()
             .disposed(by: disposeBag)
-
-//        viewModel.onSuccess.subscribe{ (success) in
-//            guard let success = success.element else {
-//                return
-//            }
-//            self.goToRoot()
-//        }.disposed(by: disposeBag)
     }
 }
 
