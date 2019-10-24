@@ -17,11 +17,10 @@ This is a very simple Boilerplate application, this has following features.
 # With
 
   - MVVM
-  - RxSwift
-  - Coordinator Pattern
+  - [RxSwift](https://github.com/ReactiveX/RxSwift)
+  - [Coordinator Pattern](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started)
   - Dependency Injection with [Swinject](https://github.com/Swinject/Swinject)
   - [Moya](https://github.com/Moya/Moya) for API call
-  - Avoiding string identifier to instantiate a view controller from storyboard
   - Project by feature not by layer
 
 
@@ -44,6 +43,12 @@ This is a very simple Boilerplate application, this has following features.
 * [Swinject Tutorial for iOS: Getting Started Raywenderlich](https://www.raywenderlich.com/17-swinject-tutorial-for-ios-getting-started)
 * [Dependency Injection with Swinject](https://itnext.io/dependency-injection-with-swinject-73f3144b20f0)
 * [Dependency Injection Strategies in Swift](https://quickbirdstudios.com/blog/swift-dependency-injection-service-locators/)
+
+### Unit Test
+* [Behavior-Driven Testing Tutorial for iOS with Quick & Nimble](https://www.raywenderlich.com/135-behavior-driven-testing-tutorial-for-ios-with-quick-nimble)
+* [Using Quick and Nimble for testing in iOS](https://blog.pusher.com/quick-nimble-testing-ios/)
+* [Test Driven Development (TDD) in Swift with Quick and Nimble](https://www.appcoda.com/tdd-quick-nimble/)
+
 
 ### Coordinator Pattern
   * [How to implement flow coordinator pattern](https://medium.com/@pavlepesic/flow-coordination-pattern-5eb60cd220d5)
@@ -82,7 +87,7 @@ This project requires [Cocoapods](https://cocoapods.org//) to start.
 Install the dependencies .
 
 ```sh
-$ cd BooksDemoIOS
+$ cd iOS
 $ pod install
 ```
 
