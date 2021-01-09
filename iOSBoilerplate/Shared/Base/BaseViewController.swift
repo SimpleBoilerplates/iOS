@@ -37,9 +37,9 @@ class BaseViewController: UIViewController, CoordinatorNavigationControllerDeleg
 
     // MARK: - SwipeBackNavigationControllerDelegate
 
-    internal func transitionBackFinished() {}
+    internal func transitionBackFinished() { }
 
-    internal func didSelectCustomBackAction() {}
+    internal func didSelectCustomBackAction() { }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,7 +55,7 @@ class BaseViewController: UIViewController, CoordinatorNavigationControllerDeleg
 extension BaseViewController: NetworkStatusListener {
     func networkStatusDidChange(status: Reachability.Connection) {
         switch status {
-        case .none:
+        case .none, .unavailable:
             printToConsole(message: "ViewController: Network became unreachable")
         case .wifi:
             printToConsole(message: "ViewController: Network reachable through WiFi")

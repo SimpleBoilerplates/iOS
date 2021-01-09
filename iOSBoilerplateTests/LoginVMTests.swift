@@ -7,28 +7,26 @@
 //
 
 import Foundation
+@testable import iOSBoilerplate
+import Moya
 import Nimble
 import Quick
 import RxBlocking
 import RxSwift
 import RxTest
-import Moya
-@testable import iOSBoilerplate
 
-class LoginVMTests: QuickSpec{
+class LoginVMTests: QuickSpec {
     override func spec() {
-        describe("LoginVM"){
-            
+        describe("LoginVM") {
             var stubbingProvider: MoyaProvider<AuthService>!
-        
+
             beforeEach {
                 stubbingProvider = MoyaProvider<AuthService>(stubClosure: MoyaProvider.immediatelyStub)
             }
-            
+
             context("when initialized") {
-                
-                stubbingProvider.request(.login("", ""), completion: { result in
-                    
+                stubbingProvider.request(.login("", ""), completion: { _ in
+
                 })
             }
         }

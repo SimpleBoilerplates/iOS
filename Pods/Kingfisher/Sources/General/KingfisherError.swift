@@ -100,6 +100,8 @@ public enum KingfisherError: Error {
     /// - imageNotExisting: The requested image does not exist in cache. Code 3006.
     /// - cannotConvertToData: Cannot convert an object to data for storing. Code 3007.
     /// - cannotSerializeImage: Cannot serialize an image to data for storing. Code 3008.
+    /// - cannotCreateCacheFile: Cannot create the cache file at a certain fileURL under a key. Code 3009.
+    /// - cannotSetCacheFileAttribute: Cannot set file attributes to a cached file. Code 3010.
     public enum CacheErrorReason {
         
         /// Cannot create a file enumerator for a certain disk URL. Code 3001.
@@ -139,6 +141,22 @@ public enum KingfisherError: Error {
         /// - original: The original image data, if exists.
         /// - serializer: The `CacheSerializer` used for the image serializing.
         case cannotSerializeImage(image: KFCrossPlatformImage?, original: Data?, serializer: CacheSerializer)
+
+        /// Cannot create the cache file at a certain fileURL under a key. Code 3009.
+        /// - fileURL: The url where the cache file should be created.
+        /// - key: The cache key used for the cache. When caching a file through `KingfisherManager` and Kingfisher's
+        ///        extension method, it is the resolved cache key based on your input `Source` and the image processors.
+        /// - data: The data to be cached.
+        /// - error: The underlying error originally thrown by Foundation when writing the `data` to the disk file at
+        ///          `fileURL`.
+        case cannotCreateCacheFile(fileURL: URL, key: String, data: Data, error: Error)
+
+        /// Cannot set file attributes to a cached file. Code 3010.
+        /// - filePath: The path of target cache file.
+        /// - attributes: The file attribute to be set to the target file.
+        /// - error: The underlying error originally thrown by Foundation when setting the `attributes` to the disk
+        ///          file at `filePath`.
+        case cannotSetCacheFileAttribute(filePath: String, attributes: [FileAttributeKey : Any], error: Error)
     }
     
     
@@ -171,11 +189,18 @@ public enum KingfisherError: Error {
         ///           happens.
         /// - error: The `Error` if an issue happens during image setting task. `nil` if the task finishes without
         ///          problem.
-        /// - source: The original source value of the taks.
+        /// - source: The original source value of the task.
         case notCurrentSourceTask(result: RetrieveImageResult?, error: Error?, source: Source)
 
         /// An error happens during getting data from an `ImageDataProvider`. Code 5003.
         case dataProviderError(provider: ImageDataProvider, error: Error)
+
+        /// No more alternative `Source` can be used in current loading process. It means that the
+        /// `.alternativeSources` are used and Kingfisher tried to recovery from the original error, but still
+        /// fails for all the given alternative sources. The associated value holds all the errors encountered during
+        /// the load process, including the original source loading error and all the alternative sources errors.
+        /// Code 5004.
+        case alternativeSourcesExhausted([PropagationError])
     }
 
     // MARK: Member Cases
@@ -231,6 +256,18 @@ public enum KingfisherError: Error {
         }
         return false
     }
+
+    var isLowDataModeConstrained: Bool {
+        if #available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *),
+           case .responseError(reason: .URLSessionError(let sessionError)) = self,
+           let urlError = sessionError as? URLError,
+           urlError.networkUnavailableReason == .constrained
+        {
+            return true
+        }
+        return false
+    }
+
 }
 
 // MARK: - LocalizedError Conforming
@@ -339,6 +376,12 @@ extension KingfisherError.CacheErrorReason {
             return "Cannot serialize an image due to the cache serializer returning `nil`. " +
                    "Image: \(String(describing:image)), original data: \(String(describing: originalData)), " +
                    "serializer: \(serializer)."
+        case .cannotCreateCacheFile(let fileURL, let key, let data, let error):
+            return "Cannot create cache file at url: \(fileURL), key: \(key), data length: \(data.count). " +
+                   "Underlying foundation error: \(error)."
+        case .cannotSetCacheFileAttribute(let filePath, let attributes, let error):
+            return "Cannot set file attribute for the cache file at path: \(filePath), attributes: \(attributes)." +
+                   "Underlying foundation error: \(error)."
         }
     }
     
@@ -352,6 +395,8 @@ extension KingfisherError.CacheErrorReason {
         case .imageNotExisting: return 3006
         case .cannotConvertToData: return 3007
         case .cannotSerializeImage: return 3008
+        case .cannotCreateCacheFile: return 3009
+        case .cannotSetCacheFileAttribute: return 3010
         }
     }
 }
@@ -388,6 +433,8 @@ extension KingfisherError.ImageSettingErrorReason {
             }
         case .dataProviderError(let provider, let error):
             return "Image data provider fails to provide data. Provider: \(provider), error: \(error)"
+        case .alternativeSourcesExhausted(let errors):
+            return "Image setting from alternaive sources failed: \(errors)"
         }
     }
     
@@ -396,6 +443,7 @@ extension KingfisherError.ImageSettingErrorReason {
         case .emptySource: return 5001
         case .notCurrentSourceTask: return 5002
         case .dataProviderError: return 5003
+        case .alternativeSourcesExhausted: return 5004
         }
     }
 }

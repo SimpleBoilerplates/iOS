@@ -1,51 +1,47 @@
 PODS:
-  - Alamofire (4.9.0)
-  - IQKeyboardManager (6.5.0)
-  - Kingfisher (5.8.2):
-    - Kingfisher/Core (= 5.8.2)
-  - Kingfisher/Core (5.8.2)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
-  - Nimble (8.0.4)
-  - Quick (2.2.0)
-  - ReachabilitySwift (4.3.1)
-  - Result (4.1.0)
-  - RxBlocking (5.0.0):
-    - RxSwift (~> 5)
-  - RxCocoa (5.0.0):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.0):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.0)
-  - RxTest (5.0.0):
-    - RxSwift (~> 5)
-  - SwiftKeychainWrapper (3.4.0)
-  - SwiftMessages (7.0.1):
-    - SwiftMessages/App (= 7.0.1)
-  - SwiftMessages/App (7.0.1)
+  - Alamofire (5.4.1)
+  - IQKeyboardManagerSwift (6.5.6)
+  - Kingfisher (6.0.1)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Nimble (9.0.0)
+  - Quick (3.0.0)
+  - ReachabilitySwift (5.0.0)
+  - RxBlocking (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxSwift (6.0.0)
+  - RxTest (6.0.0):
+    - RxSwift (= 6.0.0)
+  - SwiftKeychainWrapper (4.0.1)
+  - SwiftMessages (8.0.5):
+    - SwiftMessages/App (= 8.0.5)
+  - SwiftMessages/App (8.0.5)
   - SwiftValidator (5.0.0)
   - SwiftyJSON (5.0.0)
   - Swinject (2.7.1)
-  - SwinjectAutoregistration (2.6.1):
-    - Swinject (~> 2.6)
+  - SwinjectAutoregistration (2.7.0):
+    - Swinject (~> 2.7)
   - SwinjectStoryboard (2.2.0):
     - Swinject (~> 2.6)
 
 DEPENDENCIES:
-  - IQKeyboardManager
-  - Kingfisher (~> 5.0)
-  - Moya (~> 13.0)
+  - IQKeyboardManagerSwift
+  - Kingfisher (~> 6.0.1)
+  - Moya (~> 14.0.0)
   - Nimble
   - Quick
   - ReachabilitySwift
-  - RxBlocking (~> 5)
-  - RxCocoa (~> 5)
-  - RxSwift (~> 5)
-  - RxTest (~> 5)
+  - RxBlocking (~> 6.0)
+  - RxCocoa (~> 6.0.0)
+  - RxSwift (~> 6.0.0)
+  - RxTest (~> 6.0)
   - SwiftKeychainWrapper
   - SwiftMessages
   - SwiftValidator (from `https://github.com/Sadmansamee/SwiftValidator.git`, branch `master`)
@@ -57,9 +53,11 @@ DEPENDENCIES:
   - SwinjectStoryboard (~> 2.2.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - IQKeyboardManager
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
     - Kingfisher
+    - Moya
     - Nimble
     - Quick
     - ReachabilitySwift
@@ -68,16 +66,12 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxTest
+    - SwiftKeychainWrapper
     - SwiftMessages
     - SwiftyJSON
     - Swinject
     - SwinjectAutoregistration
     - SwinjectStoryboard
-  trunk:
-    - Alamofire
-    - Moya
-    - Result
-    - SwiftKeychainWrapper
 
 EXTERNAL SOURCES:
   SwiftValidator:
@@ -90,27 +84,26 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Sadmansamee/SwiftValidator.git
 
 SPEC CHECKSUMS:
-  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
-  IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
-  Kingfisher: 3adc15096595f5aed800bb0d5cb757fc58b2d2dd
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
-  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
-  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RxBlocking: c67185d26498ea3cbe3e121917c3c16739e43123
-  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
-  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
-  RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
-  SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
-  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Kingfisher: adde87a4f74f6a3845395769354efff593581740
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  RxBlocking: c025b8c6fe08c5b18c039b5b11d41ec413f8a59e
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  RxTest: ddef4052e63cb116f5b73510488c3113c37c62e5
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+  SwiftMessages: 539fd54a766bf08ec667e90aa141c44b8b8aaa55
   SwiftValidator: 2f66271b303093d9577a798759648d639078f961
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
-  SwinjectAutoregistration: d0de7e48db3601b8b130f2f84e5a8399e0224135
+  SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
   SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: 9d27c112d37f0998f20a6b8fac84c358ebae436f
+PODFILE CHECKSUM: d9ffa4a6bffe6e091728b52dd5fe9906643fe8f9
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

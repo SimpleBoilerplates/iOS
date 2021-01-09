@@ -70,9 +70,10 @@ class HomeViewModel {
         booksProvider.request(.books, completion: { result in
             self.isLoading.accept(false)
 
-            if case let .success(response) = result {
+            switch result {
+            case let .success(moyaResponse):
                 do {
-                    let filteredResponse = try response.filterSuccessfulStatusCodes()
+                    let filteredResponse = try moyaResponse.filterSuccessfulStatusCodes()
 
                     let json = JSON(filteredResponse.data)
 
@@ -86,8 +87,8 @@ class HomeViewModel {
                 } catch {
                     self.alertMessage.onNext(AlertMessage(title: error.localizedDescription, message: ""))
                 }
-            } else {
-                self.alertMessage.onNext(AlertMessage(title: result.error?.errorDescription, message: ""))
+            case let .failure(error):
+                self.alertMessage.onNext(AlertMessage(title: error.errorDescription, message: ""))
             }
         })
     }

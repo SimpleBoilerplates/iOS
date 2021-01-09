@@ -70,7 +70,18 @@ open class SwiftMessages {
          to hide it.
         */
         case window(windowLevel: UIWindow.Level)
-        
+
+        /**
+         Displays the message in a new window, at the specified window level,
+         in the specified window scene. SwiftMessages automatically increases the top margins
+         of any message view that adopts the `MarginInsetting` protocol (as `MessageView` does)
+         to account for the status bar. As of iOS 13, windows can no longer cover the
+         status bar. The only alternative is to set `Config.prefersStatusBarHidden = true`
+         to hide it.
+        */
+        @available(iOS 13.0, *)
+        case windowScene(_: UIWindowScene, windowLevel: UIWindow.Level)
+
         /**
          Displays the message view under navigation bars and tab bars if an
          appropriate one is found using the given view controller as a starting
@@ -79,7 +90,7 @@ open class SwiftMessages {
          for targeted placement in a view controller heirarchy.
         */
         case viewController(_: UIViewController)
-        
+
         /**
          Displays the message view in the given container view.
          */
@@ -319,6 +330,25 @@ open class SwiftMessages {
         public var dimModeAccessibilityLabel: String = "dismiss"
 
         /**
+         The user interface style to use when SwiftMessages displays a message its own window.
+         Use with apps that don't support dark mode to prevent messages from adopting the
+         system's interface style.
+        */
+        @available(iOS 13, *)
+        public var overrideUserInterfaceStyle: UIUserInterfaceStyle {
+            // Note that this is modelled as a computed property because
+            // Swift doesn't allow `@available` with stored properties.
+            get {
+                guard let rawValue = overrideUserInterfaceStyleRawValue else { return .unspecified }
+                return UIUserInterfaceStyle(rawValue: rawValue) ?? .unspecified
+            }
+            set {
+                overrideUserInterfaceStyleRawValue = newValue.rawValue
+            }
+        }
+        private var overrideUserInterfaceStyleRawValue: Int?
+
+        /**
          If specified, SwiftMessages calls this closure when an instance of
          `WindowViewController` is needed. Use this if you need to supply a custom subclass
          of `WindowViewController`.
@@ -411,7 +441,7 @@ open class SwiftMessages {
     open func hideAll() {
         messageQueue.sync {
             queue.removeAll()
-            delays.ids.removeAll()
+            delays.removeAll()
             counts.removeAll()
             hideCurrent()
         }
@@ -429,7 +459,7 @@ open class SwiftMessages {
                 hideCurrent()
             }
             queue = queue.filter { $0.id != id }
-            delays.ids.remove(id)
+            delays.remove(id: id)
             counts[id] = nil
         }
     }
@@ -453,7 +483,7 @@ open class SwiftMessages {
                 hideCurrent()
             }
             queue = queue.filter { $0.id != id }
-            delays.ids.remove(id)
+            delays.remove(id: id)
         }
     }
 
@@ -488,18 +518,26 @@ open class SwiftMessages {
     /// Type for keeping track of delayed presentations
     fileprivate class Delays {
 
-        fileprivate var ids = Set<String>()
-
         fileprivate func add(presenter: Presenter) {
-            ids.insert(presenter.id)
+            presenters.insert(presenter)
         }
 
         @discardableResult
         fileprivate func remove(presenter: Presenter) -> Bool {
-            guard ids.contains(presenter.id) else { return false }
-            ids.remove(presenter.id)
+            guard presenters.contains(presenter) else { return false }
+            presenters.remove(presenter)
             return true
         }
+
+        fileprivate func remove(id: String) {
+            presenters = presenters.filter { $0.id != id }
+        }
+
+        fileprivate func removeAll() {
+            presenters.removeAll()
+        }
+
+        private var presenters = Set<Presenter>()
     }
 
     func show(presenter: Presenter) {
@@ -561,7 +599,7 @@ open class SwiftMessages {
                     guard let strongSelf = self else { return }
                     guard completed else {
                         strongSelf.messageQueue.sync {
-                            strongSelf.internalHide(id: current.id)
+                            strongSelf.internalHide(presenter: current)
                         }
                         return
                     }
@@ -577,12 +615,13 @@ open class SwiftMessages {
         }
     }
 
-    fileprivate func internalHide(id: String) {
-        if id == _current?.id {
+    fileprivate func internalHide(presenter: Presenter) {
+        if presenter == _current {
             hideCurrent()
+        } else {
+            queue = queue.filter { $0 != presenter }
+            delays.remove(presenter: presenter)
         }
-        queue = queue.filter { $0.id != id }
-        delays.ids.remove(id)
     }
  
     fileprivate func hideCurrent(animated: Bool = true) {
@@ -604,7 +643,7 @@ open class SwiftMessages {
     }
 
     fileprivate weak var autohideToken: AnyObject?
-    
+
     fileprivate func queueAutoHide() {
         guard let current = _current else { return }
         autohideToken = current
@@ -613,7 +652,7 @@ open class SwiftMessages {
             messageQueue.asyncAfter(deadline: delayTime, execute: {
                 // Make sure we've still got a green light to auto-hide.
                 if self.autohideToken !== current { return }
-                self.internalHide(id: current.id)
+                self.internalHide(presenter: current)
             })
         }
     }
@@ -695,14 +734,14 @@ extension SwiftMessages: PresenterDelegate {
 
     func hide(presenter: Presenter) {
         messageQueue.sync {
-            self.internalHide(id: presenter.id)
+            self.internalHide(presenter: presenter)
         }
     }
 
     public func hide(animator: Animator) {
         messageQueue.sync {
             guard let presenter = self.presenter(forAnimator: animator) else { return }
-            self.internalHide(id: presenter.id)
+            self.internalHide(presenter: presenter)
         }
     }
 

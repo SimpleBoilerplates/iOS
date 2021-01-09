@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  ExtraaNumber
+//
 //
 //  Created by sadman samee on 13/1/19.
 //  Copyright © 2019 sadman samee. All rights reserved.
@@ -32,32 +32,23 @@ class HomeVC: BaseViewController, HomeVCProtocol, HomeStoryboardLodable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+
         setUI()
         setUpTableView()
         bindViewModel()
         viewModelTableView()
-       
-       // let nav = navigationController as! CoordinatorNavigationController
-       // nav.customizeBackButton()
     }
 
-    
-    private func setUI(){
+    private func setUI() {
         title = "Books"
 
         btnLogout = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = btnLogout
     }
-    
+
     // MARK: - Overrides
 
-    override func didSelectCustomBackAction() {
-        // self.onBack?()
-    }
-
-    
-
+    override func didSelectCustomBackAction() {}
 }
 
 // MARK: - Private functions
@@ -85,7 +76,7 @@ extension HomeVC {
                 guard let self = self else {
                     return
                 }
-                
+
                 if isLoggedOut {
                     self.onSignOut?()
                 }
@@ -96,7 +87,6 @@ extension HomeVC {
         homeViewModel
             .onShowAlert
             .map {
-
                 AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
             }
             .subscribe()
@@ -113,7 +103,7 @@ extension HomeVC {
             .subscribe()
             .disposed(by: disposeBag)
     }
-    
+
     private func viewModelTableView() {
         tableView
             .rx.setDelegate(self)

@@ -14,6 +14,7 @@ public enum AuthService {
 }
 
 extension AuthService: TargetType, AccessTokenAuthorizable {
+
     public var baseURL: URL {
         return URL(string: Constant.Url.base)!
     }
@@ -50,7 +51,7 @@ extension AuthService: TargetType, AccessTokenAuthorizable {
         }
     }
 
-    public var authorizationType: AuthorizationType {
+    public var authorizationType: AuthorizationType? {
         switch self {
         case .login, .signUp:
             return .none

@@ -38,9 +38,9 @@ class BaseTableViewController: UITableViewController, CoordinatorNavigationContr
 
     // MARK: - SwipeBackNavigationControllerDelegate
 
-    internal func transitionBackFinished() {}
+    internal func transitionBackFinished() { }
 
-    internal func didSelectCustomBackAction() {}
+    internal func didSelectCustomBackAction() { }
 }
 
 extension BaseTableViewController {
@@ -51,8 +51,9 @@ extension BaseTableViewController {
 
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
-            let keyBoardValueBegin = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
-            let keyBoardValueEnd = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, keyBoardValueBegin != keyBoardValueEnd else {
+              let keyBoardValueBegin = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+              let keyBoardValueEnd = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, keyBoardValueBegin != keyBoardValueEnd
+        else {
             return
         }
 

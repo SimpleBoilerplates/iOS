@@ -44,7 +44,6 @@ class User: Codable {
         email = json["email"].stringValue
         fullName = json["full_name"].string
         id = json["id"].intValue
-        // fId = json["fid"].intValue
         location = json["location"].string
         phoneNumber = json["phone_number"].string
         ratingAsHero = json["rating_as_hero"].intValue

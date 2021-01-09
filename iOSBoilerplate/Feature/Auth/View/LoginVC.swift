@@ -1,6 +1,6 @@
 //
 //  LoginVC.swift
-//  ExtraaNumber
+//
 //
 //  Created by sadman samee on 26/1/19.
 //  Copyright © 2019 sadman samee. All rights reserved.
@@ -54,7 +54,7 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
     }
 
     @IBAction func actionLogin(_: Any) {
-        //validator.validate(self)
+        // validator.validate(self)
     }
 
     @IBAction func actionSignUP(_: Any) {
@@ -74,33 +74,31 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
             AppHUD.shared.hideHUD()
         }
     }
-    
+
     private func bind(textField: UITextField, to behaviorRelay: BehaviorRelay<String>) {
-         behaviorRelay.asObservable()
-             .bind(to: textField.rx.text)
-             .disposed(by: disposeBag)
-         textField.rx.text.orEmpty
-             .bind(to: behaviorRelay)
-             .disposed(by: disposeBag)
-     }
+        behaviorRelay.asObservable()
+            .bind(to: textField.rx.text)
+            .disposed(by: disposeBag)
+        textField.rx.text.orEmpty
+            .bind(to: behaviorRelay)
+            .disposed(by: disposeBag)
+    }
 
     private func bindViewModel() {
-        
         bind(textField: txtFieldPassword, to: loginViewModel.password)
         bind(textField: txtFieldEmail, to: loginViewModel.email)
 
         loginViewModel.isValidAll
-        .bind(to: btnLogin.rx.isEnabled)
-        .disposed(by: disposeBag)
-        
-        
+            .bind(to: btnLogin.rx.isEnabled)
+            .disposed(by: disposeBag)
+
         btnLogin.rx.tap.asObservable()
-        .bind(to: loginViewModel.loginButtonTapped)
-        .disposed(by: disposeBag)
-        
+            .bind(to: loginViewModel.loginButtonTapped)
+            .disposed(by: disposeBag)
+
         loginViewModel
             .onShowAlert
-            .map { 
+            .map {
                 AppHUD.shared.showErrorMessage($0.message ?? "", title: $0.title ?? "")
             }
             .subscribe()
@@ -116,11 +114,11 @@ class LoginVC: BaseTableViewController, LoginVCProtocol, AuthStoryboardLodable {
 
         loginViewModel
             .onSuccess
-            .map{ [weak self] isSuccess in
+            .map { [weak self] _ in
 
-            guard let self = self else {
-                return
-            }
+                guard let self = self else {
+                    return
+                }
                 self.navigationController?.setNavigationBarHidden(false, animated: false)
                 self.onLogin?()
             }

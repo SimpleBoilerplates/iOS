@@ -18,10 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var appCoordinator: AppCoordinator!
 
-//    var rootController: CoordinatorNavigationController {
-//        return window!.rootViewController as! CoordinatorNavigationController
-//    }
-
     var assembler: Assembler!
 
     func application(_: UIApplication, willFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -30,16 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             HomeAssembly()
         ], container: container)
 
-       
         return true
     }
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
         window = UIWindow()
 
         appCoordinator = AppCoordinator(window: window!, container: container, navigationController: UINavigationController(), launchInstructor: LaunchInstructor.configure(isAutorized: UserService.shared.isAuthonticated()))
-            
+
         appCoordinator.start()
         window?.makeKeyAndVisible()
 

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 target 'iOSBoilerplate' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,7 +7,7 @@ target 'iOSBoilerplate' do
 
   # Pods for iOSBoilerplate
 
-  pod 'IQKeyboardManager'
+  pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 6.0.1'
   pod 'Moya', '~> 14.0.0'
   pod 'SwiftyJSON'
@@ -37,8 +37,8 @@ target 'iOSBoilerplate' do
   target 'iOSBoilerplateTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RxBlocking', '~> 5'
-    pod 'RxTest', '~> 5'
+    pod 'RxBlocking', '~> 6.0'
+    pod 'RxTest', '~> 6.0'
     pod 'Quick'
     pod 'Nimble'
     pod 'Swinject'

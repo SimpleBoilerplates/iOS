@@ -13,6 +13,7 @@ public enum BooksService {
 }
 
 extension BooksService: TargetType, AccessTokenAuthorizable {
+
     public var baseURL: URL {
         return URL(string: Constant.Url.base)!
     }
@@ -52,14 +53,10 @@ extension BooksService: TargetType, AccessTokenAuthorizable {
         }
     }
 
-    public var authorizationType: AuthorizationType {
+    public var authorizationType: AuthorizationType? {
         switch self {
         case .books:
             return .bearer
-//                    case .targetThatNeedsBasicAuth:
-//                    return .basic
-//        case .login:
-//            return .none
         }
     }
 
@@ -67,8 +64,6 @@ extension BooksService: TargetType, AccessTokenAuthorizable {
         switch self {
         case .books:
             return .successCodes
-        default:
-            return .none
         }
     }
 }
@@ -78,8 +73,6 @@ extension BooksService: MoyaCacheable {
         switch self {
         case .books:
             return .returnCacheDataElseLoad
-        default:
-            return .reloadIgnoringLocalAndRemoteCacheData
         }
     }
 }

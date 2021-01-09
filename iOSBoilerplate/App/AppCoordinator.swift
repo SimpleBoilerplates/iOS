@@ -17,17 +17,17 @@ final class AppCoordinator: Coordinator {
     private var navigationController: UINavigationController
     private var childCoordinators = [AppChildCoordinator: Coordinator]()
 
-     // MARK: - Init
+    // MARK: - Init
 
-      init(window: UIWindow, container: Container, navigationController: UINavigationController, launchInstructor: LaunchInstructor) {
-          self.window = window
-          self.container = container
-          self.navigationController = navigationController
-          self.launchInstructor = launchInstructor
+    init(window: UIWindow, container: Container, navigationController: UINavigationController, launchInstructor: LaunchInstructor) {
+        self.window = window
+        self.container = container
+        self.navigationController = navigationController
+        self.launchInstructor = launchInstructor
 
-          self.window.rootViewController = navigationController
-      }
-    
+        self.window.rootViewController = navigationController
+    }
+
     // MARK: - Coordinator
 
     func start() {
@@ -62,6 +62,4 @@ final class AppCoordinator: Coordinator {
         childCoordinators[.home] = coordinator
         coordinator.start()
     }
-
- 
 }

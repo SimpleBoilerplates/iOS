@@ -1,5 +1,4 @@
 //
-//  WalktroughCoordinator.swift
 
 import Foundation
 import Swinject

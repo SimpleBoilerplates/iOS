@@ -15,16 +15,15 @@ final class HomeAssembly: Assembly {
     func assemble(container: Container) {
         let userService = UserService()
 
-        let tokenClosure: () -> String = {
-            userService.loadToken() ?? ""
-        }
+        let authPlugin = AccessTokenPlugin { _ in userService.loadToken() ?? "" }
 
         container.register(UserService.self, factory: { _ in
             userService
         }).inObjectScope(ObjectScope.container)
 
         container.register(MoyaProvider<BooksService>.self, factory: { _ in
-            MoyaProvider<BooksService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter), AccessTokenPlugin(tokenClosure: tokenClosure)])
+            MoyaProvider<BooksService>(plugins: [authPlugin, NetworkLoggerPlugin(configuration: .init(formatter: .init(responseData: JSONResponseDataFormatter),
+                                                                                          logOptions: .verbose))])
         }).inObjectScope(ObjectScope.container)
 
         container.register(HomeViewModel.self, factory: { container in

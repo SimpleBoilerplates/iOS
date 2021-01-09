@@ -21,13 +21,10 @@ class AppHUD {
         LLSpinner.backgroundColor = UIColor(white: 0, alpha: 0.6)
         LLSpinner.style = .white
         LLSpinner.spin()
-        // HUD.dimsBackground = false
-        // HUD.show(.progress)
     }
 
     func hideHUD() {
         LLSpinner.stop()
-        // HUD.hide()
     }
 
     func showErrorMessage(_ message: String, title: String) {
@@ -41,9 +38,6 @@ class AppHUD {
         // Add a drop shadow.
         view.configureDropShadow()
 
-        // Set message title, body, and icon. Here, we're overriding the default warning
-        // image with an emoji character.
-        // let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
         view.configureContent(title: title, body: message, iconText: "")
 
         // Show the message.
@@ -61,9 +55,6 @@ class AppHUD {
         // Add a drop shadow.
         view.configureDropShadow()
 
-        // Set message title, body, and icon. Here, we're overriding the default warning
-        // image with an emoji character.
-        // let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
         view.configureContent(title: title, body: message, iconText: "")
 
         // Show the message.
@@ -81,9 +72,6 @@ class AppHUD {
         // Add a drop shadow.
         view.configureDropShadow()
 
-        // Set message title, body, and icon. Here, we're overriding the default warning
-        // image with an emoji character.
-        // let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
         view.configureContent(title: title, body: message, iconText: "")
 
         // Show the message.

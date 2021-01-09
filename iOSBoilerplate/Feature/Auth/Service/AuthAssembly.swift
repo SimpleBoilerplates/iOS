@@ -12,14 +12,14 @@ import Swinject
 
 final class AuthAssembly: Assembly {
     func assemble(container: Container) {
-        // let userService = UserService()
 
         container.register(UserService.self, factory: { _ in
             UserService()
         }).inObjectScope(ObjectScope.container)
 
-        container.register(MoyaProvider<AuthService>.self, factory: { _ in
-            MoyaProvider<AuthService>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+                container.register(MoyaProvider<AuthService>.self, factory: { _ in
+            MoyaProvider<AuthService>(plugins: [NetworkLoggerPlugin(configuration: .init(formatter: .init(responseData: JSONResponseDataFormatter),
+                                                                                         logOptions: .verbose))])
         }).inObjectScope(ObjectScope.container)
 
         container.register(SignUpViewModel.self, factory: { container in

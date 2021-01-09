@@ -1,6 +1,6 @@
 //
 //  SignUpVM.swift
-//  ExtraaNumber
+//
 //
 //  Created by sadman samee on 26/1/19.
 //  Copyright © 2019 sadman samee. All rights reserved.
@@ -12,22 +12,21 @@ import RxSwift
 import SwiftyJSON
 
 final class SignUpViewModel {
-    
     private var authProvider: MoyaProvider<AuthService>
     private let disposeBag = DisposeBag()
 
     init(service: MoyaProvider<AuthService>) {
         authProvider = service
-        
+
         signButtonTapped.asObserver()
-               .subscribe(onNext: { [weak self] in
+            .subscribe(onNext: { [weak self] in
 
-                   guard let self = self else {
-                       return
-                   }
+                guard let self = self else {
+                    return
+                }
 
-                   self.signUp()
-               }).disposed(by: disposeBag)
+                self.signUp()
+            }).disposed(by: disposeBag)
     }
 
     private let isLoading = BehaviorRelay(value: false)
@@ -55,33 +54,33 @@ final class SignUpViewModel {
 
     var isValidAll: Observable<Bool> {
         return Observable.combineLatest(email, password) { email, password in
-            return (email.count >= 6 && email.isvalidEmail)
+            (email.count >= 6 && email.isvalidEmail)
                 && password.count >= 6
         }.share().distinctUntilChanged()
     }
-    
-    
 
     func signUp() {
         isLoading.accept(true)
 
         authProvider.request(.signUp(fullName.value, email.value, password.value), completion: { result in
-                self.isLoading.accept(false)
-            
-                if case let .success(response) = result {
-                    do {
-                        let json = try JSON(data: response.data)
-                        if !json.isError {
-                            self.isSuccess.onNext(json)
-                        } else {
-                            self.alertMessage.onNext(AlertMessage(title: json.message, message: ""))
-                        }
-                    } catch {
-                        self.alertMessage.onNext(AlertMessage(title: error.localizedDescription, message: ""))
+            self.isLoading.accept(false)
+
+            switch result {
+            case let .success(moyaResponse):
+                do {
+                    let json = try JSON(data: moyaResponse.data)
+                    if !json.isError {
+                        self.isSuccess.onNext(json)
+                    } else {
+                        self.alertMessage.onNext(AlertMessage(title: json.message, message: ""))
                     }
-                } else {
-                    self.alertMessage.onNext(AlertMessage(title: result.error?.errorDescription, message: ""))
+                } catch {
+                    self.alertMessage.onNext(AlertMessage(title: error.localizedDescription, message: ""))
                 }
-            })
+            case let .failure(error):
+                self.alertMessage.onNext(AlertMessage(title: error.errorDescription, message: ""))
+            }
+
+        })
     }
 }

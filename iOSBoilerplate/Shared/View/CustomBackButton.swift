@@ -24,7 +24,6 @@ class CustomBackButton: UIButton {
             button.setTitleColor(backButtonTitleColor, for: .normal)
         }
 
-        // button.centerTextAndImage(spacing: 8)
         return button
     }
 }

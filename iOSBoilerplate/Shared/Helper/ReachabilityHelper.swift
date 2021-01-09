@@ -18,13 +18,13 @@ class ReachabilityManager: NSObject {
 
     // 3. Boolean to track network reachability
     var isNetworkAvailable: Bool {
-        return reachabilityStatus != .none
+        return reachabilityStatus != .unavailable
     }
 
     // 4. Tracks current NetworkStatus (notReachable, reachableViaWiFi, reachableViaWWAN)
-    var reachabilityStatus: Reachability.Connection = .none
+    var reachabilityStatus: Reachability.Connection = .unavailable
     // 5. Reachability instance for Network status monitoring
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
 
     // 6. Array of delegates which are interested to listen to network status change
     var listeners = [NetworkStatusListener]()
@@ -33,7 +33,7 @@ class ReachabilityManager: NSObject {
         let reachability = notification.object as! Reachability
 
         switch reachability.connection {
-        case .none:
+        case .none,.unavailable:
 
             break
         // debugPrint(“Network became unreachable”)

@@ -8,13 +8,6 @@
 
 import UIKit
 
-// extension UIStoryboard {
-//    enum Storyboard: String {
-//        case Home
-//        case Auth
-//    }
-// }
-
 enum KStoryboard: String {
     case Home
     case Auth

@@ -82,7 +82,7 @@ class CoordinatorNavigationController: UINavigationController {
     private func setupCustomBackButton(viewController: UIViewController) {
         if backButtonImage != nil || backButtonTitle != nil {
             viewController.navigationItem.hidesBackButton = true
-            let backButtonTitle = shouldUseViewControllerTitles ? viewControllers[self.viewControllers.count - 2].title : self.backButtonTitle
+            let backButtonTitle = shouldUseViewControllerTitles ? viewControllers[viewControllers.count - 2].title : self.backButtonTitle
             let button = CustomBackButton.initCustomBackButton(backButtonImage: backButtonImage, backButtonTitle: backButtonTitle, backButtonfont: backButtonfont, backButtonTitleColor: backButtonTitleColor)
             button.addTarget(self, action: #selector(actionBack(sender:)), for: .touchUpInside)
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)

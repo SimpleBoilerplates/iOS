@@ -8,13 +8,13 @@
 
 import SwiftyJSON
 
-func JSONResponseDataFormatter(_ data: Data) -> Data {
+func JSONResponseDataFormatter(_ data: Data) -> String {
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
         let prettyData = try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
-        return prettyData
+        return String(data: prettyData, encoding: .utf8) ?? String(data: data, encoding: .utf8) ?? ""
     } catch {
-        return data // fallback to original data if it can't be serialized.
+        return String(data: data, encoding: .utf8) ?? ""
     }
 }
 
