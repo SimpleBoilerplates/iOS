@@ -63,7 +63,7 @@ final class SignUpViewModel {
     
 
     func signUp() {
-            isLoading.accept(true)
+        isLoading.accept(true)
 
         authProvider.request(.signUp(fullName.value, email.value, password.value), completion: { result in
                 self.isLoading.accept(false)
@@ -83,6 +83,5 @@ final class SignUpViewModel {
                     self.alertMessage.onNext(AlertMessage(title: result.error?.errorDescription, message: ""))
                 }
             })
-        
     }
 }

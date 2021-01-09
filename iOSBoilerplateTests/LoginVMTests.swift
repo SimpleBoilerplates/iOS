@@ -19,7 +19,7 @@ class LoginVMTests: QuickSpec{
     override func spec() {
         describe("LoginVM"){
             
-            var stubbingProvider: MoyaProvider<AuthService>! //= MoyaProvider<AuthService>(stubClosure: MoyaProvider.immediatelyStub)
+            var stubbingProvider: MoyaProvider<AuthService>!
         
             beforeEach {
                 stubbingProvider = MoyaProvider<AuthService>(stubClosure: MoyaProvider.immediatelyStub)

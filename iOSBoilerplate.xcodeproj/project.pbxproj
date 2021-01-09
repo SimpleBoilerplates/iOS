@@ -380,6 +380,7 @@
 		1A6F7B67220935AB003A38B4 /* iOSBoilerplateTests */ = {
 			isa = PBXGroup;
 			children = (
+				1A8E71592366A2DE00B0475F /* Mock */,
 				1A6F7B68220935AB003A38B4 /* iOSBoilerplateTests.swift */,
 				1A6F7B6A220935AB003A38B4 /* Info.plist */,
 				1ADA9A952333801500B2893C /* LoginVMTests.swift */,
@@ -434,6 +435,29 @@
 				1AF1F379230503B800D1F7A5 /* BookDetailVM.swift */,
 			);
 			path = VM;
+			sourceTree = "<group>";
+		};
+		1A8E71592366A2DE00B0475F /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				1A8E715B2366A2FF00B0475F /* Sample */,
+				1A8E715A2366A2F800B0475F /* Data */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		1A8E715A2366A2F800B0475F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1A8E715B2366A2FF00B0475F /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sample;
 			sourceTree = "<group>";
 		};
 		1ADA9A8F23333BA800B2893C /* MoyaCacheAble */ = {

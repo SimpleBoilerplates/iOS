@@ -25,7 +25,6 @@ class CustomBackButton: UIButton {
         }
 
         // button.centerTextAndImage(spacing: 8)
-
         return button
     }
 }

@@ -8,14 +8,14 @@ target 'iOSBoilerplate' do
   # Pods for iOSBoilerplate
 
   pod 'IQKeyboardManager'
-  pod 'Kingfisher', '~> 5.0'
-  pod 'Moya', '~> 13.0'
+  pod 'Kingfisher', '~> 6.0.1'
+  pod 'Moya', '~> 14.0.0'
   pod 'SwiftyJSON'
   pod 'ReachabilitySwift'
   pod 'SwiftMessages'
   pod 'SwiftValidator' , :git => 'https://github.com/Sadmansamee/SwiftValidator.git', :branch => 'master'
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
+  pod 'RxSwift', '~> 6.0.0'
+  pod 'RxCocoa', '~> 6.0.0'
   pod 'Swinject' , '~> 2.7.1'
   pod 'SwinjectAutoregistration'
   pod 'SwinjectStoryboard', '~> 2.2.0'

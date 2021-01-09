@@ -30,10 +30,9 @@ final class LogInViewModel {
         
     }
 
-    
     private var authProvider: MoyaProvider<AuthService>
-       private var userService: UserService
-      private let disposeBag = DisposeBag()
+    private var userService: UserService
+    private let disposeBag = DisposeBag()
     
     private let isLoading = BehaviorRelay(value: false)
     private let alertMessage = PublishSubject<AlertMessage>()
@@ -72,7 +71,7 @@ final class LogInViewModel {
     }
 
     func login() {
-            isLoading.accept(true)
+        isLoading.accept(true)
 
         authProvider.request(.login(email.value, password.value), completion: { result in
                 self.isLoading.accept(false)
